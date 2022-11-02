@@ -3,7 +3,7 @@
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor : create tabel kosong */
-void MakeEmpty (TabInt *T)
+void MakeEmpty (TabKata *T)
     {
         (*T).Neff = 0;
     }
@@ -13,29 +13,29 @@ void MakeEmpty (TabInt *T)
 
 /* ********** SELEKTOR ********** */
 /* *** Banyaknya elemen *** */
-int NbElmt (TabInt T) {
+int NbElmt (TabKata T) {
     return T.Neff;
 };
 /* Mengirimkan banyaknya elemen efektif tabel */
 /* Mengirimkan nol jika tabel kosong */
 /* *** Daya tampung container *** */
-int MaxNbEl (TabInt T){
+int MaxNbEl (TabKata T){
     return IdxMax;
 };
 /* Mengirimkan maksimum elemen yang dapat ditampung oleh tabel */
 /* *** Selektor INDEKS *** */
-IdxType GetFirstIdx (TabInt T) {
+IdxType GetFirstIdx (TabKata T) {
     return IdxMin;
 };
 /* Prekondisi : Tabel T tidak kosong */
 /* Mengirimkan indeks elemen pertama */
-IdxType GetLastIdx (TabInt T){
+IdxType GetLastIdx (TabKata T){
     return T.Neff;
 };
 /* Prekondisi : Tabel T tidak kosong */
 /* Mengirimkan indeks elemen terakhir */
 /* *** Menghasilkan sebuah elemen *** */
-ElType GetElmt (TabInt T, IdxType i){
+ElType GetElmt (TabKata T, IdxType i){
     return T.TI[i];
 };
 /* Prekondisi : Tabel tidak kosong, i antara FirstIdx(T)..LastIdx(T) */
@@ -43,7 +43,7 @@ ElType GetElmt (TabInt T, IdxType i){
 
 /* *** Selektor SET : Mengubah nilai TABEL dan elemen tabel *** */
 /* Untuk type private/limited private pada bahasa tertentu */
-void SetTab (TabInt Tin, TabInt *Tout){
+void SetTab (TabKata Tin, TabKata *Tout){
     IdxType i;
     (*Tout).Neff = 0;
     for (i=IdxMin; i<= Tin.Neff; i++){
@@ -54,14 +54,14 @@ void SetTab (TabInt Tin, TabInt *Tout){
 /* I.S. Tin terdefinisi, sembarang */
 /* F.S. Tout berisi salinan Tin */
 /* Assignment THsl -> Tin */
-void SetEl (TabInt *T, IdxType i, ElType v){
+void SetEl (TabKata *T, IdxType i, ElType v){
     (*T).TI[i] = v;
     (*T).Neff++;
 };
 /* I.S. T terdefinisi, sembarang */
 /* F.S. Elemen T yang ke-i bernilai v */
 /* Mengeset nilai elemen tabel yang ke-i sehingga bernilai v */
-void SetNeff (TabInt *T, IdxType N){
+void SetNeff (TabKata *T, IdxType N){
     (*T).Neff = N;
 };
 /* I.S. T terdefinisi, sembarang */
@@ -69,13 +69,13 @@ void SetNeff (TabInt *T, IdxType N){
 /* Mengeset nilai indeks elemen efektif sehingga bernilai N */
 
 /* ********** Test Indeks yang valid ********** */
-boolean IsIdxValid (TabInt T, IdxType i){
+boolean IsIdxValid (TabKata T, IdxType i){
     return IdxMin <= i && i <= IdxMax;
 };
 /* Prekondisi : i sembarang */
 /* Mengirimkan true jika i adalah indeks yang valid utk ukuran tabel */
 /* yaitu antara indeks yang terdefinisi utk container*/
-boolean IsIdxEff (TabInt T, IdxType i){
+boolean IsIdxEff (TabKata T, IdxType i){
     boolean res;
     if (IdxMin <= i <= T.Neff) {
         res = true;
@@ -90,7 +90,7 @@ boolean IsIdxEff (TabInt T, IdxType i){
 
 /* ********** TEST KOSONG/PENUH ********** */
 /* *** Test tabel kosong *** */
-boolean IsEmpty (TabInt T){
+boolean IsEmpty (TabKata T){
     boolean res;
     if (T.Neff == 0) {
         res = true;
@@ -101,7 +101,7 @@ boolean IsEmpty (TabInt T){
 };
 /* Mengirimkan true jika tabel T kosong, mengirimkan false jika tidak */
 /* *** Test tabel penuh *** */
-boolean IsFull (TabInt T){
+boolean IsFull (TabKata T){
     boolean res;
     if (IdxMax == T.Neff) {
         res = true;
@@ -113,13 +113,16 @@ boolean IsFull (TabInt T){
 /* Mengirimkan true jika tabel T penuh, mengirimkan false jika tidak */
 
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
-void TulisIsi (TabInt T){
+void TulisIsi (TabKata T){
     int i;
     if (T.Neff == 0) {
         printf("Tabel kosong\n");
     } else {
-        for (i=IdxMin; i<=T.Neff; i++){
-            printf("%d:%d\n", i, T.TI[i]);
+        for (i=IdxMin - 1; i<T.Neff; i++){
+            for(int j = 0; j < T.TI[i].Length; j++) {
+            printf("%c", T.TI[i].TabWord[j]);
+        }
+        printf("\n");
         }
     }
 };
@@ -135,9 +138,10 @@ void TulisIsi (TabInt T){
 
 /* ********** OPERATOR ARITMATIKA ********** */
 /* *** Aritmatika tabel : Penjumlahan, pengurangan, perkalian, ... *** */
-TabInt PlusTab (TabInt T1, TabInt T2){
+/*
+TabKata PlusTab (TabKata T1, TabKata T2){
     int i;
-    TabInt Tf;
+    TabKata Tf;
     Tf.Neff = 0;
     for (i=IdxMin; i<=T1.Neff; i++){
         Tf.TI[i] = T1.TI[i] + T2.TI[i];
@@ -145,11 +149,13 @@ TabInt PlusTab (TabInt T1, TabInt T2){
     }
     return Tf;
 };
+*/
 /* Prekondisi : T1 dan T2 berukuran sama dan tidak kosong */
 /* Mengirimkan T1 + T2 */
-TabInt MinusTab (TabInt T1, TabInt T2){
+/*
+TabKata MinusTab (TabKata T1, TabKata T2){
     int i;
-    TabInt Tf;
+    TabKata Tf;
     Tf.Neff = 0;
     for (i=IdxMin; i<=T1.Neff; i++){
         Tf.TI[i] = T1.TI[i] - T2.TI[i];
@@ -158,17 +164,18 @@ TabInt MinusTab (TabInt T1, TabInt T2){
     return Tf;
 
 };
+*/
 /* Prekondisi : T1 dan T2 berukuran sama dan tidak kosong */
 /* Mengirimkan T1 - T2 */
 
 /* ********** NILAI EKSTREM ********** */
-ElType ValMax (TabInt T){
+int ValMax (TabKata T){
     int i;
-    ElType max;
-    max = T.TI[IdxMin];
+    int max;
+    max = T.TI[IdxMin].Length;
     for (i=IdxMin; i<=T.Neff; i++){
-        if (T.TI[i] > max) {
-            max = T.TI[i];
+        if (T.TI[i].Length > max) {
+            max = T.TI[i].Length;
         }
     }
     return max;
@@ -176,13 +183,13 @@ ElType ValMax (TabInt T){
 /* Prekondisi : Tabel T tidak kosong */
 /* Mengirimkan nilai maksimum tabel */
 
-ElType ValMin (TabInt T){
+int ValMin (TabKata T){
     int i;
-    ElType min;
-    min = T.TI[IdxMin];
+    int min;
+    min = T.TI[IdxMin].Length;
     for (i=IdxMin; i<=T.Neff; i++){
-        if (T.TI[i] < min) {
-            min = T.TI[i];
+        if (T.TI[i].Length < min) {
+            min = T.TI[i].Length;
         }
     }
     return min;
@@ -191,15 +198,15 @@ ElType ValMin (TabInt T){
 /* Mengirimkan nilai minimum tabel */
 
 /* *** Mengirimkan indeks elemen bernilai ekstrem *** */
-IdxType IdxMaxTab (TabInt T){
+IdxType IdxMaxTab (TabKata T){
     int i;
-    ElType max;
+    int max;
     IdxType found;
-    max = T.TI[IdxMin];
+    max = T.TI[IdxMin].Length;
     found = IdxMin;
     for (i=IdxMin; i<=T.Neff; i++){
-        if (T.TI[i] > max) {
-            max = T.TI[i];
+        if (T.TI[i].Length > max) {
+            max = T.TI[i].Length;
             found = i;
         }
     }
@@ -208,15 +215,15 @@ IdxType IdxMaxTab (TabInt T){
 /* Prekondisi : Tabel T tidak kosong */
 /* Mengirimkan indeks i dengan elemen ke-i adalah nilai maksimum pada tabel */
 
-IdxType IdxMinTab (TabInt T){
+IdxType IdxMinTab (TabKata T){
     int i;
-    ElType max;
+    int max;
     IdxType found;
-    max = T.TI[IdxMin];
+    max = T.TI[IdxMin].Length;
     found = IdxMin;
     for (i=IdxMin; i<=T.Neff; i++){
-        if (T.TI[i] < max) {
-            max = T.TI[i];
+        if (T.TI[i].Length < max) {
+            max = T.TI[i].Length;
             found = i;
         }
     }

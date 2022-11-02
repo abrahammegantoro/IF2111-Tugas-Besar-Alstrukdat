@@ -7,9 +7,13 @@ boolean EOP;
 static FILE *pita;
 static int retval;
 
-void START(){
-    pita = stdin;
-    ADV();
+void START(char* filesrc){
+    pita = fopen(filesrc, "r");
+    if (pita != NULL) {
+        ADV();
+    } else {
+        printf("File tidak ditemukan.\n");
+    }
 }
 
 void ADV(){
