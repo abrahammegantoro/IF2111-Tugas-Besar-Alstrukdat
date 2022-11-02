@@ -1,8 +1,13 @@
 #include <stdio.h>
 #include "readTxtFile.h"
 
-void readTxt(char* filesrc, TabKata* ArrKata) {
+/* Implementasi readTxtFile.h */
+
+void readTxt(char* filesrc, TabKata* listGame) {
+    // KAMUS
     int lines = 0, i;
+    
+    // ALGORTIMA
     STARTWORD(filesrc);
     for (i = 0; i < currentWord.Length - 1; i++) {
         lines *= 10;
@@ -10,7 +15,7 @@ void readTxt(char* filesrc, TabKata* ArrKata) {
     }
     for (i = 0; i < lines; i++) {
         ADVWORD();
-        SetEl(ArrKata, (*ArrKata).Neff, currentWord);
+        SetEl(listGame, (*listGame).Neff, currentWord);
     }
 }
 
