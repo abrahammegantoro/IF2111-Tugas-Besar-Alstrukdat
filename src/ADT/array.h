@@ -1,7 +1,8 @@
-#include "../boolean.h"
-
 #ifndef ARRAY_H
 #define ARRAY_H
+
+#include "../boolean.h"
+#include "./mesinkata.h"
 
 /* Kamus Umum */
 
