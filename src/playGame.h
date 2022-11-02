@@ -2,7 +2,7 @@
 #define PLAY_GAME_H
 
 #include <stdio.h>
-#include "./ADT/array.c"
+#include "./ADT/array.h"
 
 void playGame(TabKata defaultGame, TabKata createdGame);
 /* Memainkan game yang ada pada defaultGame

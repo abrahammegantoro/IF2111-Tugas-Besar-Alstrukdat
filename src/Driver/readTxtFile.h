@@ -3,8 +3,8 @@
 
 /* MODUL .txt file reader */
 
-#include "../ADT/mesinkata.c"
-#include "../ADT/array.c"
+#include "../ADT/mesinkata.h"
+#include "../ADT/array.h"
 
 void readTxt(char* filesrc, TabKata* listGame);
 /* Membaca file .txt dan menyimpan isinya ke dalam array of Word
