@@ -76,7 +76,8 @@ void dequeue(Queue *q, ElType *val) {
 }
 
 /* *** Display Queue *** */
-void displayQueue(Queue q) {
+
+// void displayQueue(Queue q) {
 /* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung 
    siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan 
    karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
@@ -84,6 +85,7 @@ void displayQueue(Queue q) {
 /* F.S. Jika q tidak kosong: [e1,e2,...,en] */
 /* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
 /* Jika Queue kosong : menulis [] */
+/*
     printf("[");
     if (!(isEmpty(q))) {
         if (IDX_HEAD(q) <= IDX_TAIL(q)) {
@@ -107,3 +109,4 @@ void displayQueue(Queue q) {
     }
     printf("]\n");
 }
+*/
