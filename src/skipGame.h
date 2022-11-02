@@ -2,7 +2,7 @@
 #define SKIP_GAME_H
 
 #include <stdio.h>
-#include "./ADT/queue.c"
+#include "./ADT/queue.h"
 
 void skipGame (Queue queueGame);
 /* Melewatkan permainan sebanyak n

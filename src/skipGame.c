@@ -42,7 +42,7 @@ void skipGame (Queue* queueGame) {
             } else {
                 printf("Game Over! Skor akhir: %d\n", rand());
             }
-            
+            dequeue(queueGame, &val);
         }
     } else {
         printf("Antrian Game-mu kosong.\n");

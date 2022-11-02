@@ -1,7 +1,7 @@
 #ifndef SAVE_H
 #define SAVE_H
 
-#include "./Driver/writeTxtFile.c"
+#include "./Driver/writeTxtFile.h"
 
 /* MODUL Save */
 
