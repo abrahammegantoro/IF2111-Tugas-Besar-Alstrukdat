@@ -7,13 +7,12 @@ boolean EOP;
 static FILE *pita;
 static int retval;
 
-void START(char* filesrc){
-    pita = fopen(filesrc, "r");
-    if (pita != NULL) {
-        ADV();
-    } else {
-        printf("File tidak ditemukan.\n");
-    }
+void START(){
+    pita = stdin;
+    fseek(pita, 0, SEEK_END);   // Pindah ke belakang pita
+    fputc('.', pita);           // Tambahin . di akhir
+    rewind(pita);               // Kembali ke awal pita
+    ADV();
 }
 
 void ADV(){

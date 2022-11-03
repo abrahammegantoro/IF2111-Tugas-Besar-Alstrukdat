@@ -11,7 +11,7 @@
 extern char currentChar;
 extern boolean EOP;
 
-void START(char* filesrc);
+void START();
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    Pita baca diambil dari stdin.
