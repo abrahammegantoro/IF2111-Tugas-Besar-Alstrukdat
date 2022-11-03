@@ -1,5 +1,5 @@
-#include<stdio.h>
-#include"Driver/readTxtFile.h"
+# include "listGame.h"
+
 void listGame(TabKata x){
     int i;
     if (x.Neff == 0) {
@@ -17,15 +17,15 @@ void listGame(TabKata x){
     }
 }
 
-TabKata start(){
-    printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n");
-    TabKata Game;
-    MakeEmpty(&Game);
-    readTxt("./data/config.txt", &Game);
-    return Game;
-}
+// TabKata start(){
+//     printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n");
+//     TabKata Game;
+//     MakeEmpty(&Game);
+//     readTxt("./data/config.txt", &Game);
+//     return Game;
+// }
 
-int main(){
-    listGame(start());
-    return 0;
-}
+// int main(){
+//     listGame(start());
+//     return 0;
+// }
