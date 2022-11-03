@@ -35,11 +35,11 @@ void skipGame (Queue* queueGame) {
             printf("Tidak ada permainan lagi dalam daftar game-mu.\n");
         } else {
             printf("Loading "); tulisGame(HEAD(*queueGame)); printf(" ...\n\n");
-            if (isKataEq(HEAD(*queueGame), toKata("RNG"))) {
+            if (WordCompare(HEAD(*queueGame), toKata("RNG"))) {
                 /* Masukan prosedur game RNG */
-            } else if (isKataEq(HEAD(*queueGame), toKata("Diner DASH"))) {
+            } else if (WordCompare(HEAD(*queueGame), toKata("Diner DASH"))) {
                 /* Masukan prosedur game Diner DASH */
-            } else {
+            } else if (WordCompare(HEAD(*queueGame), toKata("DINOSAUR IN EARTH")) || WordCompare(HEAD(*queueGame), toKata("RISEWOMAN")) || WordCompare(HEAD(*queueGame), toKata("EIFFEL TOWER"))) {
                 printf("Game Over! Skor akhir: %d\n", rand());
             }
             dequeue(queueGame, &val);

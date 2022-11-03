@@ -74,18 +74,16 @@ void playGame(TabKata listGame) {
             /* Masukan prosedur game Diner DASH */
             break;
         case 3:
-            printf("Loading "); tulisGame(listGame.TI[option - 1]); printf(" ...\n\nGame Over! Skor akhir: %d\n", rand());
+            printf("Game "); tulisGame(listGame.TI[option - 1]); printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.");
             break;
         case 4:
-            printf("Loading "); tulisGame(listGame.TI[option - 1]); printf(" ...\n\nGame Over! Skor akhir: %d\n", rand());
+            printf("Game "); tulisGame(listGame.TI[option - 1]); printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.");
             break;
         case 5:
-            printf("Loading "); tulisGame(listGame.TI[option - 1]); printf(" ...\n\nGame Over! Skor akhir: %d\n", rand());
+            printf("Game "); tulisGame(listGame.TI[option - 1]); printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.");
             break;
         default:
-            printf("Game ");
-            tulisGame(listGame.TI[option - 1]);
-            printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.");
+            printf("Loading "); tulisGame(listGame.TI[option - 1]); printf(" ...\n\nGame Over! Skor akhir: %d\n", rand());
             break;
         }
     } else {
