@@ -1,16 +1,16 @@
-# include <stdio.h>
-# include "ADT/array.h"
+# include "deleteGame.h"
 
-void deleteGame(char *filename, TabInt file){
-    load(filename);
+void deleteGame(char *filename, TabKata file){
+    listGame(file);
 
-    printf("Berikut ini adalah daftar game yang tersedia\n");
+    char* noGame;
+    printf("Masukkan nomor game yang akan dihapus: ");
+    STARTWORD(noGame);
+    int noGameInteger = StrToInt(noGame) - 1;
 
-    int noGame;
-    scanf("Masukkan nomor game yang akan dihapus: %d", &noGame);
-    if(IsIdxValid(file, noGame)){
-        int j = noGame-1;
-        for (j ; j < MaxNbEl ; j++){
+    if(IsIdxValid(file, noGameInteger)){
+        int j = noGameInteger;
+        for (j ; j < MaxNbEl(file) ; j++){
             file.TI[j] = file.TI[j+1];
         }
         printf("Game berhasil dihapus\n");

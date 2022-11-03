@@ -66,4 +66,7 @@ boolean WordCompare(Word currentWord, Word inputWord);
 /* Fungsi yang menerima dua parameter currentWord dan inputWord bertipe Word
    Kemudian mengembalikan sebuah boolean yang menyatakan apakah kedua Word adalah Word yang sama atau tidak */
 
+int StrToInt(char *str);
+/* Fungsi yang menerima parameter berupa string dan mengembalikannya dalam bentuk integer */
+
 #endif
