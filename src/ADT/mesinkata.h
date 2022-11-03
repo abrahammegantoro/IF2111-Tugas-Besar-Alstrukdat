@@ -25,7 +25,7 @@ void IgnoreBlanks();
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 
-void STARTWORD(char* filesrc);
+void STARTWORD();
 /* I.S. : currentChar sembarang
    F.S. : EndWord = true, dan currentChar = MARK;
           atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
@@ -45,5 +45,25 @@ void CopyWord();
           currentChar = BLANK atau currentChar = MARK;
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
+
+Word GetWord();
+/* Fungsi yang menerima sebuah parameter currentWord bertipe Word
+   Kemudian mengembalikan Word tersebut */
+
+int stringLength (char* str);
+/* Fungsi yang menerima sebuah parameter str bertipe string
+   Kemudian mengembalikan panjang dari string tersebut */
+
+Word toKata(char* str);
+/* Fungsi yang menerima sebuah paramater str bertipe string
+   Kemudian mengembalikan elemen bertipe Word yang merupakan hasil transformasi string str */
+
+void PrintWord(Word kata);
+/*  I.S. kata terdefinisi
+    F.S. Program akan mencetak kata ke layar dan menghitung panjang katanya */
+
+boolean WordCompare(Word currentWord, Word inputWord);
+/* Fungsi yang menerima dua parameter currentWord dan inputWord bertipe Word
+   Kemudian mengembalikan sebuah boolean yang menyatakan apakah kedua Word adalah Word yang sama atau tidak */
 
 #endif
