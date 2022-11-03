@@ -12,12 +12,19 @@ void tulisGame(Word Game) {
 
 void skipGame (Queue* queueGame) {
     // KAMUS
-    int n, i;
+    int n = 0, i;
     ElType val;
+    Word command;
     srand(time(NULL));
 
     // ALGORITMA
-    scanf("%d", &n);
+    STARTWORD();
+    command = GetWord();
+    for (i = 0; i < command.Length; i++) {
+        n = n * 10;
+        n += command.TabWord[i] - '0';
+    }
+
     if (!isEmpty(*queueGame)) {
         printf("Berikut adalah daftar Game-mu");
         for (i = 0; i < length(*queueGame); i++) {
@@ -36,10 +43,14 @@ void skipGame (Queue* queueGame) {
         } else {
             printf("Loading "); tulisGame(HEAD(*queueGame)); printf(" ...\n\n");
             if (WordCompare(HEAD(*queueGame), toKata("RNG"))) {
+                printf("Loading RNG ...\n\n");
                 /* Masukan prosedur game RNG */
             } else if (WordCompare(HEAD(*queueGame), toKata("Diner DASH"))) {
+                printf("Loading Diner DASH ...\n\n");
                 /* Masukan prosedur game Diner DASH */
             } else if (WordCompare(HEAD(*queueGame), toKata("DINOSAUR IN EARTH")) || WordCompare(HEAD(*queueGame), toKata("RISEWOMAN")) || WordCompare(HEAD(*queueGame), toKata("EIFFEL TOWER"))) {
+                printf("Game "); tulisGame(HEAD(*queueGame)); printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.");
+            } else {
                 printf("Game Over! Skor akhir: %d\n", rand());
             }
             dequeue(queueGame, &val);
