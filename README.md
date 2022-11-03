@@ -30,11 +30,6 @@
     <td>Josua Adriel Sinabutar</td>
   </tr>
   <tr>
-    <td>Island Trading</td>
-    <td>Helen Bennett</td>
-    <td>UK</td>
-  </tr>
-  <tr>
     <td>4</td>
     <td>18221121</td>
     <td>Rozan Ghosani</td>
