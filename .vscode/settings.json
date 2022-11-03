@@ -2,6 +2,7 @@
     "files.associations": {
         "boolean.h": "c",
         "mesinkarakter.h": "c",
-        "array.h": "c"
+        "array.h": "c",
+        "listgame.h": "c"
     }
 }
