@@ -3,7 +3,7 @@
 
 
 /* MODUL .txt file reader */
-#include "../ADT/mesinkata.h"
+#include "../ADT/mesinkataFile.h"
 #include "../ADT/array.h"
 
 void readTxt(char* filesrc, TabKata* listGame);

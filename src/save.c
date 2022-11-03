@@ -4,23 +4,20 @@
 
 /* Implementasi save.h */
 
-void save(TabKata listGame, TabKata createdGame, TabKata historyGame) {
+void save(TabKata listGame, Word fileName) {
     // KAMUS
     char name[80];
+    int i;
     FILE* target;
     TabKata allGame;
 
     // ALGORITMA
-    scanf("%s", name);
-
-    MakeEmpty(&allGame);
-    SetTab(listGame, &allGame);
-    for (int i = 0; i < createdGame.Neff; i++) {
-        allGame.TI[allGame.Neff] = createdGame.TI[i];
-        allGame.Neff++;
+    for (i = 0; i < fileName.Length; i++) {
+        name[i] = fileName.TabWord[i];
     }
+    name[fileName.Length] = '\0';
 
-    writeTxt(name, allGame, historyGame);
+    writeTxt(name, listGame);
     
     target = fopen(name, "r");
     if (target != NULL) {
@@ -29,11 +26,4 @@ void save(TabKata listGame, TabKata createdGame, TabKata historyGame) {
         printf("Save file gagal disimpan.\n");
     }
     fclose(target);
-}
-
-int main() {
-    TabKata game, history;
-    MakeEmpty(&game); MakeEmpty(&history);
-    readTxt("./Data/config.txt", &game);
-    save(game, history);
 }
