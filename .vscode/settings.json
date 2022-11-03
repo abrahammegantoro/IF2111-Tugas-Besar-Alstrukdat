@@ -4,6 +4,6 @@
         "mesinkarakter.h": "c",
         "array.h": "c",
         "readtxtfile.h": "c"
-        "listgame.h": "c"
+        "listGame.h": "c"
     }
 }
