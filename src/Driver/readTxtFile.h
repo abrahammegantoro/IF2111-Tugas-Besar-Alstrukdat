@@ -1,8 +1,8 @@
 #ifndef READ_FILE_TXT
 #define READ_FILE_TXT
 
-/* MODUL .txt file reader */
 
+/* MODUL .txt file reader */
 #include "../ADT/mesinkata.h"
 #include "../ADT/array.h"
 
