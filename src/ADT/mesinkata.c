@@ -44,8 +44,9 @@ void ADVWORD()
     }
     else
     {
+        EndWord = false;
         CopyWord();
-        // IgnoreBlanks();
+        IgnoreBlanks();
     }
 }
 /* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi

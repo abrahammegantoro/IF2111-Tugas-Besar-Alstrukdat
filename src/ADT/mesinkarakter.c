@@ -9,18 +9,19 @@ static int retval;
 
 void START(){
     pita = stdin;
-    fseek(pita, 0, SEEK_END);   // Pindah ke belakang pita
-    fputc(MARK, pita);           // Tambahin . di akhir
-    rewind(pita);               // Kembali ke awal pita
+    // fseek(pita, 0, SEEK_END);   // Pindah ke belakang pita
+    // fputc(MARK, pita);           // Tambahin . di akhir
+    // rewind(pita);               // Kembali ke awal pita
     ADV();
 }
 
 void ADV(){
     retval = fscanf(pita, "%c", &currentChar);
     EOP = (currentChar == MARK);
-    if(EOP) {
-        fclose(pita);
-    }
+}
+
+void CLOSE(){
+    fclose(pita);
 }
 
 char GetCC(){
