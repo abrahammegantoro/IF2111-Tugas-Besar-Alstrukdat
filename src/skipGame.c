@@ -10,16 +10,11 @@ void tulisGame(Word Game) {
     }
 }
 
-void skipGame (Queue* queueGame) {
-    // KAMUS
+void skipGame (Queue* queueGame, Word command) {
     int n = 0, i;
     ElType val;
-    Word command;
     srand(time(NULL));
 
-    // ALGORITMA
-    STARTWORD();
-    command = GetWord();
     for (i = 0; i < command.Length; i++) {
         n = n * 10;
         n += command.TabWord[i] - '0';

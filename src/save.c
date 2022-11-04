@@ -1,21 +1,20 @@
 #include <stdio.h>
 #include "Save.h"
-#include "./Driver/readTxtFile.c"
+#include "./Driver/writeTxtFile.h"
 
 /* Implementasi save.h */
 
 void save(TabKata listGame, Word fileName) {
     // KAMUS
-    char name[80];
+    char name[80] = "./data/";
     int i;
     FILE* target;
-    TabKata allGame;
 
     // ALGORITMA
     for (i = 0; i < fileName.Length; i++) {
-        name[i] = fileName.TabWord[i];
+        name[8+i] = fileName.TabWord[i];
     }
-    name[fileName.Length] = '\0';
+    name[8+fileName.Length] = '\0';
 
     writeTxt(name, listGame);
     
