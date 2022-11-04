@@ -16,36 +16,6 @@ void IgnoreBlanks()
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 
-Word GETCOMMAND(int wordCount, int idx)
-{
-    Word COMMAND;
-    STARTWORD();
-
-    if (idx == 999)
-    {
-        COMMAND = currentWord;
-        for (int i = 0; i < wordCount - 1; i++)
-        {
-            COMMAND.TabWord[COMMAND.Length] = ' ';
-            COMMAND.Length++;
-            ADVWORD();
-            for (int j = 0; j < currentWord.Length; j++)
-            {
-                COMMAND.TabWord[COMMAND.Length] = currentWord.TabWord[j];
-                COMMAND.Length++;
-            }
-        }
-    }
-    else
-    {
-        for (int i = 0; i < idx; i++)
-        {
-            ADVWORD();
-        }
-        COMMAND = currentWord;
-    }
-    return COMMAND;
-}
 void STARTWORD()
 {
     START();

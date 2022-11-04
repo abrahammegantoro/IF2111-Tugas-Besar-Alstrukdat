@@ -9,9 +9,9 @@ static int retval;
 
 void START(){
     pita = stdin;
-    // fseek(pita, 0, SEEK_END);   // Pindah ke belakang pita
-    // fputc(MARK, pita);           // Tambahin . di akhir
-    // rewind(pita);               // Kembali ke awal pita
+    fseek(pita, 0, SEEK_END);   // Pindah ke belakang pita
+    fputc(MARK, pita);           // Tambahin . di akhir
+    rewind(pita);               // Kembali ke awal pita
     ADV();
 }
 
