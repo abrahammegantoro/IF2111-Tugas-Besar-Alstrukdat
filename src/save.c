@@ -12,9 +12,9 @@ void save(TabKata listGame, Word fileName) {
 
     // ALGORITMA
     for (i = 0; i < fileName.Length; i++) {
-        name[8+i] = fileName.TabWord[i];
+        name[7+i] = fileName.TabWord[i];
     }
-    name[8+fileName.Length] = '\0';
+    name[7+fileName.Length] = '\0';
 
     writeTxt(name, listGame);
     
