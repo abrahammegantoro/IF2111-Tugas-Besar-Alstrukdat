@@ -19,8 +19,6 @@ void IgnoreBlanks()
 Word GETCOMMAND(int wordCount, int idx)
 {
     Word COMMAND;
-    STARTWORD();
-
     if (idx == 999)
     {
         COMMAND = currentWord;
