@@ -27,6 +27,7 @@ int MaxNbEl (TabKata T){
 IdxType GetFirstIdx (TabKata T) {
     return IdxMin;
 };
+
 /* Prekondisi : Tabel T tidak kosong */
 /* Mengirimkan indeks elemen pertama */
 IdxType GetLastIdx (TabKata T){
@@ -125,7 +126,7 @@ void TulisIsi (TabKata T){
         printf("\n");
         }
     }
-};
+}
 /* Proses : Menuliskan isi tabel dengan traversal */
 /* I.S. T boleh kosong */
 /* F.S. Jika T tidak kosong : indeks dan elemen tabel ditulis berderet ke bawah */
@@ -232,3 +233,4 @@ IdxType IdxMinTab (TabKata T){
 /* Prekondisi : Tabel tidak kosong */
 /* Mengirimkan indeks i */
 /* dengan elemen ke-i nilai minimum pada tabel */
+

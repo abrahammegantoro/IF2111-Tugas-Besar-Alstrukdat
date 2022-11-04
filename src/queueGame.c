@@ -1,5 +1,4 @@
-# include "queue.h"
-# include "array.h"
+# include "queueGame.h"
 
 void displayQueueGame(Queue antrianGame){
     if (!isEmpty(antrianGame)){
@@ -17,13 +16,14 @@ void displayQueueGame(Queue antrianGame){
     }
 }
     
-void queueGame(TabInt file, Queue antrianGame){
-    displayQueueGame(antrianGame);
-    displayArrayGame(file);
+void queueGame(TabKata file, Queue* antrianGame){
+    displayQueueGame(*antrianGame);
+    listGame(file);
     
-    int tambahGame;
-    scanf("Nomor Game yang mau ditambahkan ke antrian: %d", &tambahGame);
-    if(IsIdxValid(file, tambahGame)){
-        enqueue(&antrianGame, file.TI[tambahGame-1]);
+    printf("Nomor Game yang mau ditambahkan ke antrian: ");
+    STARTINPUT();
+    int tambahAntrianGame = StrToInt(currentWord);
+    if(IsIdxValid(file, tambahAntrianGame)){
+        enqueue(&antrianGame, file.TI[tambahAntrianGame-1]);
     }
 }

@@ -25,9 +25,7 @@ void IgnoreBlanks();
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 
-Word GETCOMMAND(int wordCount, int idx);
-
-void STARTWORD();
+void STARTINPUT();
 /* I.S. : currentChar sembarang
    F.S. : EndWord = true, dan currentChar = MARK;
           atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
@@ -68,7 +66,15 @@ boolean WordCompare(Word currentWord, Word inputWord);
 /* Fungsi yang menerima dua parameter currentWord dan inputWord bertipe Word
    Kemudian mengembalikan sebuah boolean yang menyatakan apakah kedua Word adalah Word yang sama atau tidak */
 
-int StrToInt(char *str);
+int WordToInt(Word currrentWord);
 /* Fungsi yang menerima parameter berupa string dan mengembalikannya dalam bentuk integer */
+
+Word unionWord(char* str, Word b);
+/* Fungsi yang menerima dua parameter berupa string dan Word
+   Kemudian mengembalikan sebuah Word yang merupakan hasil penggabungan string dan Word */
+
+Word getFile(Word currentWord);
+
+char *WordToStr(Word kata);
 
 #endif

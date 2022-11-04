@@ -1,16 +1,17 @@
 #include <stdio.h>
 #include "createGame.h"
 
-void createGame(TabKata* daftarGame, Word inputGame)
+void createGame(TabKata* daftarGame)
 /*  I.S. TabKata terdefinisi, inputGame terdefinisi
     F.S. Menambahkan inputGame sebagai elemen dari TabKata */
 {
+    STARTWORD();
     if (IsFull(*daftarGame))
     {
         printf("Maaf, jumlah maksimum game sudah tercapai.\n");
     } else
     {
-        (*daftarGame).TI[(*daftarGame).Neff] = inputGame;
+        (*daftarGame).TI[(*daftarGame).Neff] = currentWord;
         (*daftarGame).Neff += 1;
         printf("Game berhasil ditambahkan\n");
     }
