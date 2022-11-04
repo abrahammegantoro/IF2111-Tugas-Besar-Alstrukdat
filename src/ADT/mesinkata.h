@@ -8,7 +8,7 @@
 #include "mesinkarakter.h"
 
 #define NMax 50
-#define BLANK '\n'
+#define BLANK ' '
 
 typedef struct
 {
@@ -24,6 +24,8 @@ void IgnoreBlanks();
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
+
+Word GETCOMMAND(int wordCount, int idx);
 
 void STARTWORD();
 /* I.S. : currentChar sembarang
