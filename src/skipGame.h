@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include "./ADT/queue.h"
 #include "./ADT/mesinkata.h"
+#include "playGame.h"
 
 void skipGame (Queue* queueGame, Word command);
 /* Melewatkan permainan sebanyak n

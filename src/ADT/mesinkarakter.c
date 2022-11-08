@@ -29,5 +29,5 @@ char GetCC(){
 }
 
 boolean IsEOP(){
-    return currentChar == MARK;
+    return false;
 }
