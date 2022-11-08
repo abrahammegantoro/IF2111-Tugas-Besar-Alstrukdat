@@ -5,6 +5,9 @@
 #include "./ADT/queue.h"
 #include "./ADT/mesinkata.h"
 
+void printLoading(Word gameName);
+/* Menampilkan loading screen ke layar */
+
 void playGame(Queue* queueGame);
 /* Memainkan game yang ada pada defaultGame
 I.S. queueGame terdefinisi, mungkin kosong

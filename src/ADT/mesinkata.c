@@ -129,7 +129,6 @@ void PrintWord(Word kata)
     {
         printf("%c", kata.TabWord[i]);
     }
-    printf("\nPanjang kata : %d\n", kata.Length);
 }
 
 boolean WordCompare(Word currentWord, Word inputWord)
@@ -189,8 +188,8 @@ char *WordToStr(Word kata){
     char *str = (char *)malloc(kata.Length * sizeof(char));
     for (int i = 0; i < kata.Length; i++)
     {
-        printf("kata = %c\n", kata.TabWord[i]);
         str[i] = kata.TabWord[i];
     }
+    str[kata.Length] = '\0';
     return str;
 }

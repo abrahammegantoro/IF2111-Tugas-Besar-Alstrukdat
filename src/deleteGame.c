@@ -7,8 +7,8 @@ void deleteGame(TabKata* file){
     int noGameInteger = WordToInt(currentWord);
 
     if(IsIdxValid(*file, noGameInteger)){
-        int j = noGameInteger-1;
-        for (j ; j < MaxNbEl(*file) ; j++){
+        int j = noGameInteger - 1;
+        for (j ; j < (*file).Neff ; j++){
             (*file).TI[j] = (*file).TI[j+1];
         }
         (*file).Neff--;

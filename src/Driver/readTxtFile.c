@@ -11,13 +11,22 @@ void readTxt(char* filesrc, TabKata* listGame) {
         printf("File tidak ditemukan.\n");
     } else {
         STARTWORD(input);
-        for (int i = 0; i < currentWord.Length; i++) {
-            lines *= 10;
-            lines += currentWord.TabWord[i] - '0';
-        }
+        lines = WordToInt(currentWord);
+        ADV();
         for (int i = 0; i < lines; i++) {
+            ADV();
             ADVWORD();
-            SetEl(listGame, i, currentWord);
+            Word currentGame = currentWord;
+            while (currentChar != '\n') {
+                ADVWORD();
+                currentGame.TabWord[currentGame.Length] = ' ';
+                currentGame.Length++;
+                for (int i = 0; i < currentWord.Length; i++) {
+                    currentGame.TabWord[currentGame.Length] = currentWord.TabWord[i];
+                    currentGame.Length++;
+                }
+            }
+            SetEl(listGame, i, currentGame);
         }
     }
     fclose(input);
