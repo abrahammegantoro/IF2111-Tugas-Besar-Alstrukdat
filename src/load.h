@@ -7,7 +7,7 @@
 # include "ADT/mesinkata.h"
 # include "Driver/readTxtFile.h"
 
-# define FDIR "../Data/"
+# define FDIR "./data/"
 
 void load(Word currentWord, TabKata* Game);
 

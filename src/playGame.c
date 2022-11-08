@@ -7,7 +7,7 @@
 /* Implementasi playGame.h */
 
 void printLoading(Word gameName) {
-    printf("Loading "); TulisWord(gameName); printf(" ");
+    printf("Loading "); PrintWord(gameName); printf(" ");
     for (int i = 0; i < 3; i++) {
         printf("."); sleep(1);
     }
@@ -26,7 +26,7 @@ void playGame(Queue *queueGame) {
         for (int i = 0; i < length(*queueGame); i++) {
             printf("  %d. ", i);
             dequeue(queueGame, &val);
-            TulisWord(val);
+            PrintWord(val);
             enqueue(queueGame, val);
             printf("\n");
         }
@@ -40,7 +40,7 @@ void playGame(Queue *queueGame) {
             /* Masukan prosedur game Diner DASH */
             sleep(3);
         } else if (WordCompare(HEAD(*queueGame), toKata("DINOSAUR IN EARTH")) || WordCompare(HEAD(*queueGame), toKata("RISEWOMAN")) || WordCompare(HEAD(*queueGame), toKata("EIFFEL TOWER"))) {
-            printf("Game "); TulisWord(HEAD(*queueGame)); printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.");
+            printf("Game "); PrintWord(HEAD(*queueGame)); printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.");
         } else {
             printLoading(HEAD(*queueGame));
             printf("Game Over! Skor akhir: %d\n", rand());

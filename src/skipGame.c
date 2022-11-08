@@ -4,14 +4,6 @@
 #include <unistd.h>
 #include "skipGame.h"
 
-void printLoading(Word gameName) {
-    printf("Loading "); TulisWord(gameName); printf(" ");
-    for (int i = 0; i < 3; i++) {
-        printf("."); sleep(1);
-    }
-    system("cls");
-}
-
 void skipGame (Queue* queueGame, Word command) {
     int n = 0, i;
     ElType val;
@@ -48,4 +40,5 @@ void skipGame (Queue* queueGame, Word command) {
             printLoading(val);
             printf("Game Over! Skor akhir: %d\n\n", rand());
         }
+    }
 }
