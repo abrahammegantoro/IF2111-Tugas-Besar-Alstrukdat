@@ -1,14 +1,20 @@
 #ifndef DINNERDASH_H
 #define DINNERDASH_H
 #include <stdio.h>
-#include "../ADT/queue.h"
 #include <stdlib.h>
-#include "../boolean.h"
+#include <time.h>
+#include "../ADT/queuedash.h"
+#include "../ADT/mesinkata.h"
 
-void cook();
-void serve();
-int identifyAction(); /* 0 Masak 1 Serve*/
+void addOrder(Queue *q);
+
+boolean isEnd(Queue q, int ctr);
+void identifyCommand(Queue q, int *isCook, int* id);
+
+void cook(Queue qM, Queue *q, int food, boolean *valid);
+void serve(Queue *qM, Queue *q, int food, boolean *valid, int *saldo);
+void reduceTime(Queue *q);
 void runDinnerDash();
-boolean isEnd();
+
 
 #endif
