@@ -3,9 +3,12 @@
         "boolean.h": "c",
         "mesinkarakter.h": "c",
         "array.h": "c",
+        "readtxtfile.h": "c",
+        "listGame.h": "c",
         "listgame.h": "c",
         "stdlib.h": "c",
         "unistd.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "writetxtfile.h": "c"
     }
 }
