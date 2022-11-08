@@ -18,6 +18,7 @@ int main(){
     Queue antrianGame;
     CreateQueue(&antrianGame);
 
+    system("cls");
     printf("Welcome to BNMO!\n");
     printf("Ketik 'START' atau 'LOAD' untuk mulai bermain\n");
     printf("ENTER COMMAND: ");
@@ -45,7 +46,7 @@ int main(){
 
     printf("ENTER COMMAND: ");
     STARTINPUT();
-
+    system("cls");
     while (!(WordCompare(currentWord,toKata("QUIT")))){
         if (WordCompare(currentWord, toKata("CREATE"))){
             ADVWORD();
@@ -86,6 +87,7 @@ int main(){
             ADVWORD();
             skipGame(&antrianGame, currentWord);
         } else if(WordCompare(currentWord, toKata("LOAD"))){
+            ADVWORD();
             load(currentWord, &Game);
         } else if(WordCompare(currentWord, toKata("HELP"))){
             help();
@@ -94,6 +96,7 @@ int main(){
         }
         printf("ENTER COMMAND: ");
         STARTINPUT();
+        system("cls");
     }
     quit();
     return 0;
