@@ -4,9 +4,7 @@
 
 #include "../boolean.h"
 #include "./mesinkata.h"
-
-#include "../boolean.h"
-#include "./mesinkata.h"
+#include <stdio.h>
 /* Kamus Umum */
 
 #define IdxMax 100

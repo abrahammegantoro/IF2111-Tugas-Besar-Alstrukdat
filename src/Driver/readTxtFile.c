@@ -4,27 +4,21 @@
 /* Implementasi readTxtFile.h */
 
 void readTxt(char* filesrc, TabKata* listGame) {
-    // KAMUS
-    int lines = 0, i;
+    FILE* input = fopen(filesrc, "r");
+    int lines = 0;
     
-    // ALGORTIMA
-    STARTWORD(filesrc);
-    for (i = 0; i < currentWord.Length - 1; i++) {
-        lines *= 10;
-        lines += currentWord.TabWord[i] - '0';
+    if (input == NULL) {
+        printf("File tidak ditemukan.\n");
+    } else {
+        STARTWORD(input);
+        for (int i = 0; i < currentWord.Length; i++) {
+            lines *= 10;
+            lines += currentWord.TabWord[i] - '0';
+        }
+        for (int i = 0; i < lines; i++) {
+            ADVWORD();
+            SetEl(listGame, i, currentWord);
+        }
     }
-    for (i = 0; i < lines; i++) {
-        ADVWORD();
-        SetEl(listGame, (*listGame).Neff, currentWord);
-    }
+    fclose(input);
 }
-
-
-/* Contoh penggunaan prosedur
-int main() {
-    TabKata Game;
-    MakeEmpty(&Game);
-    readTxt("../data/config.txt", &Game);
-    TulisIsi(Game);
-}
-*/

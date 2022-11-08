@@ -1,8 +1,8 @@
 # ifndef __QUEUEGAME_H__
 # define __QUEUEGAME_H__
 
-# include "queue.h"
-# include "array.h"
+# include "ADT/queue.h"
+# include "ADT/array.h"
 # include "listGame.h"
 # include <stdio.h>
 

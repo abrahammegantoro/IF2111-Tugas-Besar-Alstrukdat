@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include "./ADT/queue.h"
+#include "./ADT/mesinkata.h"
 
 void playGame(Queue* queueGame);
 /* Memainkan game yang ada pada defaultGame

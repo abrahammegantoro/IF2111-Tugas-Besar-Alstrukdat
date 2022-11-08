@@ -1,5 +1,5 @@
-#ifndef SKIP_GAME_H
-#define SKIP_GAME_H
+#ifndef __SKIP_GAME_H__
+#define __SKIP_GAME_H__
 
 #include <stdio.h>
 #include "./ADT/queue.h"

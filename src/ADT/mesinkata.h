@@ -6,6 +6,7 @@
 
 #include "../boolean.h"
 #include "mesinkarakter.h"
+#include <stdio.h>
 
 #define NMax 50
 #define BLANK ' '
@@ -24,12 +25,13 @@ void IgnoreBlanks();
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
+void STARTWORD(FILE *input);
+/* I.S. : currentChar sembarang
+   F.S. : EndWord = true, dan currentChar = MARK;
+          atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
+          currentChar karakter pertama sesudah karakter terakhir kata */
 
-<<<<<<< Updated upstream
 void STARTINPUT();
-=======
-void STARTWORD();
->>>>>>> Stashed changes
 /* I.S. : currentChar sembarang
    F.S. : EndWord = true, dan currentChar = MARK;
           atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
@@ -77,8 +79,8 @@ Word unionWord(char* str, Word b);
 /* Fungsi yang menerima dua parameter berupa string dan Word
    Kemudian mengembalikan sebuah Word yang merupakan hasil penggabungan string dan Word */
 
-Word getFile(Word currentWord);
-
 char *WordToStr(Word kata);
+/* Fungsi yang menerima parameter berupa Word kemudian mengubah 
+   dan mengembalikan kata tersebut menjadi sebuah string */
 
 #endif

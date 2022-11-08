@@ -1,4 +1,5 @@
 # include "listGame.h"
+#include <stdio.h>
 
 void listGame(TabKata x){
     int i;

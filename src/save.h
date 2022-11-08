@@ -1,7 +1,8 @@
-#ifndef SAVE_H
-#define SAVE_H
+#ifndef __SAVE_H__
+#define __SAVE_H__
 
 #include "./Driver/writeTxtFile.h"
+#include <stdio.h>
 
 /* MODUL Save */
 

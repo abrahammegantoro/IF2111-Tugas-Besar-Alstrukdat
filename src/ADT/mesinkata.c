@@ -1,5 +1,6 @@
 #include "mesinkata.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 boolean EndWord;
 Word currentWord;
@@ -16,9 +17,8 @@ void IgnoreBlanks()
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 
-void STARTINPUT()
-{
-    START();
+void STARTWORD(FILE *input) {
+    START(input);
     IgnoreBlanks();
     if (currentChar == MARK)
     {
@@ -29,6 +29,11 @@ void STARTINPUT()
         EndWord = false;
         CopyWord();
     }
+}
+
+void STARTINPUT()
+{
+    STARTWORD(stdin);
 }
 /* I.S. : currentChar sembarang
    F.S. : EndWord = true, dan currentChar = MARK;
@@ -178,24 +183,6 @@ Word unionWord(char* str, Word b){
     }
     a.Length = a.Length + b.Length;
     return a;
-}
-
-Word getFile(Word currentWord){
-    Word file;
-    file.Length = 0;
-    int i = 0;
-    while (currentWord.TabWord[i] != ' '){
-        i++;
-    }
-    i++;
-    int j = 0;
-    while (currentWord.TabWord[i] != '\0'){
-        file.TabWord[j] = currentWord.TabWord[i];
-        file.Length++;
-        i++;
-        j++;
-    }
-    return file;
 }
 
 char *WordToStr(Word kata){

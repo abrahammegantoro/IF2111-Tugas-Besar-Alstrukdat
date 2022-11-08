@@ -1,9 +1,11 @@
-# ifndef __LOAD_H__
+#ifndef __LOAD_H__
 # define __LOAD_H__
+
 # include <stdio.h>
 # include <stdlib.h>
-# include "array.h"
-# include "mesinkata.h"
+# include "ADT/array.h"
+# include "ADT/mesinkata.h"
+# include "Driver/readTxtFile.h"
 
 # define FDIR "../Data/"
 

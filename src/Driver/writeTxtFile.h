@@ -4,6 +4,7 @@
 /* MODUL .txt file writer */
 
 #include "readTxtFile.h"
+#include <stdio.h>
 
 void writeTxt(char* filetarget, TabKata listGame);
 /* Membaca file .txt dan menyimpan isinya ke dalam array of Word
