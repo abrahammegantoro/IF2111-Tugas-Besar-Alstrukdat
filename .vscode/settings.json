@@ -9,6 +9,8 @@
         "stdlib.h": "c",
         "unistd.h": "c",
         "stdio.h": "c",
-        "writetxtfile.h": "c"
+        "writetxtfile.h": "c",
+        "queuegame.h": "c",
+        "mesinkata.h": "c"
     }
 }

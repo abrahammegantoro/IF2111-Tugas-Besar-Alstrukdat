@@ -4,6 +4,7 @@
 #include "ADT/array.h"
 #include "save.h"
 #include <stdio.h>
+#include "ADT/queue.h"
 
 void quit();
 /*  I.S. Sembarang

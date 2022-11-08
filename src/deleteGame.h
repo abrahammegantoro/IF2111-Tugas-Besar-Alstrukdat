@@ -5,8 +5,12 @@
 # include "ADT/array.h"
 # include "ADT/mesinkata.h"
 # include "listGame.h"
+# include "boolean.h"
+# include "ADT/queue.h"
 
-void deleteGame(TabKata* file);
+boolean isExist(ElType Kata, Queue antrian);
+
+void deleteGame(TabKata* file, Queue antrianGame);
 /* Menghapus game yang tersedia */
 
 #endif

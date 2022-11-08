@@ -57,7 +57,7 @@ int main(){
             ADVWORD();
             if (WordCompare(currentWord, toKata("GAME"))){
                 listGame(Game);
-                deleteGame(&Game);
+                deleteGame(&Game, antrianGame);
             }
         } else if (WordCompare(currentWord, toKata("LIST"))){
             ADVWORD();

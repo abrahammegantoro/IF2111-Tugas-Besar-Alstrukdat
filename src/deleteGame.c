@@ -1,14 +1,26 @@
 # include "deleteGame.h"
 #include <stdio.h>
 
-void deleteGame(TabKata* file){
+boolean isExist(ElType Kata, Queue antrian){
+    boolean found = false;
+    int i = IDX_HEAD(antrian);
+    while (i <= IDX_TAIL(antrian) && !found){
+        if (WordCompare(Kata, antrian.buffer[i])){
+            found = true;
+        }
+        i++;
+    }
+    return found;
+}
+
+void deleteGame(TabKata* file, Queue antrianGame){
     printf("Masukkan nomor game yang akan dihapus: ");
     STARTINPUT();
     int noGameInteger = WordToInt(currentWord);
 
-    if(IsIdxValid(*file, noGameInteger)){
-        int j = noGameInteger - 1;
-        for (j ; j < (*file).Neff ; j++){
+    if(noGameInteger > 5 && noGameInteger <= (*file).Neff && !isExist((*file).TI[noGameInteger-1], antrianGame)){
+        int j;
+        for (j = noGameInteger - 1 ; j < (*file).Neff ; j++){
             (*file).TI[j] = (*file).TI[j+1];
         }
         (*file).Neff--;

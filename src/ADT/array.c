@@ -77,13 +77,7 @@ boolean IsIdxValid (TabKata T, IdxType i){
 /* Mengirimkan true jika i adalah indeks yang valid utk ukuran tabel */
 /* yaitu antara indeks yang terdefinisi utk container*/
 boolean IsIdxEff (TabKata T, IdxType i){
-    boolean res;
-    if (IdxMin <= i <= T.Neff) {
-        res = true;
-    } else {
-        res = false;
-    }
-    return res;
+    return (IdxMin <= i && i <= T.Neff);
 };
 /* Prekondisi : i sembarang*/
 /* Mengirimkan true jika i adalah indeks yang terdefinisi utk tabel */
@@ -92,24 +86,12 @@ boolean IsIdxEff (TabKata T, IdxType i){
 /* ********** TEST KOSONG/PENUH ********** */
 /* *** Test tabel kosong *** */
 boolean IsEmpty (TabKata T){
-    boolean res;
-    if (T.Neff == 0) {
-        res = true;
-    } else {
-        res = false;
-    }
-    return res;
+    return (T.Neff == 0);
 };
 /* Mengirimkan true jika tabel T kosong, mengirimkan false jika tidak */
 /* *** Test tabel penuh *** */
 boolean IsFull (TabKata T){
-    boolean res;
-    if (IdxMax == T.Neff) {
-        res = true;
-    } else {
-        res = false;
-    }
-    return res;
+    return (IdxMax == T.Neff);
 };
 /* Mengirimkan true jika tabel T penuh, mengirimkan false jika tidak */
 

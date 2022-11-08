@@ -7,11 +7,15 @@ void displayQueueGame(Queue antrianGame){
         int i = IDX_HEAD(antrianGame);
         int j = 1;
         while (i != IDX_TAIL(antrianGame)){
-            printf("%d. %s\n", j, antrianGame.buffer[i]);
-            i++;
+            printf("%d. ", j);
+            PrintWord(antrianGame.buffer[i]);
+            printf("\n");
             j++;
+            i++;
         }
-        printf("%d. %s\n", j, antrianGame.buffer[i]);
+        printf("%d. ", j);
+        PrintWord(antrianGame.buffer[i]);
+        printf("\n");
     } else {
         printf("Belum ada daftar antrian.\n");
     }
@@ -25,7 +29,9 @@ void queueGame(TabKata file, Queue* antrianGame){
     printf("Nomor Game yang mau ditambahkan ke antrian: ");
     STARTINPUT();
     int tambahAntrianGame = WordToInt(currentWord);
-    if(IsIdxValid(file, tambahAntrianGame)){
+    if(IsIdxEff(file, tambahAntrianGame)){
         enqueue(antrianGame, file.TI[tambahAntrianGame-1]);
+    } else {
+        printf("Nomor permainan tidak valid, silahkan masukkan nomor game pada list.\n");
     }
 }

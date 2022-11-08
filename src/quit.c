@@ -2,7 +2,7 @@
 #include "ADT/array.h"
 #include "quit.h"
 
-void quit(TabKata Game)
+void quit(TabKata Game, Queue* antrianGame)
 {
     printf("Apakah Anda ingin menyimpan file dan perubahannya pada sistem? (Y/N) : ");
     STARTINPUT();
@@ -19,6 +19,11 @@ void quit(TabKata Game)
 
         printf("Apakah Anda ingin menyimpan file dan perubahannya pada sistem? (Y/N) : ");
         STARTINPUT();
+    }
+
+    ElType val;
+    while(!isEmpty(*antrianGame)){
+        dequeue(antrianGame, &val);
     }
 
     if (WordCompare(toKata("Y"), currentWord))
