@@ -4,11 +4,11 @@
 #include "skipGame.h"
 
 /* Implementasi skipGame.h */
-void tulisGame(Word Game) {
-    for (int i = 0; i < Game.Length; i++) {
-        printf("%c", Game.TabWord[i]);
-    }
-}
+// void tulisGame(Word Game) {
+//     for (int i = 0; i < Game.Length; i++) {
+//         printf("%c", Game.TabWord[i]);
+//     }
+// }
 
 void skipGame (Queue* queueGame, Word command) {
     int n = 0, i;
@@ -25,7 +25,7 @@ void skipGame (Queue* queueGame, Word command) {
         for (i = 0; i < length(*queueGame); i++) {
             printf("%d. ", i);
             dequeue(queueGame, &val);
-            tulisGame(val);
+            PrintWord(val);
             enqueue(queueGame, val);
             printf("\n");
         }
@@ -36,7 +36,7 @@ void skipGame (Queue* queueGame, Word command) {
         if (isEmpty(*queueGame)) {
             printf("Tidak ada permainan lagi dalam daftar game-mu.\n");
         } else {
-            printf("Loading "); tulisGame(HEAD(*queueGame)); printf(" ...\n\n");
+            printf("Loading "); PrintWord(HEAD(*queueGame)); printf(" ...\n\n");
             if (WordCompare(HEAD(*queueGame), toKata("RNG"))) {
                 printf("Loading RNG ...\n\n");
                 /* Masukan prosedur game RNG */
@@ -44,7 +44,7 @@ void skipGame (Queue* queueGame, Word command) {
                 printf("Loading Diner DASH ...\n\n");
                 /* Masukan prosedur game Diner DASH */
             } else if (WordCompare(HEAD(*queueGame), toKata("DINOSAUR IN EARTH")) || WordCompare(HEAD(*queueGame), toKata("RISEWOMAN")) || WordCompare(HEAD(*queueGame), toKata("EIFFEL TOWER"))) {
-                printf("Game "); tulisGame(HEAD(*queueGame)); printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.");
+                printf("Game "); PrintWord(HEAD(*queueGame)); printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.");
             } else {
                 printf("Game Over! Skor akhir: %d\n", rand());
             }

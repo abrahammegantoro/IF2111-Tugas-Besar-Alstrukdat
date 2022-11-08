@@ -5,7 +5,7 @@ int main()
 {
     printf("Akan membandingkan kata 'HMIF ITB' dengan input user\n");
     printf("Masukkan kata : ");
-    STARTWORD();
+    STARTINPUT();
 
     // Testing apakah kata bisa dicetak ke layar
     PrintWord(currentWord);

@@ -1,4 +1,5 @@
 # include "queueGame.h"
+#include <stdio.h>
 
 void displayQueueGame(Queue antrianGame){
     if (!isEmpty(antrianGame)){
@@ -22,8 +23,8 @@ void queueGame(TabKata file, Queue* antrianGame){
     
     printf("Nomor Game yang mau ditambahkan ke antrian: ");
     STARTINPUT();
-    int tambahAntrianGame = StrToInt(currentWord);
+    int tambahAntrianGame = WordToInt(currentWord)-1;
     if(IsIdxValid(file, tambahAntrianGame)){
-        enqueue(&antrianGame, file.TI[tambahAntrianGame-1]);
+        enqueue(antrianGame, file.TI[tambahAntrianGame]);
     }
 }

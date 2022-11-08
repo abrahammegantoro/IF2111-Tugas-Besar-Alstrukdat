@@ -5,13 +5,14 @@
 #define __MESIN_KAR_H_
 
 #include "../boolean.h"
+#include <stdio.h>
 
 #define MARK '\n'
 /* State Mesin */
 extern char currentChar;
 extern boolean EOP;
 
-void START();
+void START(FILE *input);
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    Pita baca diambil dari stdin.

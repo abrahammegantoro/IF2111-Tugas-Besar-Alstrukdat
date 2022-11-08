@@ -1,4 +1,4 @@
-#include<help.h>
+#include "help.h"
 int help(){
     printf("START: Command ini digunakan untuk menampilkan list game yang dapat dimainkan di BNMO.\n\n");
     printf("LOAD <filename>: Command ini digunakan untuk merepresentasikan suatu save file yang ingin dibuka berisi list game yang dapat dimainkan, histori dan scoreboard game.\n\n");

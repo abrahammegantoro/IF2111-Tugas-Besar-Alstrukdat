@@ -6,6 +6,7 @@
 
 #include "../boolean.h"
 #include "mesinkata.h"
+#include <stdio.h>
 
 #define IDX_UNDEF -1
 #define CAPACITY 100

@@ -1,5 +1,9 @@
+#ifndef __CREATEGAME_H__
+#define __CREATEGAME_H__
+
 #include "ADT/array.h"
-# include "mesinkata.h"
+# include "ADT/mesinkata.h"
+#include <stdio.h>
 
 // int stringLength (char* str);
 // /*  Fungsi yang menerima sebuah parameter str bertipe string
@@ -12,3 +16,5 @@
 void createGame(TabKata* daftarGame);
 /*  I.S. TabKata terdefinisi, inputGame terdefinisi
     F.S. Menambahkan inputGame sebagai elemen dari TabKata */
+
+#endif

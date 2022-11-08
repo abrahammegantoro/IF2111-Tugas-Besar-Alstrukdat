@@ -1,10 +1,10 @@
 # include "deleteGame.h"
+#include <stdio.h>
 
 void deleteGame(TabKata* file){
-    char* noGame;
     printf("Masukkan nomor game yang akan dihapus: ");
-    STARTWORD(noGame);
-    int noGameInteger = StrToInt(noGame) - 1;
+    STARTINPUT();
+    int noGameInteger = WordToInt(currentWord) - 1;
 
     if(IsIdxValid(*file, noGameInteger)){
         int j = noGameInteger;

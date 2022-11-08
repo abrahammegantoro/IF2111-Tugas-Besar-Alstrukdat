@@ -7,8 +7,8 @@ boolean EOP;
 static FILE *pita;
 static int retval;
 
-void START(){
-    pita = stdin;
+void START(FILE *input){
+    pita = input;
     // fseek(pita, 0, SEEK_END);   // Pindah ke belakang pita
     // fputc(MARK, pita);           // Tambahin . di akhir
     // rewind(pita);               // Kembali ke awal pita

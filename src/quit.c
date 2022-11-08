@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include "ADT/array.h"
+#include "quit.h"
 
-void quit()
+void quit(TabKata Game)
 {
     printf("Apakah Anda ingin menyimpan file dan perubahannya pada sistem? (Y/N) : ");
-    STARTWORD();
+    STARTINPUT();
 
     while (!WordCompare(toKata("Y"), currentWord) && !WordCompare(toKata("N"), currentWord))
     {
@@ -17,20 +18,26 @@ void quit()
         }
 
         printf("Apakah Anda ingin menyimpan file dan perubahannya pada sistem? (Y/N) : ");
-        STARTWORD();
+        STARTINPUT();
     }
 
     if (WordCompare(toKata("Y"), currentWord))
     {
-        printf("Program akan melakukan penyimpanan\n");
+        printf("Masukkan nama file: ");
+        STARTINPUT();
+        save(Game, currentWord); //cara ngambil game dari mainnya gimana?
     } else if (WordCompare(toKata("N"), currentWord));
     {
         printf("Terima kasih sudah bermain!\n");
     }
 }
-
+/**
 int main()
 {
-    quit();
+    TabKata Game;
+    Make Empty(&Game);
+    
+    quit(Game);
     return 0;
 }
+**/

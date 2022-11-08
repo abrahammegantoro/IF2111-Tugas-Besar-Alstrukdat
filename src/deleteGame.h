@@ -3,6 +3,7 @@
 
 # include <stdio.h>
 # include "ADT/array.h"
+# include "ADT/mesinkata.h"
 # include "listGame.h"
 
 void deleteGame(TabKata* file);
