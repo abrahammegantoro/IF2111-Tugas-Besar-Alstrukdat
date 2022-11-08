@@ -19,12 +19,13 @@ void displayQueueGame(Queue antrianGame){
     
 void queueGame(TabKata file, Queue* antrianGame){
     displayQueueGame(*antrianGame);
+    printf("\n");
     listGame(file);
     
     printf("Nomor Game yang mau ditambahkan ke antrian: ");
     STARTINPUT();
-    int tambahAntrianGame = WordToInt(currentWord)-1;
+    int tambahAntrianGame = WordToInt(currentWord);
     if(IsIdxValid(file, tambahAntrianGame)){
-        enqueue(antrianGame, file.TI[tambahAntrianGame]);
+        enqueue(antrianGame, file.TI[tambahAntrianGame-1]);
     }
 }

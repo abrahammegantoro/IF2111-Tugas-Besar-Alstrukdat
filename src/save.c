@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "Save.h"
+#include "save.h"
 #include "./Driver/writeTxtFile.h"
 
 /* Implementasi save.h */

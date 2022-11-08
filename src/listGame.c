@@ -6,6 +6,7 @@ void listGame(TabKata x){
     if (x.Neff == 0) {
         printf("Tabel kosong\n");
     } else {
+        printf("Berikut adalah daftar game yang tersedia\n");
         int k = 0;
         for (i=IdxMin - 1; i<x.Neff; i++){
             printf("%d. ", k+1);
