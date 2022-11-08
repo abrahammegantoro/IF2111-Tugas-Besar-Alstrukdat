@@ -11,6 +11,8 @@
         "stdio.h": "c",
         "writetxtfile.h": "c",
         "queuegame.h": "c",
-        "mesinkata.h": "c"
+        "mesinkata.h": "c",
+        "rng.h": "c",
+        "dinnerdash.h": "c"
     }
 }

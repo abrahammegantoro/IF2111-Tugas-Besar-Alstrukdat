@@ -45,5 +45,5 @@ void runRNG() {
         }
         getX(&x);
     }
-    printf("Ya, X adalah %d", num);
+    printf("Ya, X adalah %d\n", num);
 }

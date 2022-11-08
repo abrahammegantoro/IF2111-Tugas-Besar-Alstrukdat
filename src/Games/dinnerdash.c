@@ -3,22 +3,22 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void addOrder(Queue *q)
+void addOrder(QueueDash *q)
 {
-    ElType val;
+    FoodType val;
     val.foodID = IDX_TAIL(*q) + 1;
     val.cookDuration = rand() % 5 + 1;
     val.sustain = rand() % 5 + 1;
     val.price = (rand() % 50 + 10) * 1000;
-    enqueue(q, val);
+    enqueueFood(q, val);
 }
 
-boolean isEnd(Queue q, int ctr)
+boolean isEnd(QueueDash q, int ctr)
 {
-    return ((length(q) == 7) || (ctr == 2));
+    return ((lengthDash(q) == 7) || (ctr == 2));
 }
 
-void identifyCommand(Queue q, int *isCook, int *id)
+void identifyCommand(QueueDash q, int *isCook, int *id)
 {
     Word cook, serve, skip;
     cook.Length = 4;
@@ -78,12 +78,12 @@ void identifyCommand(Queue q, int *isCook, int *id)
     }
 }
 
-void cook(Queue qO, Queue *q, int food, boolean *valid)
+void cook(QueueDash qO, QueueDash *q, int food, boolean *valid)
 {
     if (isMember(qO, food))
     {
         int idx = getIdx(qO, food);
-        enqueue(q, qO.buffer[idx]);
+        enqueueFood(q, qO.buffer[idx]);
         (*valid) = true;
     }
     else
@@ -92,17 +92,17 @@ void cook(Queue qO, Queue *q, int food, boolean *valid)
     }
 }
 
-void serve(Queue *qO, Queue *q, int food, boolean *valid, int *saldo)
+void serve(QueueDash *qO, QueueDash *q, int food, boolean *valid, int *saldo)
 {
     if (isMember((*q), food))
     {
         int idx = getIdx((*q), food);
         if ((*q).buffer[idx].cookDuration == 0)
         {
-            if (HEAD(*qO) == food)
+            if (HEAD_ID(*qO) == food)
             {
                 (*saldo) += qO->buffer[qO->idxHead].price;
-                dequeue(qO);
+                dequeueFood(qO);
                 (*valid) = true;
                 (*q).buffer[idx].foodID = NIL;
                 (*q).buffer[idx].sustain = NIL;
@@ -123,9 +123,9 @@ void serve(Queue *qO, Queue *q, int food, boolean *valid, int *saldo)
     }
 }
 
-void reduceTime(Queue *q)
+void reduceTime(QueueDash *q)
 {
-    for (int i = 0; i < length(*q); i++)
+    for (int i = 0; i < lengthDash(*q); i++)
     {
         if ((*q).buffer[i].cookDuration != 0)
         {
@@ -146,7 +146,7 @@ void reduceTime(Queue *q)
     }
 }
 
-void printDescription(Queue q, boolean isValid, int isCook, int id)
+void printDescription(QueueDash q, boolean isValid, int isCook, int id)
 {
     if (isValid)
     {
@@ -167,13 +167,13 @@ void printDescription(Queue q, boolean isValid, int isCook, int id)
     {
         if (isCook == 0)
         {
-            if (id == HEAD(q))
+            if (id == HEAD_ID(q))
             {
                 printf("Gagal menyajikan M%d karena belum siap\n", id);
             }
             else
             {
-                printf("Gagal menyajikan M%d karena M%d belum selesai\n", id, HEAD(q));
+                printf("Gagal menyajikan M%d karena M%d belum selesai\n", id, HEAD_ID(q));
             }
         }
     }
@@ -181,15 +181,15 @@ void printDescription(Queue q, boolean isValid, int isCook, int id)
 }
 void runDinnerDash()
 {
-    Queue qOrder, qCook;
+    QueueDash qOrder, qCook;
     int isCook, id, customerCtr;
     char inputAction[10];
     int saldo;
 
     boolean isValid, isFirst;
 
-    CreateQueue(&qOrder);
-    CreateQueue(&qCook);
+    CreateQueueDash(&qOrder);
+    CreateQueueDash(&qCook);
     srand(time(NULL));
     for (int i = 0; i < 3; i++)
     {
@@ -262,5 +262,5 @@ void runDinnerDash()
     }
     printf("========= GAME BERAKHIR ==========\n");
     printf("          SKOR KAMU : %d     \n", saldo);
-    printf("==================================");
+    printf("==================================\n");
 }

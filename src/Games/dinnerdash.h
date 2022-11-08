@@ -6,14 +6,14 @@
 #include "../ADT/queuedash.h"
 #include "../ADT/mesinkata.h"
 
-void addOrder(Queue *q);
+void addOrder(QueueDash *q);
 
-boolean isEnd(Queue q, int ctr);
-void identifyCommand(Queue q, int *isCook, int* id);
+boolean isEnd(QueueDash q, int ctr);
+void identifyCommand(QueueDash q, int *isCook, int* id);
 
-void cook(Queue qM, Queue *q, int food, boolean *valid);
-void serve(Queue *qM, Queue *q, int food, boolean *valid, int *saldo);
-void reduceTime(Queue *q);
+void cook(QueueDash qM, QueueDash *q, int food, boolean *valid);
+void serve(QueueDash *qM, QueueDash *q, int food, boolean *valid, int *saldo);
+void reduceTime(QueueDash *q);
 void runDinnerDash();
 
 

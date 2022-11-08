@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include "./ADT/queue.h"
 #include "./ADT/mesinkata.h"
+#include "./Games/dinnerdash.h"
+#include "./Games/rng.h"
 
 void printLoading(Word gameName);
 /* Menampilkan loading screen ke layar */

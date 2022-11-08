@@ -4,7 +4,7 @@
 #include "../boolean.h"
 
 #define IDX_UNDEF -1
-#define CAPACITY 40
+#define CAPACITYDASH 40
 #define NIL -9999
 
 /* Definisi elemen dan address */
@@ -13,24 +13,24 @@ typedef struct {
     int cookDuration;
     int sustain;
     int price;
-} ElType;
+} FoodType;
 
 typedef struct {
-	ElType buffer[CAPACITY]; 
+	FoodType buffer[CAPACITYDASH]; 
 	int idxHead;
 	int idxTail;
-} Queue;
+} QueueDash;
 
 
 /* ********* AKSES (Selektor) ********* */
-/* Jika q adalah Queue, maka akses elemen : */
+/* Jika q adalah QueueDash, maka akses elemen : */
 #define IDX_HEAD(q) (q).idxHead
 #define IDX_TAIL(q) (q).idxTail
-#define     HEAD(q) (q).buffer[(q).idxHead].foodID
-#define     TAIL(q) (q).buffer[(q).idxTail].foodID
+#define  HEAD_ID(q) (q).buffer[(q).idxHead].foodID
+#define  TAIL_ID(q) (q).buffer[(q).idxTail].foodID
 
 /* *** Kreator *** */
-void CreateQueue(Queue *q);
+void CreateQueueDash(QueueDash *q);
 /* I.S. sembarang */
 /* F.S. Sebuah q kosong terbentuk dengan kondisi sbb: */
 /* - Index head bernilai IDX_UNDEF */
@@ -38,40 +38,40 @@ void CreateQueue(Queue *q);
 /* Proses : Melakukan alokasi, membuat sebuah q kosong */
 
 /* ********* Prototype ********* */
-boolean isEmpty(Queue q);
+boolean isEmptyDash(QueueDash q);
 /* Mengirim true jika q kosong: lihat definisi di atas */
-boolean isFull(Queue q);
+boolean isFullDash(QueueDash q);
 /* Mengirim true jika tabel penampung elemen q sudah penuh */
 /* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam buffer melingkar*/
 
-int length(Queue q);
-/* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
+int lengthDash(QueueDash q);
+/* Mengirimkan banyaknya elemen QueueDash. Mengirimkan 0 jika q kosong. */
 
 /* *** Primitif Add/Delete *** */
-void enqueue(Queue *q, ElType val);
+void enqueueFood(QueueDash *q, FoodType val);
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
 
-void dequeue(Queue *q);
+void dequeueFood(QueueDash *q);
 /* Proses: Menghapus val pada q dengan aturan FIFO */
 /* I.S. q tidak mungkin kosong */
 /* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";
         q mungkin kosong */
 
-/* *** Display Queue *** */
-void displayQueueMenu(Queue q);
-/* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung 
+/* *** Display QueueDash *** */
+void displayQueueMenu(QueueDash q);
+/* Proses : Menuliskan isi QueueDash dengan traversal, QueueDash ditulis di antara kurung 
    siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan 
    karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
 /* I.S. q boleh kosong */
 /* F.S. Jika q tidak kosong: [e1,e2,...,en] */
 /* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
-/* Jika Queue kosong : menulis [] */
-boolean isMember(Queue q, int id);
-int getIdx(Queue q, int id);
-void deleteFoodID(Queue *q, int id);
-void displayQueueCook(Queue q);
-void displayQueueServe(Queue q, Queue qO);
+/* Jika QueueDash kosong : menulis [] */
+boolean isMember(QueueDash q, int id);
+int getIdx(QueueDash q, int id);
+void deleteFoodID(QueueDash *q, int id);
+void displayQueueCook(QueueDash q);
+void displayQueueServe(QueueDash q, QueueDash qO);
 
 #endif

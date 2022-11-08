@@ -5,7 +5,9 @@ void createGame(TabKata* daftarGame)
 /*  I.S. TabKata terdefinisi, inputGame terdefinisi
     F.S. Menambahkan inputGame sebagai elemen dari TabKata */
 {
+    printf("Masukkan nama game yang akan ditambahkan: ");
     STARTINPUT();
+    printf("\n");
     if (IsFull(*daftarGame))
     {
         printf("Maaf, jumlah maksimum game sudah tercapai.\n");

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 /* *** Kreator *** */
-void CreateQueue(Queue *q){
+void CreateQueueDash(QueueDash *q){
 /* I.S. sembarang */
 /* F.S. Sebuah q kosong terbentuk dengan kondisi sbb: */
 /* - Index head bernilai IDX_UNDEF */
@@ -15,20 +15,20 @@ void CreateQueue(Queue *q){
 
 
 /* ********* Prototype ********* */
-boolean isEmpty(Queue q) {
+boolean isEmptyDash(QueueDash q) {
 /* Mengirim true jika q kosong: lihat definisi di atas */
     return ((IDX_HEAD(q) == IDX_UNDEF) && (IDX_TAIL(q) == IDX_UNDEF));
 }
 
-boolean isFull(Queue q) {
+boolean isFullDash(QueueDash q) {
 /* Mengirim true jika tabel penampung elemen q sudah penuh */
 /* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam buffer melingkar*/
-    return (length(q) == CAPACITY);
+    return (lengthDash(q) == CAPACITYDASH);
 }
 
-int length(Queue q) {
-/* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
-    if (isEmpty(q)) {
+int lengthDash(QueueDash q) {
+/* Mengirimkan banyaknya elemen QueueDash. Mengirimkan 0 jika q kosong. */
+    if (isEmptyDash(q)) {
         return 0;
     } else {
         return (IDX_TAIL(q) - IDX_HEAD(q) + 1);
@@ -36,11 +36,11 @@ int length(Queue q) {
 }
 
 /* *** Primitif Add/Delete *** */
-void enqueue(Queue *q, ElType val) {
+void enqueueFood(QueueDash *q, FoodType val) {
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
-    if (isEmpty(*q)) {
+    if (isEmptyDash(*q)) {
         IDX_HEAD(*q) = 0;
         IDX_TAIL(*q) = 0;
     } else {
@@ -52,7 +52,7 @@ void enqueue(Queue *q, ElType val) {
     (*q).buffer[(*q).idxTail].price = val.price;
 }
 
-void dequeue(Queue *q) {
+void dequeueFood(QueueDash *q) {
 /* Proses: Menghapus val pada q dengan aturan FIFO */
 /* I.S. q tidak mungkin kosong */
 /* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";
@@ -65,7 +65,7 @@ void dequeue(Queue *q) {
     }
 }
 
-boolean isMember(Queue q, int id) {
+boolean isMember(QueueDash q, int id) {
     boolean found = false;
     for (int i = IDX_HEAD(q); i <= IDX_TAIL(q); i++) {
         if (q.buffer[i].foodID == id) {
@@ -75,7 +75,7 @@ boolean isMember(Queue q, int id) {
     return found;
 }
 
-int getIdx(Queue q, int id) {
+int getIdx(QueueDash q, int id) {
     boolean found = false;
     int i = IDX_HEAD(q);
     while (!found) {
@@ -88,7 +88,7 @@ int getIdx(Queue q, int id) {
     return i;
 }
 
-void deleteFoodID(Queue *q, int id) {
+void deleteFoodID(QueueDash *q, int id) {
     for (int i = IDX_HEAD(*q); i <= IDX_TAIL(*q); i++)
     {
         if (q->buffer->foodID == id) 
@@ -99,9 +99,9 @@ void deleteFoodID(Queue *q, int id) {
     
 }
 
-/* *** Display Queue *** */
-void displayQueueMenu(Queue q) {
-/* Proses : Menuliskan isi Queue dengan format yang sesuai*/
+/* *** Display QueueDash *** */
+void displayQueueMenu(QueueDash q) {
+/* Proses : Menuliskan isi QueueDash dengan format yang sesuai*/
 /* I.S. q boleh kosong */
 /* F.S. Jika q tidak kosong: tertampilkan di layar sesuai format */
     printf("\nDaftar Pesanan\n");
@@ -113,11 +113,11 @@ void displayQueueMenu(Queue q) {
     }
 }
 
-void displayQueueCook(Queue q) {
+void displayQueueCook(QueueDash q) {
     printf("\nDaftar Makanan yang sedang dimasak\n");
     printf("Makanan\t| Sisa durasi memasak\n");
     printf("-------------------------------\n");
-    if (!isEmpty(q)) {
+    if (!isEmptyDash(q)) {
         for (int i = IDX_HEAD(q); i <= IDX_TAIL(q); i++)
         {
             if (q.buffer[i].cookDuration != 0) {
@@ -129,13 +129,13 @@ void displayQueueCook(Queue q) {
     }
 }
 
-void displayQueueServe(Queue q, Queue qO) {
+void displayQueueServe(QueueDash q, QueueDash qO) {
     printf("\nDaftar Makanan yang sedang dimasak\n");
     printf("Makanan\t| Sisa ketahanan makanan\n");
     printf("----------------------------------\n");
 
     int count = 0;
-    if (!isEmpty(q)) {
+    if (!isEmptyDash(q)) {
         for (int i = IDX_HEAD(q); i <= IDX_TAIL(q); i++)
         {
             if (q.buffer[i].cookDuration == 0 && q.buffer[i].sustain != NIL) {

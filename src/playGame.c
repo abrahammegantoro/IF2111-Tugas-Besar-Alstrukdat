@@ -24,23 +24,23 @@ void playGame(Queue *queueGame) {
         // Mencetak list game
         printf("Berikut adalah daftar Game-mu\n");
         for (int i = 0; i < length(*queueGame); i++) {
-            printf("  %d. ", i);
+            printf("  %d. ", i+1);
             dequeue(queueGame, &val);
             PrintWord(val);
             enqueue(queueGame, val);
             printf("\n");
         }
-        
+        printf("\n");
         if (WordCompare(HEAD(*queueGame), toKata("RNG"))) {
             printLoading(HEAD(*queueGame));
-            /* Masukan prosedur game RNG */
+            runRNG();
             sleep(3);
         } else if (WordCompare(HEAD(*queueGame), toKata("Diner DASH"))) {
             printLoading(HEAD(*queueGame));
-            /* Masukan prosedur game Diner DASH */
+            runDinnerDash();
             sleep(3);
         } else if (WordCompare(HEAD(*queueGame), toKata("DINOSAUR IN EARTH")) || WordCompare(HEAD(*queueGame), toKata("RISEWOMAN")) || WordCompare(HEAD(*queueGame), toKata("EIFFEL TOWER"))) {
-            printf("Game "); PrintWord(HEAD(*queueGame)); printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.");
+            printf("Game "); PrintWord(HEAD(*queueGame)); printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
         } else {
             printLoading(HEAD(*queueGame));
             printf("Game Over! Skor akhir: %d\n", rand());
