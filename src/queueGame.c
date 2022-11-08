@@ -31,6 +31,7 @@ void queueGame(TabKata file, Queue* antrianGame){
     int tambahAntrianGame = WordToInt(currentWord);
     if(IsIdxEff(file, tambahAntrianGame)){
         enqueue(antrianGame, file.TI[tambahAntrianGame-1]);
+        printf("Game berhasil dimasukkan dalam antrian.\n");
     } else {
         printf("Nomor permainan tidak valid, silahkan masukkan nomor game pada list.\n");
     }

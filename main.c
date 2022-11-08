@@ -25,6 +25,7 @@ int main(){
     STARTINPUT();
 
     while(!WordCompare(currentWord, toKata("START")) && !WordCompare(currentWord, toKata("LOAD"))){
+        printf("Ketik 'START' atau 'LOAD' untuk mulai bermain\n");
         printf("ENTER COMMAND: ");
         STARTINPUT();
     }
