@@ -41,54 +41,42 @@ void tulisGame(Word Game) {
 }
 
 // Game yang diload dan game yang dibuat akan dipisah karena perlu ada penanganan game yang sedang maintenance (game yang bukan game RNG, Dine Dash, atau game buatan)
-void playGame(TabKata listGame) {
+void playGame(Queue *queueGame) {
     // KAMUS
     int i, j, option;
+    ElType val;
     srand(time(NULL));
 
     // ALGORITMA
-    if(!IsEmpty(listGame)) {
+    if(!IsEmpty(*queueGame)) {
         printf("Berikut adalah daftar Game-mu\n");
 
         // Mencetak list game
-        for (i = 0; i < listGame.Neff; i++) {
-            printf("%d. ", i + 1);
-            tulisGame(listGame.TI[i]);
+        for (i = 0; i < length(*queueGame); i++) {
+            printf("%d. ", i);
+            dequeue(queueGame, &val);
+            tulisGame(val);
+            enqueue(queueGame, val);
             printf("\n");
         }
-
-        // Memilih game
-        scanf("ENTER GAME: %d", &option);
-        while (option < 1 || option > listGame.Neff) {
-            printf("\nGame yang dipilih tidak valid. Silakan masukan ulang game.\n");
-            scanf("ENTER GAME: %d", &option);
-        }
-        switch (option)
-        {
-        case 1:
-            printf("Loading RNG ...\n\n");
-            /* Masukan prosedur game RNG */
-            break;
-        case 2:
-            printf("Loading Diner DASH ...\n\n");
-            /* Masukan prosedur game Diner DASH */
-            break;
-        case 3:
-            printf("Loading "); tulisGame(listGame.TI[option - 1]); printf(" ...\n\nGame Over! Skor akhir: %d\n", rand());
-            break;
-        case 4:
-            printf("Loading "); tulisGame(listGame.TI[option - 1]); printf(" ...\n\nGame Over! Skor akhir: %d\n", rand());
-            break;
-        case 5:
-            printf("Loading "); tulisGame(listGame.TI[option - 1]); printf(" ...\n\nGame Over! Skor akhir: %d\n", rand());
-            break;
-        default:
-            printf("Game ");
-            tulisGame(listGame.TI[option - 1]);
-            printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.");
-            break;
+        if (isEmpty(*queueGame)) {
+            printf("Tidak ada permainan lagi dalam daftar game-mu.\n");
+        } else {
+            printf("Loading "); tulisGame(HEAD(*queueGame)); printf(" ...\n\n");
+            if (WordCompare(HEAD(*queueGame), toKata("RNG"))) {
+                printf("Loading RNG ...\n\n");
+                /* Masukan prosedur game RNG */
+            } else if (WordCompare(HEAD(*queueGame), toKata("Diner DASH"))) {
+                printf("Loading Diner DASH ...\n\n");
+                /* Masukan prosedur game Diner DASH */
+            } else if (WordCompare(HEAD(*queueGame), toKata("DINOSAUR IN EARTH")) || WordCompare(HEAD(*queueGame), toKata("RISEWOMAN")) || WordCompare(HEAD(*queueGame), toKata("EIFFEL TOWER"))) {
+                printf("Game "); tulisGame(HEAD(*queueGame)); printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.");
+            } else {
+                printf("Game Over! Skor akhir: %d\n", rand());
+            }
+            dequeue(queueGame, &val);
         }
     } else {
-        printf("Kamu tidak memiliki Game apapun.\n");
+        printf("Kamu tidak memiliki antrian Game apapun.\n");
     }
 }

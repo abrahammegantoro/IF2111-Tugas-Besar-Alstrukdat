@@ -5,10 +5,10 @@
 #define __MESINKATA_H__
 
 #include "../boolean.h"
-#include "mesinkarakter.h"
+#include "mesinkarakterFile.h"
 
 #define NMax 50
-#define BLANK ' '
+#define BLANK '\n'
 
 typedef struct
 {
@@ -25,11 +25,7 @@ void IgnoreBlanks();
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 
-<<<<<<< Updated upstream
-void STARTINPUT();
-=======
-void STARTWORD();
->>>>>>> Stashed changes
+void STARTWORD(char* filename);
 /* I.S. : currentChar sembarang
    F.S. : EndWord = true, dan currentChar = MARK;
           atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
@@ -70,15 +66,7 @@ boolean WordCompare(Word currentWord, Word inputWord);
 /* Fungsi yang menerima dua parameter currentWord dan inputWord bertipe Word
    Kemudian mengembalikan sebuah boolean yang menyatakan apakah kedua Word adalah Word yang sama atau tidak */
 
-int WordToInt(Word currrentWord);
+int StrToInt(char *str);
 /* Fungsi yang menerima parameter berupa string dan mengembalikannya dalam bentuk integer */
-
-Word unionWord(char* str, Word b);
-/* Fungsi yang menerima dua parameter berupa string dan Word
-   Kemudian mengembalikan sebuah Word yang merupakan hasil penggabungan string dan Word */
-
-Word getFile(Word currentWord);
-
-char *WordToStr(Word kata);
 
 #endif

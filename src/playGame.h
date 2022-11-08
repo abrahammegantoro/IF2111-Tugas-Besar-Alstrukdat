@@ -2,13 +2,12 @@
 #define PLAY_GAME_H
 
 #include <stdio.h>
-#include "./ADT/array.h"
+#include "./ADT/queue.h"
 
-void playGame(TabKata listGame);
+void playGame(Queue* queueGame);
 /* Memainkan game yang ada pada defaultGame
-I.S. listGame terdefinisi, mungkin kosong
-F.S. Game yang dipilih dimainkan atau diberikan output
-     sesuai dengan kondisi game yang dipilih
+I.S. queueGame terdefinisi, mungkin kosong
+F.S. Game teratas dimainkan
 */
 
 #endif

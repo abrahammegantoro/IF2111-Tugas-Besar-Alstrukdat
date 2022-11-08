@@ -1,4 +1,4 @@
-# include "mesinkarakter.h"
+# include "mesinkarakterFile.h"
 # include <stdio.h>
 
 char currentChar;
@@ -7,21 +7,17 @@ boolean EOP;
 static FILE *pita;
 static int retval;
 
-void START(){
-    pita = stdin;
-    // fseek(pita, 0, SEEK_END);   // Pindah ke belakang pita
-    // fputc(MARK, pita);           // Tambahin . di akhir
-    // rewind(pita);               // Kembali ke awal pita
+void START(char* filename){
+    pita = fopen(filename, "r");
     ADV();
 }
 
 void ADV(){
     retval = fscanf(pita, "%c", &currentChar);
     EOP = (currentChar == MARK);
-}
-
-void CLOSE(){
-    fclose(pita);
+    if(EOP) {
+        fclose(pita);
+    }
 }
 
 char GetCC(){

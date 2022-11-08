@@ -1,4 +1,4 @@
-#include "mesinkata.h"
+#include "mesinkataFile.h"
 #include <stdio.h>
 
 boolean EndWord;
@@ -16,9 +16,9 @@ void IgnoreBlanks()
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 
-void STARTINPUT()
+void STARTWORD(char* filename)
 {
-    START();
+    START(filename);
     IgnoreBlanks();
     if (currentChar == MARK)
     {
@@ -44,7 +44,6 @@ void ADVWORD()
     }
     else
     {
-        EndWord = false;
         CopyWord();
         IgnoreBlanks();
     }
@@ -152,58 +151,15 @@ boolean WordCompare(Word currentWord, Word inputWord)
     }
 }
 
-int WordToInt(Word currentWord)
+int StrToInt(char *str)
 /* Fungsi yang menerima parameter berupa string dan mengembalikannya dalam bentuk integer */
 {
     int i = 0;
-    int result = 0;
-    while (i < currentWord.Length)
+    int res = 0;
+    while (str[i] != '\0')
     {
-        result = result * 10 + (currentWord.TabWord[i] - '0');
-        i += 1;
-    }
-    return result;
-}
-
-Word unionWord(char* str, Word b){
-    Word a;
-    a.Length = stringLength(str);
-    for (int i = 0; i < stringLength(str); i++)
-    {
-        a.TabWord[i] = str[i];
-    }
-    for (int i = 0; i < b.Length; i++)
-    {
-        a.TabWord[a.Length + i] = b.TabWord[i];
-    }
-    a.Length = a.Length + b.Length;
-    return a;
-}
-
-Word getFile(Word currentWord){
-    Word file;
-    file.Length = 0;
-    int i = 0;
-    while (currentWord.TabWord[i] != ' '){
+        res = res * 10 + (str[i] - '0');
         i++;
     }
-    i++;
-    int j = 0;
-    while (currentWord.TabWord[i] != '\0'){
-        file.TabWord[j] = currentWord.TabWord[i];
-        file.Length++;
-        i++;
-        j++;
-    }
-    return file;
-}
-
-char *WordToStr(Word kata){
-    char *str = (char *)malloc(kata.Length * sizeof(char));
-    for (int i = 0; i < kata.Length; i++)
-    {
-        printf("kata = %c\n", kata.TabWord[i]);
-        str[i] = kata.TabWord[i];
-    }
-    return str;
+    return res;
 }

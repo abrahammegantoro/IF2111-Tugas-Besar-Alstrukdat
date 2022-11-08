@@ -5,7 +5,7 @@
 
 #include "readTxtFile.h"
 
-void writeTxt(char* filetarget, TabKata listGame, TabKata HistoryGame);
+void writeTxt(char* filetarget, TabKata listGame);
 /* Membaca file .txt dan menyimpan isinya ke dalam array of Word
 I.S. listGame dan historyGame terdefinisi mungkin kosong tetapi tidak penuh
 F.S. Isi listGame dan historyGame disimpan pada file .txt
