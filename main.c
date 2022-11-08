@@ -11,7 +11,6 @@
 # include "src/quit.h"
 # include "unistd.h"
 
-
 int main(){
     TabKata Game;
     MakeEmpty(&Game);
@@ -82,6 +81,8 @@ int main(){
             skipGame(&antrianGame, currentWord);
         } else if(WordCompare(currentWord, toKata("LOAD"))){
             load(currentWord, &Game);
+        } else if(WordCompare(currentWord, toKata("HELP"))){
+            help();
         } else {
             printf("Perintah tidak dikenali.\n");
         }
