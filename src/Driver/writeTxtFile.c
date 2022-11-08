@@ -16,6 +16,7 @@ void writeTxt(char* filetarget, TabKata listGame) {
         }
         fprintf(file, "\n");
     }
+    fprintf(file, " ");
 
     fclose(file);
 }
