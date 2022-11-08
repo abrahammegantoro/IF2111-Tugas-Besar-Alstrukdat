@@ -129,7 +129,6 @@ void PrintWord(Word kata)
     {
         printf("%c", kata.TabWord[i]);
     }
-    printf("\nPanjang kata : %d\n", kata.Length);
 }
 
 boolean WordCompare(Word currentWord, Word inputWord)
