@@ -1,4 +1,5 @@
 #include "rng.h"
+#include <unistd.h>
 
 int getRandom() {
     int num;
@@ -7,7 +8,7 @@ int getRandom() {
     return num;    
 }
 void getX(int *x) {
-    printf("Tebakan : ");
+    printf(" ==> Tebak X : ");
     STARTINPUT();
     if (currentWord.Length == 1) {
         *x = currentWord.TabWord[0] - '0';
@@ -28,24 +29,40 @@ boolean checkX(int x) {
     }
 }
 void runRNG() {
+    printf(" .----------------.  .-----------------. .----------------. \n");
+    printf("| .--------------. || .--------------. || .--------------. |\n");
+    printf("| |  _______     | || | ____  _____  | || |    ______    | |\n");
+    printf("| | |_   __ \\    | || ||_   \\|_   _| | || |  .' ___  |   | |\n");
+    printf("| |   | |__) |   | || |  |   \\ | |   | || | / .'   \\_|   | |\n");
+    printf("| |   |  __ /    | || |  | |\\ \\| |   | || | | |    ____  | |\n");
+    printf("| |  _| |  \\ \\_  | || | _| |_\\   |_  | || | \\ `.___]  _| | |\n");
+    printf("| | |____| |___| | || ||_____|\\____| | || |  `._____.'   | |\n");
+    printf("| |              | || |              | || |              | |\n");
+    printf("| '--------------' || '--------------' || '--------------' |\n");
+    printf(" '----------------'  '----------------'  '----------------' \n");
     int num = getRandom();
     int x;
-    int try = 10;
+    int try = 11;
+    int first = 0;
     printf("RNG Telah dimulai. Uji keberuntungan Anda dengan menebak X.\n");
     printf("X adalah sebuah bilangan bulat antara 1 dan 100.\n");
-    printf("Anda memiliki 10 kesempatan untuk menebak X.\n");
+    printf("++++++++++++++++++++++\n");
+    printf("Sisa kesempatan : %d\n", --try);
+    printf("++++++++++++++++++++++\n");
     getX(&x);
-    while (x != num && try > 0) {
+    while (x != num && try > 1) {
         while (!checkX(x)) {
-            printf("Tebakan Anda tidak valid. Silahkan masukkan angka antara 1 dan 100.\n");
+            printf("!! Tebakan Anda tidak valid. Silahkan masukkan angka antara 1 dan 100. !!n");
             getX(&x);
-        }
+        }        
         if (x > num) {
-            printf("Lebih kecil\n");
+            printf("~ LEBIH KECIL ~\n");
         } else {
-            printf("Lebih besar\n");
+            printf("~ LEBIH BESAR ~\n");
         }
+        printf("++++++++++++++++++++++\n");
         printf("Sisa kesempatan : %d\n", --try);
+        printf("++++++++++++++++++++++\n");
         getX(&x);
     }
     if (x == num) {

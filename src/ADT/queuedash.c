@@ -20,12 +20,6 @@ boolean isEmptyDash(QueueDash q) {
     return ((IDX_HEAD(q) == IDX_UNDEF) && (IDX_TAIL(q) == IDX_UNDEF));
 }
 
-boolean isFullDash(QueueDash q) {
-/* Mengirim true jika tabel penampung elemen q sudah penuh */
-/* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam buffer melingkar*/
-    return (lengthDash(q) == CAPACITYDASH);
-}
-
 int lengthDash(QueueDash q) {
 /* Mengirimkan banyaknya elemen QueueDash. Mengirimkan 0 jika q kosong. */
     if (isEmptyDash(q)) {
@@ -88,16 +82,6 @@ int getIdx(QueueDash q, int id) {
     return i;
 }
 
-void deleteFoodID(QueueDash *q, int id) {
-    for (int i = IDX_HEAD(*q); i <= IDX_TAIL(*q); i++)
-    {
-        if (q->buffer->foodID == id) 
-        {
-            q->buffer->foodID = NIL;
-        }
-    }
-    
-}
 
 /* *** Display QueueDash *** */
 void displayQueueMenu(QueueDash q) {
@@ -109,7 +93,9 @@ void displayQueueMenu(QueueDash q) {
     printf("------------------------------------------------------------\n");
     for (int i = IDX_HEAD(q); i <= IDX_TAIL(q); i++)
     {
-        printf("M%d\t| %d\t\t\t| %d\t\t| %d\n", (q).buffer[i].foodID, (q).buffer[i].cookDuration, (q).buffer[i].sustain, (q).buffer[i].price);
+        if (q.buffer[i].foodID != NIL) {
+            printf("M%d\t| %d\t\t\t| %d\t\t| %d\n", (q).buffer[i].foodID, (q).buffer[i].cookDuration, (q).buffer[i].sustain, (q).buffer[i].price);
+        }
     }
 }
 
@@ -120,7 +106,7 @@ void displayQueueCook(QueueDash q) {
     if (!isEmptyDash(q)) {
         for (int i = IDX_HEAD(q); i <= IDX_TAIL(q); i++)
         {
-            if (q.buffer[i].cookDuration != 0) {
+            if (q.buffer[i].cookDuration != 0 && q.buffer[i].foodID != NIL) {
                 printf("M%d\t| %d\n", (q).buffer[i].foodID, (q).buffer[i].cookDuration);
             }
         }
@@ -138,7 +124,7 @@ void displayQueueServe(QueueDash q, QueueDash qO) {
     if (!isEmptyDash(q)) {
         for (int i = IDX_HEAD(q); i <= IDX_TAIL(q); i++)
         {
-            if (q.buffer[i].cookDuration == 0 && q.buffer[i].sustain != NIL) {
+            if (q.buffer[i].cookDuration == 0 && q.buffer[i].foodID != NIL) {
                     if (isMember(qO, q.buffer[i].foodID)) {
                         count++;
                         printf("M%d\t| %d\n", (q).buffer[i].foodID, (q).buffer[i].sustain);
