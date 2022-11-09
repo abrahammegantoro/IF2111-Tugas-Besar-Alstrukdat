@@ -30,10 +30,12 @@ boolean checkX(int x) {
 void runRNG() {
     int num = getRandom();
     int x;
+    int try = 10;
     printf("RNG Telah dimulai. Uji keberuntungan Anda dengan menebak X.\n");
     printf("X adalah sebuah bilangan bulat antara 1 dan 100.\n");
+    printf("Anda memiliki 10 kesempatan untuk menebak X.\n");
     getX(&x);
-    while (x != num) {
+    while (x != num && try > 0) {
         while (!checkX(x)) {
             printf("Tebakan Anda tidak valid. Silahkan masukkan angka antara 1 dan 100.\n");
             getX(&x);
@@ -43,7 +45,13 @@ void runRNG() {
         } else {
             printf("Lebih besar\n");
         }
+        printf("Sisa kesempatan : %d\n", --try);
         getX(&x);
     }
-    printf("Ya, X adalah %d\n", num);
+    if (x == num) {
+        printf("Selamat! Anda berhasil menebak X.\n");
+    } else {
+        printf("Anda telah kehabisan kesempatan. X adalah %d.\n", num);
+    }
+    printf("======= Skor Anda : %d =======\n", try * 1000);
 }
