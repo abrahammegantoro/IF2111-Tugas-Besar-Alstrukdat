@@ -152,6 +152,7 @@ int main(){
                 printf("Perintah tidak dikenali\n");
             }
         } else if(WordCompare(currentWord, toKata("HELP"))){
+            ADVWORD();
             if (EndWord) {
                 help(); 
             } else {
