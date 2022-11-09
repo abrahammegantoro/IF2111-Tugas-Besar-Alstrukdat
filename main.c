@@ -94,7 +94,12 @@ int main(){
             ADVWORD();
             load(currentWord, &Game);
         } else if(WordCompare(currentWord, toKata("HELP"))){
-            help();
+            ADVWORD();
+            if (EndWord) {
+                help(); 
+            } else {
+                printf("Perintah tidak dikenali\n");
+            }
         } else {
             printf("Perintah tidak dikenali.\n");
         }

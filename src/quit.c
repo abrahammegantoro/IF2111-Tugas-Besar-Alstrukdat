@@ -23,18 +23,16 @@ void quit(TabKata Game, Queue* antrianGame)
 
     if (WordCompare(toKata("Y"), currentWord))
     {
-        printf("Masukkan nama file: ");
+        printf("Masukkan nama file <filename.txt> : ");
         STARTINPUT();
-        save(Game, currentWord); //masih ga ke detect
-    } else if (WordCompare(toKata("N"), currentWord))
-    {
-        printf("Terima kasih sudah bermain!\n");
+        save(Game, currentWord);
     }
 
     ElType val;
     while(!isEmpty(*antrianGame)){
         dequeue(antrianGame, &val);
     }
+    printf("Terima kasih sudah bermain!\n");
 }
 /**
 int main()
