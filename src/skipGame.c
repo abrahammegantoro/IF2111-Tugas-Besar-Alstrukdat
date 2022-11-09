@@ -41,5 +41,6 @@ void skipGame (Queue* queueGame, Word command) {
             printLoading(val);
             printf("Game Over! Skor akhir: %d\n\n", rand());
         }
+        sleep(3);
     }
 }
