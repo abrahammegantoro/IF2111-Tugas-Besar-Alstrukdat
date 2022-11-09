@@ -40,9 +40,6 @@ void CreateQueueDash(QueueDash *q);
 /* ********* Prototype ********* */
 boolean isEmptyDash(QueueDash q);
 /* Mengirim true jika q kosong: lihat definisi di atas */
-boolean isFullDash(QueueDash q);
-/* Mengirim true jika tabel penampung elemen q sudah penuh */
-/* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam buffer melingkar*/
 
 int lengthDash(QueueDash q);
 /* Mengirimkan banyaknya elemen QueueDash. Mengirimkan 0 jika q kosong. */
@@ -70,7 +67,6 @@ void displayQueueMenu(QueueDash q);
 /* Jika QueueDash kosong : menulis [] */
 boolean isMember(QueueDash q, int id);
 int getIdx(QueueDash q, int id);
-void deleteFoodID(QueueDash *q, int id);
 void displayQueueCook(QueueDash q);
 void displayQueueServe(QueueDash q, QueueDash qO);
 
