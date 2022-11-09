@@ -193,3 +193,13 @@ char *WordToStr(Word kata){
     str[kata.Length] = '\0';
     return str;
 }
+
+void concatWord(Word *kata1, Word kata2){
+    (*kata1).TabWord[(*kata1).Length] = ' ';
+    (*kata1).Length++;
+    for (int i = 0; i < kata2.Length; i++)
+    {
+        (*kata1).TabWord[(*kata1).Length + i] = kata2.TabWord[i];
+    }
+    (*kata1).Length = (*kata1).Length + kata2.Length;
+}

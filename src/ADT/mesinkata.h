@@ -83,4 +83,6 @@ char *WordToStr(Word kata);
 /* Fungsi yang menerima parameter berupa Word kemudian mengubah 
    dan mengembalikan kata tersebut menjadi sebuah string */
 
+void concatWord(Word *kata1, Word kata2);
+
 #endif
