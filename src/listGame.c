@@ -9,7 +9,7 @@ void listGame(TabKata x){
         printf("Berikut adalah daftar game yang tersedia\n");
         int k = 0;
         for (i=IdxMin - 1; i<x.Neff; i++){
-            printf("%d. ", k+1);
+            printf("  %d. ", k+1);
             k++;
             for(int j = 0; j < x.TI[i].Length; j++) {
             printf("%c", x.TI[i].TabWord[j]);

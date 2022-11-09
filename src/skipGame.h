@@ -5,6 +5,8 @@
 #include "./ADT/queue.h"
 #include "./ADT/mesinkata.h"
 #include "playGame.h"
+# include "./Games/rng.h"
+# include "./Games/dinnerdash.h"
 
 void skipGame (Queue* queueGame, Word command);
 /* Melewatkan permainan sebanyak n

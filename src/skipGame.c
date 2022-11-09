@@ -11,7 +11,7 @@ void skipGame (Queue* queueGame, Word command) {
 
     n = WordToInt(command);
 
-    printf("Berikut adalah daftar Game-mu");
+    printf("Berikut adalah daftar Game-mu\n");
     for (i = 0; i < length(*queueGame); i++) {
         printf("  %d. ", i + 1);
         dequeue(queueGame, &val);
@@ -30,10 +30,10 @@ void skipGame (Queue* queueGame, Word command) {
         dequeue(queueGame, &val);
         if (WordCompare(HEAD(*queueGame), toKata("RNG"))) {
             printLoading(val);
-            /* Masukan prosedur game RNG */
+            runRNG();
         } else if (WordCompare(HEAD(*queueGame), toKata("Diner DASH"))) {
             printLoading(val);
-            /* Masukan prosedur game Diner DASH */
+            runDinnerDash();
         } else if (WordCompare(HEAD(*queueGame), toKata("DINOSAUR IN EARTH")) || WordCompare(HEAD(*queueGame), toKata("RISEWOMAN")) || WordCompare(HEAD(*queueGame), toKata("EIFFEL TOWER"))) {
             printf("Game "); PrintWord(HEAD(*queueGame)); printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.");
         } else {

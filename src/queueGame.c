@@ -7,13 +7,13 @@ void displayQueueGame(Queue antrianGame){
         int i = IDX_HEAD(antrianGame);
         int j = 1;
         while (i != IDX_TAIL(antrianGame)){
-            printf("%d. ", j);
+            printf("  %d. ", j);
             PrintWord(antrianGame.buffer[i]);
             printf("\n");
             j++;
             i++;
         }
-        printf("%d. ", j);
+        printf("  %d. ", j);
         PrintWord(antrianGame.buffer[i]);
         printf("\n");
     } else {
