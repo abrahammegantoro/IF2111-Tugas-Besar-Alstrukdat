@@ -105,7 +105,6 @@ void serve(QueueDash *qO, QueueDash *q, int food, boolean *valid, int *saldo)
                 dequeueFood(qO);
                 (*valid) = true;
                 (*q).buffer[idx].foodID = NIL;
-                (*q).buffer[idx].sustain = NIL;
             }
             else
             {
@@ -139,7 +138,6 @@ void reduceTime(QueueDash *q)
             }
             else if ((*q).buffer[i].sustain == 0)
             {
-                (*q).buffer[i].sustain = NIL;
                 (*q).buffer[i].foodID = NIL;
             }
         }
@@ -178,9 +176,20 @@ void printDescription(QueueDash q, boolean isValid, int isCook, int id)
         }
     }
     printf("================================================================\n");
+    if (isValid) {
+        if (isCook == 1) {
+            printf("                                           _            \n                                          | |           \n  _ __ ___   ___ _ __ ___   __ _ ___  __ _| | __        \n | '_ ` _ \\ / _ \\ '_ ` _ \\ / _` / __|/ _` | |/ /        \n | | | | | |  __/ | | | | | (_| \\__ \\ (_| |   <   _ _ _ \n |_| |_| |_|\\___|_| |_| |_|\\__,_|___/\\__,_|_|\\_\\ (_|_|_)\n                                                        \n");
+            printf("================================================================\n");
+        } else if (isCook == 0) {
+            printf("                                   _ _ _                       \n                                  (_|_) |                      \n  _ __ ___   ___ _ __  _   _  __ _ _ _| | ____ _ _ __          \n | '_ ` _ \\ / _ \\ '_ \\| | | |/ _` | | | |/ / _` | '_ \\         \n | | | | | |  __/ | | | |_| | (_| | | |   < (_| | | | |  _ _ _ \n |_| |_| |_|\\___|_| |_|\\__, |\\__,_| |_|_|\\_\\__,_|_| |_| (_|_|_)\n                        __/ |    _/ |                          \n                       |___/    |__/                           \n");
+            printf("================================================================\n");
+        }
+    }
 }
 void runDinnerDash()
-{
+{  
+    system("cls");
+    
     QueueDash qOrder, qCook;
     int isCook, id, customerCtr;
     char inputAction[10];
@@ -200,6 +209,9 @@ void runDinnerDash()
     isValid = false;
     while (!isEnd(qOrder, customerCtr))
     {
+        printf("[===================== Selamat Datang di =====================]\n");
+        printf("                                                            _\n  _____  _                   _____            _            / )\n |  __ \\(_)                 |  __ \\          | |     |||| / /\n | |  | |_ _ __   ___ _ __  | |  | | __ _ ___| |__   ||||/ /\n | |  | | | '_ \\ / _ \\ '__| | |  | |/ _` / __| '_ \\  \\__(_/\n | |__| | | | | |  __/ |    | |__| | (_| \\__ \\ | | |  ||//\n |_____/|_|_| |_|\\___|_|    |_____/ \\__,_|___/_| |_|  ||/\n                                                     (|| \n                                                      \"\"");
+        printf("\n[=============================================================]\n\n");
         printf("SALDO : %d\n", saldo);
         displayQueueMenu(qOrder);
         displayQueueCook(qCook);

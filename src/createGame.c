@@ -13,7 +13,13 @@ void createGame(TabKata* daftarGame)
         printf("Maaf, jumlah maksimum game sudah tercapai.\n");
     } else
     {
-        (*daftarGame).TI[(*daftarGame).Neff] = currentWord;
+        Word gameName = currentWord;
+        ADVWORD();
+        while (!EndWord) {
+            concatWord(&gameName, currentWord);
+            ADVWORD();
+        }
+        (*daftarGame).TI[(*daftarGame).Neff] = gameName;
         (*daftarGame).Neff += 1;
         printf("Game berhasil ditambahkan\n");
     }

@@ -26,25 +26,44 @@ int main(){
         if (i % 4 == 3) {system("cls"); printf("\n                                 __  _                                   \n                          _  _ _|  || |_ _  _                            \n ___ ___ ___ ___ ___ ___ / )/ |_   ||  _| \\( \\ ___ ___ ___ ___ ___ ___   \n(___|___|___|___|___|___| (( ( _|  || |_ ) )) |___|___|___|___|___|___)  \n                         \\_)\\_|_   ||  _|_/(_/   __________              \n                                |__||_|         /_________/|             \n                                                |         || |           \n _ _      ______  ______  ______   _____        |   ._.   || /       _ _ \n| | |    (____  \\|  ___ \\|  ___ \\ / ___ \\       |         |_/       | | |\n|_|_|     ____)  ) |   | | | _ | | |   | |     /|_________||        |_|_|\n _ _     |  __  (| |   | | || || | |   | |     ||         ||         _ _ \n| | |    | |__)  ) |   | | || || | |___| |     ||_________|/        | | |\n|_|_|    |______/|_|   |_|_||_||_|\\_____/        //    //           |_|_|\n                                                n/    n/                 \n         ___ ___   __           ______          \"  __ \" ___ ___          \n        |  _|_  | / _)__ ___ __(_____ \\ ___ ___ __(_ \\ |  _|_  |         \n ___ ___| |   | |/ /(___|___|___)____) |___|___|___)\\ \\| |   | |___ ___  \n(___|___) |   | ( (  ___ ___ ___/_____/ ___ ___ ___  ) ) |   | (___|___) \n        | |_ _| |\\ \\(___|___|___)______(___|___|___)/ /| |_ _| |         \n        |___|___| \\__)         (_______)          (__/ |___|___|         \n\n");}
         sleep(1);
     }
-    printf("Welcome to BNMO!\n\n");
-    printf("Ketik 'START' atau 'LOAD' untuk mulai bermain\n");
-    printf("ENTER COMMAND: ");
-    STARTINPUT();
 
     
 
+    printf("Welcome to BNMO!\n\n");
     while (Game.Neff == 0) {
-        while(!WordCompare(currentWord, toKata("START")) && !WordCompare(currentWord, toKata("LOAD"))){
-            printf("Ketik 'START' atau 'LOAD' untuk mulai bermain\n");
-            printf("ENTER COMMAND: ");
-            STARTINPUT();
-        }
-        system("cls");
-        if (WordCompare(currentWord, toKata("START"))){
-            start(&Game);
-        } else if (WordCompare(currentWord, toKata("LOAD"))){
-            ADVWORD();
-            load(currentWord, &Game);
+        boolean isStarted = false;
+        printf("Ketik 'START' atau 'LOAD <filename.txt>' untuk mulai bermain\n");
+        printf("ENTER COMMAND: ");
+        STARTINPUT();
+        
+        while(!isStarted){
+            if (WordCompare(currentWord, toKata("START"))){
+                ADVWORD();
+                if (EndWord){
+                    system("cls");
+                    isStarted = true;
+                    start(&Game);
+                }
+            } else if (WordCompare(currentWord, toKata("LOAD"))){
+                ADVWORD();
+                Word fileName = currentWord;
+                ADVWORD();
+                if (EndWord){
+                    system("cls");
+                    isStarted = true;
+                    load(fileName, &Game);
+                }
+            }
+            while (!EndWord) {
+                ADVWORD();
+            }
+            if (!isStarted){
+                system("cls");
+                printf("Perintah tidak dikenali\n\n");
+                printf("Ketik 'START' atau 'LOAD <filename.txt>' untuk mulai bermain\n");
+                printf("ENTER COMMAND: ");
+                STARTINPUT();
+            }
         }
     }
 
@@ -55,44 +74,83 @@ int main(){
         if (WordCompare(currentWord, toKata("CREATE"))){
             ADVWORD();
             if (WordCompare(currentWord, toKata("GAME"))){
-                createGame(&Game);
+                ADVWORD();
+                if (EndWord){
+                    createGame(&Game);                    
+                } else {
+                    printf("Perintah tidak dikenali\n");
+                }
             }
         } else if (WordCompare(currentWord, toKata("DELETE"))){
             ADVWORD();
             if (WordCompare(currentWord, toKata("GAME"))){
-                listGame(Game);
-                deleteGame(&Game, antrianGame);
+                ADVWORD();
+                if (EndWord){
+                    listGame(Game);
+                    deleteGame(&Game, antrianGame);
+                } else {
+                    printf("Perintah tidak dikenali\n");
+                }
             }
         } else if (WordCompare(currentWord, toKata("LIST"))){
             ADVWORD();
             if (WordCompare(currentWord, toKata("GAME"))){
-                listGame(Game);
+                ADVWORD();
+                if (EndWord){
+                    listGame(Game);
+                } else {
+                    printf("Perintah tidak dikenali\n");
+                }
             } else {
                 printf("Perintah tidak dikenali.\n");
             }
         } else if (WordCompare(currentWord, toKata("SAVE"))){
             ADVWORD();
-            save(Game, currentWord);
+            if (EndWord){
+                save(Game, currentWord);
+            } else {
+                printf("Perintah tidak dikenali\n");
+            }
         } else if (WordCompare(currentWord, toKata("PLAY"))){
             ADVWORD();
             if (WordCompare(currentWord, toKata("GAME"))){
-                playGame(&antrianGame);
+                ADVWORD();
+                if (EndWord){
+                    playGame(&antrianGame);
+                } else {
+                    printf("Perintah tidak dikenali\n");
+                }
             } else {
                 printf("Perintah tidak dikenali.\n");
             }
         } else if (WordCompare(currentWord, toKata("QUEUE"))){
             ADVWORD();
             if (WordCompare(currentWord, toKata("GAME"))){
-                queueGame(Game, &antrianGame);
+                ADVWORD();
+                if (EndWord){
+                    queueGame(Game, &antrianGame);
+                } else {
+                    printf("Perintah tidak dikenali\n");
+                }
             } else {
                 printf("Perintah tidak dikenali.\n");
             }
         } else if (WordCompare(currentWord, toKata("SKIPGAME"))){
             ADVWORD();
-            skipGame(&antrianGame, currentWord);
+            Word fileName = currentWord;
+            ADVWORD();
+            if (EndWord){
+                skipGame(&antrianGame, currentWord);
+            } else {
+                printf("Perintah tidak dikenali\n");
+            }
         } else if(WordCompare(currentWord, toKata("LOAD"))){
             ADVWORD();
-            load(currentWord, &Game);
+            if (EndWord){
+                load(currentWord, &Game);
+            } else {
+                printf("Perintah tidak dikenali\n");
+            }
         } else if(WordCompare(currentWord, toKata("HELP"))){
             ADVWORD();
             if (EndWord) {
@@ -103,6 +161,7 @@ int main(){
         } else {
             printf("Perintah tidak dikenali.\n");
         }
+
         printf("ENTER COMMAND: ");
         STARTINPUT();
         system("cls");
