@@ -15,7 +15,7 @@ void addOrder(QueueDash *q)
 
 boolean isEnd(QueueDash q, int ctr)
 {
-    return ((lengthDash(q) == 7) || (ctr == 2));
+    return ((lengthDash(q) > 7) || (ctr == 2));
 }
 
 void identifyCommand(QueueDash q, int *isCook, int *id)
@@ -201,14 +201,10 @@ void runDinnerDash()
     while (!isEnd(qOrder, customerCtr))
     {
         printf("SALDO : %d\n", saldo);
-        if ((isValid) && (isCook == 9999))
-        {
-            addOrder(&qOrder);
-        }
         displayQueueMenu(qOrder);
         displayQueueCook(qCook);
         displayQueueServe(qCook, qOrder);
-        if ((isValid) && (isCook == 9999)) {
+        if (isValid) {
             reduceTime(&qCook);
         }
         isValid = false;
@@ -247,11 +243,13 @@ void runDinnerDash()
         else
         {
             isValid = true;
-            addOrder(&qOrder);
-            reduceTime(&qCook);
         }
         if (customerCtr == 2) {
             printDescription(qOrder, isValid, isCook, id);
+        }
+        if (isValid)
+        {
+            addOrder(&qOrder);
         }
         if (!isEnd(qOrder, customerCtr))
         {

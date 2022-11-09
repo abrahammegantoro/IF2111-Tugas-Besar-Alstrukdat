@@ -98,6 +98,6 @@ int main(){
         STARTINPUT();
         system("cls");
     }
-    quit();
+    quit(Game, &antrianGame);
     return 0;
 }

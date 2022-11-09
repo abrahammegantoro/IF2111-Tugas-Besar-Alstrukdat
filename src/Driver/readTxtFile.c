@@ -13,7 +13,6 @@ boolean readTxt(char* filesrc, TabKata* listGame) {
     } else {
         STARTWORD(input);
         lines = WordToInt(currentWord);
-        ADV();
         for (int i = 0; i < lines; i++) {
             ADV();
             ADVWORD();
