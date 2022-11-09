@@ -8,12 +8,11 @@ boolean readTxt(char* filesrc, TabKata* listGame) {
     int lines = 0;
     
     if (input == NULL) {
-        printf("File tidak ditemukan.\n");
+        printf("File tidak ditemukan.\n\n");
         return false;
     } else {
         STARTWORD(input);
         lines = WordToInt(currentWord);
-        ADV();
         for (int i = 0; i < lines; i++) {
             ADV();
             ADVWORD();

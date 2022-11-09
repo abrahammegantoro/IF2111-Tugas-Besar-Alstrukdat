@@ -34,17 +34,16 @@ void playGame(Queue *queueGame) {
         if (WordCompare(HEAD(*queueGame), toKata("RNG"))) {
             printLoading(HEAD(*queueGame));
             runRNG();
-            sleep(3);
         } else if (WordCompare(HEAD(*queueGame), toKata("Diner DASH"))) {
             printLoading(HEAD(*queueGame));
             runDinnerDash();
-            sleep(3);
         } else if (WordCompare(HEAD(*queueGame), toKata("DINOSAUR IN EARTH")) || WordCompare(HEAD(*queueGame), toKata("RISEWOMAN")) || WordCompare(HEAD(*queueGame), toKata("EIFFEL TOWER"))) {
             printf("Game "); PrintWord(HEAD(*queueGame)); printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
         } else {
             printLoading(HEAD(*queueGame));
             printf("Game Over! Skor akhir: %d\n", rand());
         }
+        sleep(3);
         dequeue(queueGame, &val);
     
     } else {
