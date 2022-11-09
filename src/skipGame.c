@@ -5,7 +5,7 @@
 #include "skipGame.h"
 
 void skipGame (Queue* queueGame, Word command) {
-    int n = 0, i;
+    int n = 0, j = 0, i;
     ElType val;
     srand(time(NULL));
 
@@ -20,8 +20,9 @@ void skipGame (Queue* queueGame, Word command) {
         printf("\n");
     }
     
-    while (n > 0 && !isEmpty(*queueGame)) {
+    while (n > 0 && !isEmpty(*queueGame) && j != n) {
         dequeue(queueGame, &val);
+        j++;
     }
     
     if (isEmpty(*queueGame)) {
