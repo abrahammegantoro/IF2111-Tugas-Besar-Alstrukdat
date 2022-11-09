@@ -21,19 +21,19 @@ void quit(TabKata Game, Queue* antrianGame)
         STARTINPUT();
     }
 
-    ElType val;
-    while(!isEmpty(*antrianGame)){
-        dequeue(antrianGame, &val);
-    }
-
     if (WordCompare(toKata("Y"), currentWord))
     {
         printf("Masukkan nama file: ");
         STARTINPUT();
-        save(Game, currentWord); //cara ngambil game dari mainnya gimana?
-    } else if (WordCompare(toKata("N"), currentWord));
+        save(Game, currentWord); //masih ga ke detect
+    } else if (WordCompare(toKata("N"), currentWord))
     {
         printf("Terima kasih sudah bermain!\n");
+    }
+
+    ElType val;
+    while(!isEmpty(*antrianGame)){
+        dequeue(antrianGame, &val);
     }
 }
 /**
