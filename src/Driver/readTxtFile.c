@@ -3,12 +3,13 @@
 
 /* Implementasi readTxtFile.h */
 
-void readTxt(char* filesrc, TabKata* listGame) {
+boolean readTxt(char* filesrc, TabKata* listGame) {
     FILE* input = fopen(filesrc, "r");
     int lines = 0;
     
     if (input == NULL) {
         printf("File tidak ditemukan.\n");
+        return false;
     } else {
         STARTWORD(input);
         lines = WordToInt(currentWord);
@@ -30,4 +31,5 @@ void readTxt(char* filesrc, TabKata* listGame) {
         }
     }
     fclose(input);
+    return true;
 }
