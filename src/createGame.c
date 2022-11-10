@@ -19,37 +19,30 @@ void createGame(TabKata* daftarGame)
             concatWord(&gameName, currentWord);
             ADVWORD();
         }
-        (*daftarGame).TI[(*daftarGame).Neff] = gameName;
-        (*daftarGame).Neff += 1;
-        printf("Game berhasil ditambahkan\n");
+
+        int i = 0;
+        boolean found = false;
+
+        while (i != (*daftarGame).Neff && !found)
+        {
+            if (WordCompare((*daftarGame).TI[i], gameName))
+            {
+                found = true;
+            }
+            else
+            {
+                i += 1;
+            }
+        }
+
+        if (!found)
+        {
+            (*daftarGame).TI[(*daftarGame).Neff] = gameName;
+            (*daftarGame).Neff += 1;
+            printf("Game berhasil ditambahkan\n");
+        } else
+        {
+            printf("Gagal menambahkan Game! Game sudah terdapat di dalam list game\n");
+        }
     }
 }
-
-/* Implementasi ketika command creategame dipanggil
-
-int main(){
-    printf("ENTER COMMAND: ");
-    STARTWORD();
-
-    // Testing
-    PrintWord(currentWord);
-    PrintWord(toKata("CREATE GAME"));
-
-    Word command = GetWord();
-
-    if (WordCompare(toKata("CREATE GAME"), command))
-    {
-        printf("Masukkan nama game yang akan ditambahkan: ");
-        STARTWORD();
-        Word newGame = GetWord();
-
-        TabKata currentGame;
-        MakeEmpty(&currentGame);
-        createGame(&currentGame, newGame);
-
-        TulisIsi(currentGame);
-    }
-    return 0;
-}
-
-*/
