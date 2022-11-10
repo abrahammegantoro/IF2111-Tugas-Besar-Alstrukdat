@@ -42,4 +42,5 @@ void skipGame (Queue* queueGame, Word command) {
         }
         sleep(3);
     }
+    dequeue(queueGame, &val);
 }

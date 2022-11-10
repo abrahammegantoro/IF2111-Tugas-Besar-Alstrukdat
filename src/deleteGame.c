@@ -18,7 +18,7 @@ void deleteGame(TabKata* file, Queue antrianGame){
     STARTINPUT();
     int noGameInteger = WordToInt(currentWord);
 
-    if(noGameInteger > 5 && noGameInteger <= (*file).Neff && !isExist((*file).TI[noGameInteger], antrianGame)){
+    if(noGameInteger > 6 && noGameInteger <= (*file).Neff && !isExist((*file).TI[noGameInteger], antrianGame)){
         int j;
         for (j = noGameInteger - 1 ; j < (*file).Neff ; j++){
             (*file).TI[j] = (*file).TI[j+1];
