@@ -37,6 +37,9 @@ void playGame(Queue *queueGame) {
         } else if (WordCompare(HEAD(*queueGame), toKata("Diner DASH"))) {
             printLoading(HEAD(*queueGame));
             runDinnerDash();
+        } else if (WordCompare(HEAD(*queueGame), toKata("ATC GAME"))) {
+            printLoading(HEAD(*queueGame));
+            playAtc();
         } else if (WordCompare(HEAD(*queueGame), toKata("DINOSAUR IN EARTH")) || WordCompare(HEAD(*queueGame), toKata("RISEWOMAN")) || WordCompare(HEAD(*queueGame), toKata("EIFFEL TOWER"))) {
             printf("Game "); PrintWord(HEAD(*queueGame)); printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
         } else {

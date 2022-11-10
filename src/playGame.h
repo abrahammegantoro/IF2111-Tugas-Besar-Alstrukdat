@@ -6,6 +6,7 @@
 #include "./ADT/mesinkata.h"
 #include "./Games/dinnerdash.h"
 #include "./Games/rng.h"
+#include "./Games/atcGame.h"
 
 void printLoading(Word gameName);
 /* Menampilkan loading screen ke layar */

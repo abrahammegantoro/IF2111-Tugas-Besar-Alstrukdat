@@ -28,12 +28,16 @@ void skipGame (Queue* queueGame, Word command) {
     if (isEmpty(*queueGame)) {
         printf("Tidak ada permainan lagi dalam daftar game-mu.\n");
     } else {
+        val = HEAD(*queueGame);
         if (WordCompare(HEAD(*queueGame), toKata("RNG"))) {
             printLoading(val);
             runRNG();
         } else if (WordCompare(HEAD(*queueGame), toKata("Diner DASH"))) {
             printLoading(val);
             runDinnerDash();
+        } else if (WordCompare(HEAD(*queueGame), toKata("ATC GAME"))) {
+            printLoading(val);
+            playAtc();
         } else if (WordCompare(HEAD(*queueGame), toKata("DINOSAUR IN EARTH")) || WordCompare(HEAD(*queueGame), toKata("RISEWOMAN")) || WordCompare(HEAD(*queueGame), toKata("EIFFEL TOWER"))) {
             printf("Game "); PrintWord(HEAD(*queueGame)); printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n\n");
         } else {

@@ -4,14 +4,14 @@
 #include <time.h>
 #include "atcGame.h"
 
-boolean isEnd;
+boolean isOver;
 
-int main() {
-    playAtc();
-}
+// int main() {
+//     playAtc();
+// }
 
 void playAtc() {
-    boolean isEnd = false;
+    boolean isOver = false;
     srand(time(NULL));
 
     Queue BandaraM, BandaraB;
@@ -40,7 +40,7 @@ void playAtc() {
     }
     insertPesawat(&L, Pesawat);
 
-    while (!isEnd) {
+    while (!isOver) {
         system("cls");
         printf("SCORE: %d\n\n", score);
         printStatus(BandaraM, BandaraB, L);
@@ -72,7 +72,7 @@ void playAtc() {
         updateStatus(&BandaraM, &BandaraB, &L, &LandingM, &LandingB); 
 
         if (NbElmt(LandingM) > 1 || NbElmt(LandingB) > 1) {
-            isEnd = true;
+            isOver = true;
         } else {
             if (NbElmt(LandingM) > 0) {
                 insertLanding(&BandaraM, &LandingM);

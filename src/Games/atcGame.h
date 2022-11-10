@@ -12,7 +12,7 @@ typedef struct {
     int NEff;
 } Langit;
 
-extern boolean isEnd;
+extern boolean isOver;
 
 void playAtc();
 /* Menjalankan game Air Traffic Control 

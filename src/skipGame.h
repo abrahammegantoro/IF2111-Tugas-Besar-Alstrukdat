@@ -7,6 +7,7 @@
 #include "playGame.h"
 # include "./Games/rng.h"
 # include "./Games/dinnerdash.h"
+# include "./Games/atcGame.h"
 
 void skipGame (Queue* queueGame, Word command);
 /* Melewatkan permainan sebanyak n
