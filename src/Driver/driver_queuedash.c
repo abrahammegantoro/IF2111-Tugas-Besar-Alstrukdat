@@ -44,5 +44,8 @@ int main() {
         printf("Tidak\n");
     }
     printf("Panjang queue: %d\n", lengthDash(Q));
+    printf("Dequeue Q 1x\n");
+    dequeueFood(&Q);
+    printf("Panjang queue setelah dequeue: %d\n", lengthDash(Q));
     return 0;
 }

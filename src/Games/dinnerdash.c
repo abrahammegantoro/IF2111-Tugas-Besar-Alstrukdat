@@ -15,7 +15,7 @@ void addOrder(QueueDash *q)
 
 boolean isEnd(QueueDash q, int ctr)
 {
-    return ((lengthDash(q) > 7) || (ctr == 2));
+    return ((lengthDash(q) > 7) || (ctr == 15));
 }
 
 void identifyCommand(QueueDash q, int *isCook, int *id)
@@ -85,6 +85,7 @@ void cook(QueueDash qO, QueueDash *q, int food, boolean *valid)
         int idx = getIdx(qO, food);
         enqueueFood(q, qO.buffer[idx]);
         (*valid) = true;
+        (*q).buffer[(*q).idxTail].cookDuration++;
     }
     else
     {
@@ -124,7 +125,7 @@ void serve(QueueDash *qO, QueueDash *q, int food, boolean *valid, int *saldo)
 
 void reduceTime(QueueDash *q)
 {
-    for (int i = 0; i < lengthDash(*q); i++)
+    for (int i = IDX_HEAD(*q); i <= IDX_TAIL(*q); i++)
     {
         if ((*q).buffer[i].cookDuration != 0)
         {
@@ -132,11 +133,11 @@ void reduceTime(QueueDash *q)
         }
         else
         {
-            if ((*q).buffer[i].sustain > 0)
+            if ((*q).buffer[i].sustain > 1)
             {
                 (*q).buffer[i].sustain--;
             }
-            else if ((*q).buffer[i].sustain == 0)
+            else if ((*q).buffer[i].sustain == 1)
             {
                 (*q).buffer[i].foodID = NIL;
             }
@@ -219,9 +220,6 @@ void runDinnerDash()
         displayQueueMenu(qOrder);
         displayQueueCook(qCook);
         displayQueueServe(qCook, qOrder);
-        if (isValid) {
-            reduceTime(&qCook);
-        }
         isValid = false;
         printf("MASUKKAN COMMAND : ");
         STARTINPUT();
@@ -259,11 +257,12 @@ void runDinnerDash()
         {
             isValid = true;
         }
-        if (customerCtr == 2) {
+        if (customerCtr == 15) {
             printDescription(qOrder, isValid, isCook, id);
         }
         if (isValid)
         {
+            reduceTime(&qCook);
             addOrder(&qOrder);
         }
         if (!isEnd(qOrder, customerCtr))

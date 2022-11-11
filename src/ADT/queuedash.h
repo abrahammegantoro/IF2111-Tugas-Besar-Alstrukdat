@@ -48,26 +48,34 @@ int lengthDash(QueueDash q);
 void enqueueFood(QueueDash *q, FoodType val);
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
-/* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
+/* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer. */
 
 void dequeueFood(QueueDash *q);
 /* Proses: Menghapus val pada q dengan aturan FIFO */
 /* I.S. q tidak mungkin kosong */
-/* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";
+/* F.S. IDX_HEAD "mundur";
         q mungkin kosong */
+
+boolean isMember(QueueDash q, int id);
+/* Mengirimkan true jika terdapat id dalam queue Q dan sebaliknya */
+
+int getIdx(QueueDash q, int id);
+/* Mengirimkan index dengan elemen id didalam Queue Q, Queue Q pasti memiliki elemen id */
 
 /* *** Display QueueDash *** */
 void displayQueueMenu(QueueDash q);
-/* Proses : Menuliskan isi QueueDash dengan traversal, QueueDash ditulis di antara kurung 
-   siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan 
-   karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
+/* Proses : Menuliskan isi QueueDash dengan format order yang sesuai*/
 /* I.S. q boleh kosong */
-/* F.S. Jika q tidak kosong: [e1,e2,...,en] */
-/* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
-/* Jika QueueDash kosong : menulis [] */
-boolean isMember(QueueDash q, int id);
-int getIdx(QueueDash q, int id);
+/* F.S. Jika q tidak kosong: tertampilkan di layar sesuai format */
+
 void displayQueueCook(QueueDash q);
+/* Proses : Menuliskan isi QueueDash dengan format cook yang sesuai*/
+/* I.S. q boleh kosong */
+/* F.S. Jika q tidak kosong: tertampilkan di layar sesuai format */
+
 void displayQueueServe(QueueDash q, QueueDash qO);
+/* Proses : Menuliskan isi QueueDash dengan format serve yang sesuai*/
+/* I.S. q boleh kosong */
+/* F.S. Jika q tidak kosong: tertampilkan di layar sesuai format */
 
 #endif
