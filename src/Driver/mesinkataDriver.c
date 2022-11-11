@@ -3,22 +3,42 @@
 
 int main()
 {
-    printf("Akan membandingkan kata 'HMIF ITB' dengan input user\n");
-    printf("Masukkan kata : ");
+    printf("Akan membandingkan kata 'HMIF ITB' dengan input user");
+
+    Word kata1 = toKata("HMIF");
+    printf("\nKata pertama : ");
+    PrintWord(kata1);
+
+    Word kata2 = toKata("ITB");
+    printf("\nKata kedua : ");
+    PrintWord(kata2);
+
+    concatWord(&kata1, kata2);
+    printf("\nHasil concat kata : ");
+    PrintWord(kata1);
+
+    printf("\nMasukkan kata : ");
+
     STARTINPUT();
+    Word input = GetWord();
+    ADVWORD();
 
-    // Testing apakah kata bisa dicetak ke layar
-    PrintWord(currentWord);
+    while (!EndWord)
+    {
+        concatWord(&input, currentWord);
+        ADVWORD();
+    }
 
-    Word kata = GetWord();
+    PrintWord(input);
+
     printf("\nBerhasil mengubah input user menjadi tipe data Word.\n");
 
-    if (WordCompare(toKata("HMIF ITB"), kata))
+    if (WordCompare(kata1, input))
     {
-        printf("Input user ADALAH 'HMIF ITB'.\n");
+        printf("\nInput user ADALAH 'HMIF ITB'.\n");
     } else
     {
-        printf("Input user BUKAN 'HMIF ITB'.\n");
+        printf("\nInput user BUKAN 'HMIF ITB'.\n");
     }
 
     return 0;

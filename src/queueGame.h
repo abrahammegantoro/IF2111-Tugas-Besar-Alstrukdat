@@ -13,5 +13,7 @@ void displayQueueGame(Queue antrianGame);
 
 void queueGame(TabKata file, Queue* antrianGame);
 /* Menambahkan antrian yang diinput user ke dalam queue Game dari listGame yang ada */
+/* I.S. Queue global kosong */
+/* F.S. Game yang diinginkan user ditambahkan ke dalam Queue global */
 
 # endif

@@ -110,9 +110,15 @@ int main(){
         } else if (WordCompare(currentWord, toKata("SAVE"))){
             ADVWORD();
             if (EndWord){
-                save(Game, currentWord);
-            } else {
                 printf("Perintah tidak dikenali\n");
+            } else {
+                Word fileName = currentWord;
+                ADVWORD();
+                if (EndWord){
+                    save(Game, fileName);
+                } else {
+                    printf("Perintah tidak dikenali\n");
+                }
             }
         } else if (WordCompare(currentWord, toKata("PLAY"))){
             ADVWORD();
@@ -141,17 +147,21 @@ int main(){
             } else {
                 printf("Perintah tidak dikenali.\n");
             }
-        } else if (WordCompare(currentWord, toKata("SKIPGAME"))){
+        } else if (WordCompare(currentWord, toKata("SKIP"))){
             ADVWORD();
-            if (EndWord){
-                printf("Perintah tidak dikenali. Masukkan jumlah skip <SKIPGAME n>\n");
-            } else {
-                Word n = currentWord;
+            if (WordCompare(currentWord, toKata("GAME")))
+            {
                 ADVWORD();
                 if (EndWord){
-                    skipGame(&antrianGame, n);
+                    printf("Perintah tidak dikenali. Masukkan jumlah skip <SKIP GAME n>\n");
                 } else {
-                    printf("Perintah tidak dikenali\n");
+                    Word n = currentWord;
+                    ADVWORD();
+                    if (EndWord){
+                        skipGame(&antrianGame, n);
+                    } else {
+                        printf("Perintah tidak dikenali\n");
+                    }
                 }
             }
         } else if(WordCompare(currentWord, toKata("LOAD"))){

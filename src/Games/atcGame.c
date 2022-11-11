@@ -89,16 +89,18 @@ void playAtc() {
     printf("\n\n============================================================");
     printf("\nGame over! Skor akhir %d\n", score);
     printf("Terjadi kecelakaan pada pesawat ");
-    if (!IsEmpty(LandingM)) {
+    if (LandingM.Neff > 1) {
         for (int i = 0; i < LandingM.Neff; i++) {
             PrintWord(LandingM.TI[i]);
             printf(" ");
         }
-        if (!IsEmpty(LandingB)) printf("dan ");
+        if (LandingB.Neff > 1) printf("dan ");
     }
-    for (int i = 0; i < LandingB.Neff; i++) {
-        PrintWord(LandingB.TI[i]);
-        printf(" ");
+    if (LandingB.Neff > 1) {
+        for (int i = 0; i < LandingB.Neff; i++) {
+            PrintWord(LandingB.TI[i]);
+            printf(" ");
+        }
     }
     sleep(5);
     system("cls");
@@ -284,21 +286,4 @@ boolean isCommVal(Word comm, Langit L) {
         }
         return false;
     }
-}
-
-Word intToWord(int n) {
-    Word num; num.Length = 0;
-    if (n == 0) {
-        num.TabWord[num.Length] = '0'; num.Length++;
-    } else {
-        while (n != 0) {
-            for (int i = num.Length; i > 0; i--) {
-                num.TabWord[i] = num.TabWord[i-1];
-            }
-            num.Length++;
-            num.TabWord[0] = (n % 10) + '0';
-            n = n / 10;
-        }
-    }
-    return num;
 }

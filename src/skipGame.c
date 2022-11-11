@@ -34,7 +34,7 @@ void skipGame (Queue* queueGame, Word command) {
             runRNG();
         } else if (WordCompare(HEAD(*queueGame), toKata("Diner DASH"))) {
             printLoading(val);
-            runDinnerDash();
+            runDinerDash();
         } else if (WordCompare(HEAD(*queueGame), toKata("ATC GAME"))) {
             printLoading(val);
             playAtc();
