@@ -89,16 +89,18 @@ void playAtc() {
     printf("\n\n============================================================");
     printf("\nGame over! Skor akhir %d\n", score);
     printf("Terjadi kecelakaan pada pesawat ");
-    if (!IsEmpty(LandingM)) {
+    if (LandingM.Neff > 1) {
         for (int i = 0; i < LandingM.Neff; i++) {
             PrintWord(LandingM.TI[i]);
             printf(" ");
         }
-        if (!IsEmpty(LandingB)) printf("dan ");
+        if (LandingB.Neff > 1) printf("dan ");
     }
-    for (int i = 0; i < LandingB.Neff; i++) {
-        PrintWord(LandingB.TI[i]);
-        printf(" ");
+    if (LandingB.Neff > 1) {
+        for (int i = 0; i < LandingB.Neff; i++) {
+            PrintWord(LandingB.TI[i]);
+            printf(" ");
+        }
     }
     sleep(5);
     system("cls");
