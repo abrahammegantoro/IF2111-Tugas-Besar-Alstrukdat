@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include "./ADT/queue.h"
 #include "./ADT/mesinkata.h"
-#include "./Games/dinnerdash.h"
+#include "./Games/dinerdash.h"
 #include "./Games/rng.h"
 #include "./Games/atcGame.h"
 

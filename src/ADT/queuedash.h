@@ -66,8 +66,19 @@ void displayQueueMenu(QueueDash q);
 /* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
 /* Jika QueueDash kosong : menulis [] */
 boolean isMember(QueueDash q, int id);
+/* Mengembalikan nilai true apabula elemen dengan ID id ada pada QueueDash q */
+
 int getIdx(QueueDash q, int id);
+/* Mengembalikan nilai integer id dari makanan */
+
 void displayQueueCook(QueueDash q);
+/* Menampilkan daftar makanan yang sedang dimasak
+   I.S. q mungkin kosong
+   F.S. q ditampilkan ke layar */
+
 void displayQueueServe(QueueDash q, QueueDash qO);
+/* Menampilkan daftar makanan yang siap diantar
+   I.S. q mungkin kosong
+   F.S. q ditampilkan ke layar */
 
 #endif

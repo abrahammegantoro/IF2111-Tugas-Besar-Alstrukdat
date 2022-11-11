@@ -6,7 +6,7 @@
 #include "./ADT/mesinkata.h"
 #include "playGame.h"
 # include "./Games/rng.h"
-# include "./Games/dinnerdash.h"
+# include "./Games/dinerdash.h"
 # include "./Games/atcGame.h"
 
 void skipGame (Queue* queueGame, Word command);

@@ -203,3 +203,21 @@ void concatWord(Word *kata1, Word kata2){
     }
     (*kata1).Length = (*kata1).Length + kata2.Length;
 }
+
+
+Word intToWord(int n) {
+    Word num; num.Length = 0;
+    if (n == 0) {
+        num.TabWord[num.Length] = '0'; num.Length++;
+    } else {
+        while (n != 0) {
+            for (int i = num.Length; i > 0; i--) {
+                num.TabWord[i] = num.TabWord[i-1];
+            }
+            num.Length++;
+            num.TabWord[0] = (n % 10) + '0';
+            n = n / 10;
+        }
+    }
+    return num;
+}

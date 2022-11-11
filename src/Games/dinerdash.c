@@ -1,4 +1,4 @@
-#include "dinnerdash.h"
+#include "dinerdash.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -189,7 +189,7 @@ void printDescription(QueueDash q, boolean isValid, int isCook, int id)
         }
     }
 }
-void runDinnerDash()
+void runDinerDash()
 {  
     system("cls");
     
