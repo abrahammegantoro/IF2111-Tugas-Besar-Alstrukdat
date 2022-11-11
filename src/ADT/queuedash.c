@@ -33,7 +33,7 @@ int lengthDash(QueueDash q) {
 void enqueueFood(QueueDash *q, FoodType val) {
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
-/* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
+/* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer. */
     if (isEmptyDash(*q)) {
         IDX_HEAD(*q) = 0;
         IDX_TAIL(*q) = 0;
@@ -49,7 +49,7 @@ void enqueueFood(QueueDash *q, FoodType val) {
 void dequeueFood(QueueDash *q) {
 /* Proses: Menghapus val pada q dengan aturan FIFO */
 /* I.S. q tidak mungkin kosong */
-/* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";
+/* F.S. IDX_HEAD "mundur";
         q mungkin kosong */
     if (IDX_HEAD(*q) == IDX_TAIL(*q)) {
         IDX_HEAD(*q) = IDX_UNDEF;
@@ -60,6 +60,7 @@ void dequeueFood(QueueDash *q) {
 }
 
 boolean isMember(QueueDash q, int id) {
+/* Mengirimkan true jika terdapat id dalam queue Q dan sebaliknya */
     boolean found = false;
     for (int i = IDX_HEAD(q); i <= IDX_TAIL(q); i++) {
         if (q.buffer[i].foodID == id) {
@@ -70,6 +71,7 @@ boolean isMember(QueueDash q, int id) {
 }
 
 int getIdx(QueueDash q, int id) {
+/* Mengirimkan index dengan elemen id didalam Queue Q, Queue Q pasti memiliki elemen id */
     boolean found = false;
     int i = IDX_HEAD(q);
     while (!found) {
@@ -85,7 +87,7 @@ int getIdx(QueueDash q, int id) {
 
 /* *** Display QueueDash *** */
 void displayQueueMenu(QueueDash q) {
-/* Proses : Menuliskan isi QueueDash dengan format yang sesuai*/
+/* Proses : Menuliskan isi QueueDash dengan format queue order yang sesuai*/
 /* I.S. q boleh kosong */
 /* F.S. Jika q tidak kosong: tertampilkan di layar sesuai format */
     printf("\nDaftar Pesanan\n");
@@ -100,6 +102,9 @@ void displayQueueMenu(QueueDash q) {
 }
 
 void displayQueueCook(QueueDash q) {
+/* Proses : Menuliskan isi QueueDash dengan format queue cook yang sesuai*/
+/* I.S. q boleh kosong */
+/* F.S. Jika q tidak kosong: tertampilkan di layar sesuai format */
     printf("\nDaftar Makanan yang sedang dimasak\n");
     printf("Makanan\t| Sisa durasi memasak\n");
     printf("-------------------------------\n");
@@ -116,6 +121,9 @@ void displayQueueCook(QueueDash q) {
 }
 
 void displayQueueServe(QueueDash q, QueueDash qO) {
+/* Proses : Menuliskan isi QueueDash dengan format serve yang sesuai*/
+/* I.S. q boleh kosong */
+/* F.S. Jika q tidak kosong: tertampilkan di layar sesuai format */
     printf("\nDaftar Makanan yang sedang dimasak\n");
     printf("Makanan\t| Sisa ketahanan makanan\n");
     printf("----------------------------------\n");
