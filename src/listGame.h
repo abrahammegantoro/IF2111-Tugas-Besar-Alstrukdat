@@ -7,5 +7,7 @@
 
 void listGame(TabKata x);
 /* Menampilkan list game yang tersedia */
+/* I.S. TabKata terdefinisi, Mungkin Kosong */
+/* F.S. List game ditampilkan ke layar */
 
 #endif

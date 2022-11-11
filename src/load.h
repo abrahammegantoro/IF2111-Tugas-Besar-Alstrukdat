@@ -10,5 +10,8 @@
 # define FDIR "./data/"
 
 void load(Word currentWord, TabKata* Game);
+/* Load file yang dimasukkan oleh user dan menyimpan isi dari file ke dalam array global */
+/* I.S. Array terdefinisi, menerima input nama file dari user */
+/* F.S. Load berhasil, isi file tersimpan di dalam array global Game */
 
 # endif
