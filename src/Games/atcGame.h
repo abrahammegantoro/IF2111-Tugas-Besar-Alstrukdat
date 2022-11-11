@@ -73,7 +73,5 @@ void accPesawat(Langit *L, Word comm);
 boolean isCommVal(Word comm, Langit L);
 /* Mengembalikan nilai true jika command valid */
 
-Word intToWord(int n);
-/* Mengubah integer menjadi tipe data Word */
 
 #endif

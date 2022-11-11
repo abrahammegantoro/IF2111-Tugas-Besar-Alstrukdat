@@ -84,5 +84,11 @@ char *WordToStr(Word kata);
    dan mengembalikan kata tersebut menjadi sebuah string */
 
 void concatWord(Word *kata1, Word kata2);
+/* Menyambungkan kata kedua ke dalam kata pertama
+   I.S. sembarang
+   F.S. kata2 disambung ke kata pertama */
+
+Word intToWord(int n);
+/* Mengubah integer menjadi tipe data Word */
 
 #endif
