@@ -1,0 +1,2 @@
+main :
+	gcc -o main main.c src/createGame.c src/deleteGame.c src/help.c src/listGame.c src/load.c src/playGame.c src/queueGame.c src/quit.c src/save.c src/skipGame.c src/start.c src/ADT/mesinkata.c src/ADT/mesinkarakter.c src/ADT/array.c src/ADT/queue.c src/ADT/queuedash.c src/Driver/readTxtFile.c src/Driver/writeTxtFile.c src/Games/dinnerdash.c src/Games/rng.c src/Games/atcGame.c

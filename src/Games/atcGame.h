@@ -2,9 +2,9 @@
 #define AIR_TRAFFIC_CONTROL_H
 
 #include <stdio.h>
-#include "../adt/queue.h"
-#include "../adt/mesinkata.h"
-#include "../adt/array.h"
+#include "../ADT/queue.h"
+#include "../ADT/mesinkata.h"
+#include "../ADT/array.h"
 
 typedef struct {
     Queue Pesawat[100];

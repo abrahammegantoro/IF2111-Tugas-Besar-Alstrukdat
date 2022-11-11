@@ -110,9 +110,15 @@ int main(){
         } else if (WordCompare(currentWord, toKata("SAVE"))){
             ADVWORD();
             if (EndWord){
-                save(Game, currentWord);
-            } else {
                 printf("Perintah tidak dikenali\n");
+            } else {
+                Word fileName = currentWord;
+                ADVWORD();
+                if (EndWord){
+                    save(Game, fileName);
+                } else {
+                    printf("Perintah tidak dikenali\n");
+                }
             }
         } else if (WordCompare(currentWord, toKata("PLAY"))){
             ADVWORD();
