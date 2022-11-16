@@ -7,9 +7,9 @@ void addOrder(QueueDash *q)
 {
     FoodType val;
     val.foodID = IDX_TAIL(*q) + 1;
-    val.cookDuration = rand() % 5 + 1;
-    val.sustain = rand() % 5 + 1;
-    val.price = (rand() % 50 + 10) * 1000;
+    val.cookDuration = rand() % 3 + 1;
+    val.sustain = rand() % 3 + 1;
+    val.price = (rand() % 41 + 10) * 1000;
     enqueueFood(q, val);
 }
 
@@ -38,42 +38,85 @@ void identifyCommand(QueueDash q, int *isCook, int *id)
     skip.TabWord[2] = 'I';
     skip.TabWord[3] = 'P';
 
-    if (!WordCompare(currentWord, skip))
+    Word command = currentWord;
+    Word food;
+    ADVWORD();
+    (*isCook) = NIL;
+    (*id) = NIL;
+    if (EndWord)
     {
-        (*isCook) = NIL;
-        (*id) = NIL;
-        if (WordCompare(currentWord, cook))
+        if (WordCompare(command, skip))
         {
-            (*isCook) = 1;
-        }
-        else if (WordCompare(currentWord, serve))
-        {
-            (*isCook) = 0;
-        }
-        ADVWORD();
-        if (currentWord.TabWord[0] == 'M')
-        {
-            if (currentWord.Length == 2)
-            {
-                (*id) = currentWord.TabWord[1] - '0';
-            }
-            else if (currentWord.Length == 3)
-            {
-                (*id) = (currentWord.TabWord[1] - '0') * 10 + (currentWord.TabWord[2] - '0');
-            }
-        }
-        boolean isIndex = isMember(q, (*id));
-        if (!isIndex)
-        {
-            (*id) = NIL;
+            (*isCook) = 9999;
+            (*id) = 9999;
         }
     }
     else
     {
-        (*isCook) = 9999;
-        (*id) = 9999;
+        food = currentWord;
+        ADVWORD();
+        if (EndWord)
+        {
+            if (WordCompare(command, cook))
+            {
+                (*isCook) = 1;
+            }
+            else if (WordCompare(command, serve))
+            {
+                (*isCook) = 0;
+            }
+            if ((*isCook) != NIL)
+            {
+                if (food.TabWord[0] == 'M')
+                {
+                    if (food.Length == 2)
+                    {
+                        (*id) = food.TabWord[1] - '0';
+                    }
+                    else if (food.Length == 3)
+                    {
+                        (*id) = (food.TabWord[1] - '0') * 10 + (food.TabWord[2] - '0');
+                    }
+                }
+            }
+        }
     }
-    while (!EndWord) {
+    // if (!WordCompare(currentWord, skip))
+    // {
+
+    //     if (WordCompare(currentWord, cook))
+    //     {
+    //         (*isCook) = 1;
+    //     }
+    //     else if (WordCompare(currentWord, serve))
+    //     {
+    //         (*isCook) = 0;
+    //     }
+    //     ADVWORD();
+    //     if (currentWord.TabWord[0] == 'M')
+    //     {
+    //         if (currentWord.Length == 2)
+    //         {
+    //             (*id) = currentWord.TabWord[1] - '0';
+    //         }
+    //         else if (currentWord.Length == 3)
+    //         {
+    //             (*id) = (currentWord.TabWord[1] - '0') * 10 + (currentWord.TabWord[2] - '0');
+    //         }
+    //     }
+    //     boolean isIndex = isMember(q, (*id));
+    //     if (!isIndex)
+    //     {
+    //         (*id) = NIL;
+    //     }
+    // }
+    // else
+    // {
+    //     (*isCook) = 9999;
+    //     (*id) = 9999;
+    // }
+    while (!EndWord)
+    {
         ADVWORD();
     }
 }
@@ -177,23 +220,29 @@ void printDescription(QueueDash q, boolean isValid, int isCook, int id)
         }
     }
     printf("================================================================\n");
-    if (isValid) {
-        if (isCook == 1) {
+    if (isValid)
+    {
+        if (isCook == 1)
+        {
             printf("                                           _            \n                                          | |           \n  _ __ ___   ___ _ __ ___   __ _ ___  __ _| | __        \n | '_ ` _ \\ / _ \\ '_ ` _ \\ / _` / __|/ _` | |/ /        \n | | | | | |  __/ | | | | | (_| \\__ \\ (_| |   <   _  _  _ \n |_| |_| |_|\\___|_| |_| |_|\\__,_|___/\\__,_|_|\\_\\ (_)(_)(_)\n                                                        \n");
             printf("================================================================\n");
-        } else if (isCook == 0) {
+        }
+        else if (isCook == 0)
+        {
             printf("                                   _ _ _                       \n                                  (_|_) |                      \n  _ __ ___   ___ _ __  _   _  __ _ _ _| | ____ _ _ __          \n | '_ ` _ \\ / _ \\ '_ \\| | | |/ _` | | | |/ / _` | '_ \\         \n | | | | | |  __/ | | | |_| | (_| | | |   < (_| | | | |  _  _  _ \n |_| |_| |_|\\___|_| |_|\\__, |\\__,_| |_|_|\\_\\__,_|_| |_| (_)(_)(_)\n                        __/ |    _/ |                          \n                       |___/    |__/                           \n");
             printf("================================================================\n");
-        } else {
+        }
+        else
+        {
             printf("     _    _                   \n    | |  (_)                  \n ___| | ___ _ __              \n/ __| |/ / | '_ \\             \n\\__ \\   <| | |_) |  _  _  _ \n|___/_|\\_\\_| .__/  (_)(_)(_)\n           | |                \n           |_|                \n");
             printf("================================================================\n");
         }
     }
 }
 void runDinerDash()
-{  
+{
     system("cls");
-    
+
     QueueDash qOrder, qCook;
     int isCook, id, customerCtr;
     char inputAction[10];
@@ -257,7 +306,8 @@ void runDinerDash()
         {
             isValid = true;
         }
-        if (customerCtr == 15) {
+        if (customerCtr == 15)
+        {
             printDescription(qOrder, isValid, isCook, id);
         }
         if (isValid)
