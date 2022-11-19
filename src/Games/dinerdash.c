@@ -7,8 +7,8 @@ void addOrder(QueueDash *q)
 {
     FoodType val;
     val.foodID = IDX_TAIL(*q) + 1;
-    val.cookDuration = rand() % 3 + 1;
-    val.sustain = rand() % 3 + 1;
+    val.cookDuration = rand() % 5 + 1;
+    val.sustain = rand() % 5 + 1;
     val.price = (rand() % 41 + 10) * 1000;
     enqueueFood(q, val);
 }
