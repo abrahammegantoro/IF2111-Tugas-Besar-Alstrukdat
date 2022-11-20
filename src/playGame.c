@@ -15,7 +15,7 @@ void printLoading(Word gameName) {
 }
 
 // Game yang diload dan game yang dibuat akan dipisah karena perlu ada penanganan game yang sedang maintenance (game yang bukan game RNG, Dine Dash, atau game buatan)
-void playGame(Queue *queueGame) {
+void playGame(Queue *queueGame, List* historyGame) {
     ElType val;
     srand(time(NULL));
 
@@ -48,7 +48,7 @@ void playGame(Queue *queueGame) {
         }
         sleep(3);
         dequeue(queueGame, &val);
-    
+        InsVLast(historyGame, val);
     } else {
         printf("Kamu tidak memiliki antrian Game apapun.\n");
     }

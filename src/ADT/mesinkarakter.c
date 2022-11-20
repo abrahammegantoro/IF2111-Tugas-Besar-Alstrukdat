@@ -5,7 +5,7 @@ char currentChar;
 boolean EOP;
 
 static FILE *pita;
-static int retval;
+int retval;
 
 void START(FILE *input){
     pita = input;

@@ -4,7 +4,7 @@
 
 /* Implementasi save.h */
 
-void save(TabKata listGame, Word fileName) {
+void save(TabKata listGame, Word fileName, List historyGame) {
     // KAMUS
     char name[80] = "./data/";
     int i;
@@ -16,7 +16,7 @@ void save(TabKata listGame, Word fileName) {
     }
     name[7+fileName.Length] = '\0';
 
-    writeTxt(name, listGame);
+    writeTxt(name, listGame, historyGame);
     
     target = fopen(name, "r");
     if (target != NULL) {

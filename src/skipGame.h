@@ -4,12 +4,13 @@
 #include <stdio.h>
 #include "./ADT/queue.h"
 #include "./ADT/mesinkata.h"
+#include "./ADT/listlinier.h"
 #include "playGame.h"
 # include "./Games/rng.h"
 # include "./Games/dinerdash.h"
 # include "./Games/atcGame.h"
 
-void skipGame (Queue* queueGame, Word command);
+void skipGame (Queue* queueGame, Word command, List* historyGame);
 /* Melewatkan permainan sebanyak n
 I.S. queueGame terdefinisi, mungkin kosong
 F.S. Memainkan game pada Top queueGame sekarang
