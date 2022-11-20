@@ -9,11 +9,15 @@
 # include "src/skipGame.h"
 # include "src/help.h"
 # include "src/quit.h"
+# include "src/history.h"
 # include "unistd.h"
 
 int main(){
     TabKata Game;
     MakeEmpty(&Game);
+
+    List historyGame;
+    CreateEmpty(&historyGame);
 
     Queue antrianGame;
     CreateQueue(&antrianGame);
@@ -66,6 +70,8 @@ int main(){
             }
         }
     }
+
+    printf("-%c-", currentChar);
     
     printf("ENTER COMMAND: ");
     STARTINPUT();

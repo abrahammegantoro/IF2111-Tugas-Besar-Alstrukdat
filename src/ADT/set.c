@@ -10,7 +10,7 @@ Deskripsi	: Implementasi union_map.h
 #include "set.h"
 
 /* *** Konstruktor/Kreator *** */
-void CreateEmpty(Set *S)
+void CreateEmptySet(Set *S)
 /* I.S. Sembarang */
 /* F.S. Membuat sebuah Set S kosong berkapasitas MaxEl */
 /* Ciri Set kosong : count bernilai Nil */
@@ -19,14 +19,14 @@ void CreateEmpty(Set *S)
 }
 
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
-boolean IsEmpty(Set S)
+boolean IsEmptySet(Set S)
 /* Mengirim true jika Set S kosong*/
 /* Ciri Set kosong : count bernilai Nil */
 {
     return S.Count == Nil;
 }
 
-boolean IsFull(Set S)
+boolean IsFullSet(Set S)
 /* Mengirim true jika Set S penuh */
 /* Ciri Set penuh : count bernilai MaxEl */
 {
@@ -34,13 +34,13 @@ boolean IsFull(Set S)
 }
 
 /* ********** Operator Dasar Set ********* */
-void Insert(Set *S, infotype Elmt)
+void InsertSet(Set *S, infotype Elmt)
 /* Menambahkan Elmt sebagai elemen Set S. */
 /* I.S. S mungkin kosong, S tidak penuh
         S mungkin sudah beranggotakan Elmt */
 /* F.S. Elmt menjadi anggota dari S. Jika Elmt sudah merupakan anggota, operasi tidak dilakukan */
 {
-    if (IsMember(*S, Elmt))
+    if (IsMemberSet(*S, Elmt))
     {
         return;
     }
@@ -48,7 +48,7 @@ void Insert(Set *S, infotype Elmt)
     S->Count++;
 }
 
-void Delete(Set *S, infotype Elmt)
+void DeleteSet(Set *S, infotype Elmt)
 /* Menghapus Elmt dari Set S. */
 /* I.S. S tidak kosong
         Elmt mungkin anggota / bukan anggota dari S */
@@ -56,7 +56,7 @@ void Delete(Set *S, infotype Elmt)
 {
     boolean found = false;
     address idx = 0, iterator;
-    if (!IsMember(*S, Elmt))
+    if (!IsMemberSet(*S, Elmt))
     {
         return;
     }
@@ -78,7 +78,7 @@ void Delete(Set *S, infotype Elmt)
     S->Count--;
 }
 
-boolean IsMember(Set S, infotype Elmt)
+boolean IsMemberSet(Set S, infotype Elmt)
 /* Mengembalikan true jika Elmt adalah member dari S */
 {
     boolean found = false;
@@ -102,12 +102,12 @@ Set SetUnion(Set s1, Set s2)
 // Contoh: [1, 2] U [2, 3] = [1, 2, 3]
 {
 	int i;
-	Set s3; CreateEmpty(&s3);
+	Set s3; CreateEmptySet(&s3);
 	for (i = 0; i < s1.Count; i++) {
-		if (!IsMember(s3, s1.Elements[i])) Insert(&s3, s1.Elements[i]);
+		if (!IsMemberSet(s3, s1.Elements[i])) InsertSet(&s3, s1.Elements[i]);
 	}
 	for (i = 0; i < s2.Count; i++) {
-		if (!IsMember(s3, s2.Elements[i])) Insert(&s3, s2.Elements[i]);
+		if (!IsMemberSet(s3, s2.Elements[i])) InsertSet(&s3, s2.Elements[i]);
 	}
 	return s3;
 }
@@ -117,9 +117,9 @@ Set SetIntersection(Set s1, Set s2)
 // Mengembalikan set baru yang berisi elemen-elemen dari s1 dan s2 yang terdapat pada kedua set
 // Contoh: [1, 2] ∩ [2, 3] = [2]
 {
-	Set s3; CreateEmpty(&s3);
+	Set s3; CreateEmptySet(&s3);
 	for (int i = 0; i < s1.Count; i++) {
-		if (IsMember(s2, s1.Elements[i])) Insert(&s3, s1.Elements[i]);
+		if (IsMemberSet(s2, s1.Elements[i])) InsertSet(&s3, s1.Elements[i]);
 	}
 	return s3;
 }
@@ -130,12 +130,12 @@ Set SetSymmetricDifference(Set s1, Set s2)
 {
 {
 	int i;
-	Set s3; CreateEmpty(&s3);
+	Set s3; CreateEmptySet(&s3);
 	for (i = 0; i < s1.Count; i++) {
-		if (!IsMember(s2, s1.Elements[i])) Insert(&s3, s1.Elements[i]);
+		if (!IsMemberSet(s2, s1.Elements[i])) InsertSet(&s3, s1.Elements[i]);
 	}
 	for (i = 0; i < s2.Count; i++) {
-		if (!IsMember(s1, s2.Elements[i])) Insert(&s3, s2.Elements[i]);
+		if (!IsMemberSet(s1, s2.Elements[i])) InsertSet(&s3, s2.Elements[i]);
 	}
 	return s3;
 }	
@@ -147,9 +147,9 @@ Set SetSubtract(Set s1, Set s2)
 // s1 = [1, 2] s2 = [2, 3]
 // s1 - s2 = [1]
 {
-	Set s3; CreateEmpty(&s3);
+	Set s3; CreateEmptySet(&s3);
 	for (int i = 0; i < s1.Count; i++) {
-		if (!IsMember(s2, s1.Elements[i])) Insert(&s3, s1.Elements[i]);
+		if (!IsMemberSet(s2, s1.Elements[i])) InsertSet(&s3, s1.Elements[i]);
 	}
 	return s3;
 }

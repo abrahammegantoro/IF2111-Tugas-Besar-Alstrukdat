@@ -9,7 +9,7 @@
 
 /* PROTOTYPE */
 /****************** TEST LIST KOSONG ******************/
-boolean IsEmpty(List L)
+boolean IsEmptyList(List L)
 /* Mengirim true jika list kosong */
 {
     return First(L) == Nil;
@@ -65,7 +65,7 @@ address Search(List L, infotype X)
     address P;
     boolean bFound = false;
 
-    if (!IsEmpty(L))
+    if (!IsEmptyList(L))
     {
         P = First(L);
         while (!bFound && P != Nil)
@@ -185,7 +185,7 @@ void InsertLast(List *L, address P)
 {
     address Last;
 
-    if (IsEmpty(*L))
+    if (IsEmptyList(*L))
     {
         InsertFirst(L, P);
     }
@@ -223,7 +223,7 @@ void DelP(List *L, infotype X)
     address P;
     boolean bFound = false;
 
-    if (!IsEmpty(*L))
+    if (!IsEmptyList(*L))
     {
         if (WordCompare(X, Info(First(*L))))
         {
@@ -304,7 +304,7 @@ void PrintInfo(List L)
     boolean isFirst = true;
 
     printf("[");
-    if (!IsEmpty(L))
+    if (!IsEmptyList(L))
     {
         P = First(L);
         while (P != Nil)
@@ -321,13 +321,13 @@ void PrintInfo(List L)
     }
     printf("]");
 }
-int NbElmt(List L)
+int NumberElmt(List L)
 /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
 {
     int cnt = 0;
     address P;
 
-    if (!IsEmpty(L))
+    if (!IsEmptyList(L))
     {
         P = First(L);
         while (P != Nil)
@@ -351,7 +351,7 @@ void InversList(List *L)
     address Prec = Nil;
     address Succ;
 
-    if (!IsEmpty(*L))
+    if (!IsEmptyList(*L))
     {
         P = First(*L);
         while (P != Nil)
@@ -376,7 +376,7 @@ void Konkat1(List *L1, List *L2, List *L3)
     address Last1;
 
     CreateEmpty(L3);
-    if (IsEmpty(*L1))
+    if (IsEmptyList(*L1))
     {
         First(*L3) = First(*L2);
     }

@@ -9,7 +9,7 @@ Deskripsi   : Implementasi stack.h
 #include <stdio.h>
 #include "stack.h"
 
-void CreateEmpty(Stack *S)
+void CreateEmptyStack(Stack *S)
 /* I.S. sembarang; */
 /* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxEl */
 /* jadi indeksnya antara 0.. MaxEl */
@@ -19,12 +19,12 @@ void CreateEmpty(Stack *S)
 }
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
-boolean IsEmpty(Stack S)
+boolean IsEmptyStack(Stack S)
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
 {
     return Top(S) == Nil;
 }
-boolean IsFull(Stack S)
+boolean IsFullStack(Stack S)
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
 {
     return Top(S) == MaxEl - 1;
