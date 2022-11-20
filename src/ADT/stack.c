@@ -30,6 +30,19 @@ boolean IsFullStack(Stack S)
     return Top(S) == MaxEl - 1;
 }
 
+/****************** Proses semua elemen Stack ******************/
+int NbElmtStack(Stack S)
+/* Mengirimkan banyaknya elemen Stack; mengirimkan 0 jika Stack kosong */
+{
+    int count = 0;
+    infotype dump;
+    while (!IsEmptyStack(S)) {
+        Pop(&S, &dump);
+        count++;
+    }
+    return count;
+}
+
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
 void Push(Stack * S, infotype X)
 /* Menambahkan X sebagai elemen Stack S. */
