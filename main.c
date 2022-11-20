@@ -9,11 +9,15 @@
 # include "src/skipGame.h"
 # include "src/help.h"
 # include "src/quit.h"
+# include "src/history.h"
 # include "unistd.h"
 
 int main(){
     TabKata Game;
     MakeEmpty(&Game);
+
+    List historyGame;
+    CreateEmpty(&historyGame);
 
     Queue antrianGame;
     CreateQueue(&antrianGame);
@@ -42,7 +46,7 @@ int main(){
                 if (EndWord){
                     system("cls");
                     isStarted = true;
-                    start(&Game);
+                    start(&Game, &historyGame);
                 }
             } else if (WordCompare(currentWord, toKata("LOAD"))){
                 ADVWORD();
@@ -51,11 +55,8 @@ int main(){
                 if (EndWord){
                     system("cls");
                     isStarted = true;
-                    load(fileName, &Game);
+                    load(fileName, &Game, &historyGame);
                 }
-            }
-            while (!EndWord) {
-                ADVWORD();
             }
             if (!isStarted){
                 system("cls");
@@ -115,7 +116,7 @@ int main(){
                 Word fileName = currentWord;
                 ADVWORD();
                 if (EndWord){
-                    save(Game, fileName);
+                    save(Game, fileName, historyGame);
                 } else {
                     printf("Perintah tidak dikenali\n");
                 }
@@ -125,7 +126,7 @@ int main(){
             if (WordCompare(currentWord, toKata("GAME"))){
                 ADVWORD();
                 if (EndWord){
-                    playGame(&antrianGame);
+                    playGame(&antrianGame, &historyGame);
                 } else {
                     printf("Perintah tidak dikenali\n");
                 }
@@ -158,7 +159,7 @@ int main(){
                     Word n = currentWord;
                     ADVWORD();
                     if (EndWord){
-                        skipGame(&antrianGame, n);
+                        skipGame(&antrianGame, n, &historyGame);
                     } else {
                         printf("Perintah tidak dikenali\n");
                     }
@@ -167,7 +168,7 @@ int main(){
         } else if(WordCompare(currentWord, toKata("LOAD"))){
             ADVWORD();
             if (EndWord){
-                load(currentWord, &Game);
+                load(currentWord, &Game, &historyGame);
             } else {
                 printf("Perintah tidak dikenali\n");
             }
@@ -181,6 +182,15 @@ int main(){
             } else {
                 printf("Perintah tidak dikenali\n");
             }
+        } else if (WordCompare(currentWord, toKata("HISTORY"))) {
+            ADVWORD();
+            Word num = currentWord;
+            ADVWORD();
+            if (EndWord){
+                history(historyGame, num);
+            } else {
+                printf("Perintah tidak dikenali.\n");
+            }
         } else {
             printf("Perintah tidak dikenali.\n");
         }
@@ -189,6 +199,6 @@ int main(){
         STARTINPUT();
         system("cls");
     }
-    quit(Game, &antrianGame);
+    quit(Game, &antrianGame, historyGame);
     return 0;
 }

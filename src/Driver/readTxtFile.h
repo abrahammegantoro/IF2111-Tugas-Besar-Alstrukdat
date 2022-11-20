@@ -1,15 +1,14 @@
 #ifndef READ_FILE_TXT
 #define READ_FILE_TXT
 
-#include "../ADT/mesinkata.h"
-#include "../ADT/array.h"
 /* MODUL .txt file reader */
 #include "../ADT/mesinkata.h"
 #include "../ADT/array.h"
+#include "../ADT/listlinier.h"
 #include <stdio.h>
 # include "../boolean.h"
 
-boolean readTxt(char* filesrc, TabKata* listGame);
+boolean readTxt(char* filesrc, TabKata* listGame, List* historyGame);
 /* Membaca file .txt dan menyimpan isinya ke dalam array of Word
 I.S. listGame terdefinisi mungkin kosong tetapi tidak penuh
 F.S. Isi listGame bertambah dari isi file .txt
