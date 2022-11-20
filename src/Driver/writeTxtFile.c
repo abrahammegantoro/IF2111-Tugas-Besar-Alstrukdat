@@ -19,8 +19,8 @@ void writeTxt(char* filetarget, TabKata listGame, List historyGame) {
     fprintf(file, "%d\n", NumberElmt(historyGame));
     address P = First(historyGame);
     while (P != Nil) {
-        for (j = 0; j < listGame.TI[i].Length; j++) {
-            fprintf(file, "%c", Info(P));
+        for (j = 0; j < Info(P).Length; j++) {
+            fprintf(file, "%c", Info(P).TabWord[j]);
         }
         fprintf(file, "\n");
         P = Next(P);
