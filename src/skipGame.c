@@ -38,8 +38,15 @@ void skipGame (Queue* queueGame, Word command, List* historyGame) {
         } else if (WordCompare(HEAD(*queueGame), toKata("ATC GAME"))) {
             printLoading(val);
             playAtc();
-        } else if (WordCompare(HEAD(*queueGame), toKata("DINOSAUR IN EARTH")) || WordCompare(HEAD(*queueGame), toKata("RISEWOMAN")) || WordCompare(HEAD(*queueGame), toKata("EIFFEL TOWER"))) {
-            printf("Game "); PrintWord(HEAD(*queueGame)); printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n\n");
+        } else if (WordCompare(HEAD(*queueGame), toKata("HANGMAN"))) {
+            printLoading(HEAD(*queueGame));
+            // game hangman
+        } else if (WordCompare(HEAD(*queueGame), toKata("TOWER OF HANOI"))) {
+            printLoading(HEAD(*queueGame));
+            playTowerOfHanoi();
+        } else if (WordCompare(HEAD(*queueGame), toKata("SNAKE ON METEOR"))) {
+            printLoading(HEAD(*queueGame));
+            // game snake on meteor
         } else {
             printLoading(val);
             printf("Game Over! Skor akhir: %d\n\n", rand());

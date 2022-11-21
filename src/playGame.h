@@ -5,9 +5,12 @@
 #include "./ADT/queue.h"
 #include "./ADT/mesinkata.h"
 #include "./ADT/listlinier.h"
+
+// Include game
 #include "./Games/dinerdash.h"
 #include "./Games/rng.h"
 #include "./Games/atcGame.h"
+#include "./Games/towerOfHanoi.h"
 
 void printLoading(Word gameName);
 /* Menampilkan loading screen ke layar */
