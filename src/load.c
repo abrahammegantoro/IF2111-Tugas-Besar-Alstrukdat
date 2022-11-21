@@ -1,7 +1,7 @@
 # include "load.h"
 #include <stdio.h>
 
-void load(Word file, TabKata* Game, List* historyGame){
+void load(Word file, TabKata* Game, Stack* historyGame){
     char* fileName = WordToStr(unionWord(FDIR, file));
 
     TabKata addedGame;

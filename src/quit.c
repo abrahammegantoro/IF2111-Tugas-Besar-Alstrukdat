@@ -2,7 +2,7 @@
 #include "ADT/array.h"
 #include "quit.h"
 
-void quit(TabKata Game, Queue* antrianGame, List historyGame)
+void quit(TabKata Game, Queue* antrianGame, Stack historyGame)
 {
     printf("Apakah Anda ingin menyimpan file dan perubahannya pada sistem? (Y/N) : ");
     STARTINPUT();

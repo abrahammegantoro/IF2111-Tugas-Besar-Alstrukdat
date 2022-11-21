@@ -16,8 +16,8 @@ int main(){
     TabKata Game;
     MakeEmpty(&Game);
 
-    List historyGame;
-    CreateEmpty(&historyGame);
+    Stack historyGame;
+    CreateEmptyStack(&historyGame);
 
     Queue antrianGame;
     CreateQueue(&antrianGame);
@@ -193,6 +193,10 @@ int main(){
             }
         } else {
             printf("Perintah tidak dikenali.\n");
+        }
+
+        while (!EndWord) {
+            ADVWORD();
         }
 
         printf("ENTER COMMAND: ");

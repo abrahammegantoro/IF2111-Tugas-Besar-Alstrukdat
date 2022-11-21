@@ -3,7 +3,8 @@
 
 /* Implementasi readTxtFile.h */
 
-boolean readTxt(char* filesrc, TabKata* listGame, List* historyGame) {
+boolean readTxt(char* filesrc, TabKata* listGame, Stack* historyGame) {
+    Stack inverted; CreateEmptyStack(&inverted);
     FILE* input = fopen(filesrc, "r");
     int lines = 0;
     
@@ -45,7 +46,12 @@ boolean readTxt(char* filesrc, TabKata* listGame, List* historyGame) {
                         currentGame.Length++;
                     }
                 }
-                InsVLast(historyGame, currentGame);
+                Push(&inverted, currentGame);
+            }
+            infotype temp;
+            while (!IsEmptyStack(inverted)) {
+                Pop(&inverted, &temp);
+                Push(historyGame, temp);
             }
         }
 

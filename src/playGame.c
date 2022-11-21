@@ -15,7 +15,7 @@ void printLoading(Word gameName) {
 }
 
 // Game yang diload dan game yang dibuat akan dipisah karena perlu ada penanganan game yang sedang maintenance (game yang bukan game RNG, Dine Dash, atau game buatan)
-void playGame(Queue *queueGame, List* historyGame) {
+void playGame(Queue *queueGame, Stack* historyGame) {
     ElType val;
     srand(time(NULL));
 
@@ -40,15 +40,22 @@ void playGame(Queue *queueGame, List* historyGame) {
         } else if (WordCompare(HEAD(*queueGame), toKata("ATC GAME"))) {
             printLoading(HEAD(*queueGame));
             playAtc();
-        } else if (WordCompare(HEAD(*queueGame), toKata("DINOSAUR IN EARTH")) || WordCompare(HEAD(*queueGame), toKata("RISEWOMAN")) || WordCompare(HEAD(*queueGame), toKata("EIFFEL TOWER"))) {
-            printf("Game "); PrintWord(HEAD(*queueGame)); printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
+        } else if (WordCompare(HEAD(*queueGame), toKata("HANGMAN"))) {
+            printLoading(HEAD(*queueGame));
+            // game hangman
+        } else if (WordCompare(HEAD(*queueGame), toKata("TOWER OF HANOI"))) {
+            printLoading(HEAD(*queueGame));
+            playTowerOfHanoi();
+        } else if (WordCompare(HEAD(*queueGame), toKata("SNAKE ON METEOR"))) {
+            printLoading(HEAD(*queueGame));
+            // game snake on meteor
         } else {
             printLoading(HEAD(*queueGame));
             printf("Game Over! Skor akhir: %d\n", rand());
         }
         sleep(3);
         dequeue(queueGame, &val);
-        InsVLast(historyGame, val);
+        Push(historyGame, val);
     } else {
         printf("Kamu tidak memiliki antrian Game apapun.\n");
     }
