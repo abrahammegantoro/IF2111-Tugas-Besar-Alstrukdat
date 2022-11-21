@@ -2,7 +2,7 @@
 #include "writeTxtFile.h"
 
 /* Implementasi writeTxtFile.h */
-void writeTxt(char* filetarget, TabKata listGame, List historyGame) {
+void writeTxt(char* filetarget, TabKata listGame, Stack historyGame) {
     // KAMUS
     FILE *file;
     int i, j;
@@ -16,14 +16,14 @@ void writeTxt(char* filetarget, TabKata listGame, List historyGame) {
         }
         fprintf(file, "\n");
     }
-    fprintf(file, "%d\n", NumberElmt(historyGame));
-    address P = First(historyGame);
-    while (P != Nil) {
-        for (j = 0; j < Info(P).Length; j++) {
-            fprintf(file, "%c", Info(P).TabWord[j]);
+    fprintf(file, "%d\n", NbElmtStack(historyGame));
+    infotype temp;
+    while (!IsEmptyStack(historyGame)) {
+        Pop(&historyGame, &temp);
+        for (j = 0; j < temp.Length; j++) {
+            fprintf(file, "%c", temp.TabWord[j]);
         }
         fprintf(file, "\n");
-        P = Next(P);
     }
     fprintf(file, " ");
 

@@ -4,7 +4,7 @@
 
 /* Implementasi save.h */
 
-void save(TabKata listGame, Word fileName, List historyGame) {
+void save(TabKata listGame, Word fileName, Stack historyGame) {
     // KAMUS
     char name[80] = "./data/";
     int i;

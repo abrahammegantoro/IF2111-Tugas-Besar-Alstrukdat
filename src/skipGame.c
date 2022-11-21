@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include "skipGame.h"
 
-void skipGame (Queue* queueGame, Word command, List* historyGame) {
+void skipGame (Queue* queueGame, Word command, Stack* historyGame) {
     int n = 0, j = 0, i;
     ElType val;
     srand(time(NULL));
@@ -54,5 +54,5 @@ void skipGame (Queue* queueGame, Word command, List* historyGame) {
         sleep(3);
     }
     dequeue(queueGame, &val);
-    InsVLast(historyGame, val);
+    Push(historyGame, val);
 }

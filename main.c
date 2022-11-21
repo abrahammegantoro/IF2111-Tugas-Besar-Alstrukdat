@@ -10,15 +10,14 @@
 # include "src/help.h"
 # include "src/quit.h"
 # include "src/history.h"
-# include "src/resetHistory.h"
 # include "unistd.h"
 
 int main(){
     TabKata Game;
     MakeEmpty(&Game);
 
-    List historyGame;
-    CreateEmpty(&historyGame);
+    Stack historyGame;
+    CreateEmptyStack(&historyGame);
 
     Queue antrianGame;
     CreateQueue(&antrianGame);
@@ -191,16 +190,6 @@ int main(){
                 history(historyGame, num);
             } else {
                 printf("Perintah tidak dikenali.\n");
-            }
-        } else if (WordCompare(currentWord, toKata("RESET"))){
-            ADVWORD();
-            if (WordCompare(currentWord, toKata("HISTORY"))){
-                ADVWORD();
-                if (EndWord){
-                    resetHistory(&historyGame);
-                } else {
-                    printf("Perintah tidak dikenali\n");
-                }
             }
         } else {
             printf("Perintah tidak dikenali.\n");

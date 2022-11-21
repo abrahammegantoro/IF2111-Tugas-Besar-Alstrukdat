@@ -2,9 +2,9 @@
 #define HISTORY_H
 
 #include <stdio.h>
-#include "./ADT/listlinier.h"
+#include "./ADT/stack.h"
 
-void history(List historyGame, Word Command);
+void history(Stack historyGame, Word Command);
 /* Menampilkan history game sebanyak int Command
    I.S. sembarang
    F.S. history game ditampilkan sebanyak int command, mungkin kosong */

@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include "./ADT/queue.h"
 #include "./ADT/mesinkata.h"
-#include "./ADT/listlinier.h"
+#include "./ADT/stack.h"
 
 // Include game
 #include "./Games/dinerdash.h"
@@ -15,7 +15,7 @@
 void printLoading(Word gameName);
 /* Menampilkan loading screen ke layar */
 
-void playGame(Queue* queueGame, List* historyGame);
+void playGame(Queue* queueGame, Stack* historyGame);
 /* Memainkan game yang ada pada defaultGame
 I.S. queueGame terdefinisi, mungkin kosong
 F.S. Game teratas dimainkan

@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include "ADT/queue.h"
 
-void quit(TabKata Game, Queue* antrianGame, List historyGame);
+void quit(TabKata Game, Queue* antrianGame, Stack historyGame);
 /*  I.S. Sembarang
     F.S. User akan keluar dari program */
 
