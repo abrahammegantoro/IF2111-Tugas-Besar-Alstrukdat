@@ -10,6 +10,7 @@
 # include "src/help.h"
 # include "src/quit.h"
 # include "src/history.h"
+# include "src/resethistory.h"
 # include "unistd.h"
 
 int main(){
@@ -190,6 +191,17 @@ int main(){
                 history(historyGame, num);
             } else {
                 printf("Perintah tidak dikenali.\n");
+            }
+        } else if (WordCompare(currentWord, toKata("RESET"))) {
+            ADVWORD();
+            if (WordCompare(currentWord, toKata("HISTORY")))
+            {
+                ADVWORD();
+                if (EndWord){
+                    resethistory(&historyGame);
+                } else {
+                    printf("Perintah tidak dikenali.\n");
+                }
             }
         } else {
             printf("Perintah tidak dikenali.\n");
