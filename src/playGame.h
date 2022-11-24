@@ -11,6 +11,7 @@
 #include "./Games/rng.h"
 #include "./Games/atcGame.h"
 #include "./Games/towerOfHanoi.h"
+#include "./Games/theGlassGame.h"
 
 void printLoading(Word gameName);
 /* Menampilkan loading screen ke layar */
