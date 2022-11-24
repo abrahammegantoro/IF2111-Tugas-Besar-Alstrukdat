@@ -7,11 +7,12 @@
 # include "listGame.h"
 # include "boolean.h"
 # include "ADT/queue.h"
+# include "ADT/stack.h"
 
 boolean isExist(ElType Kata, Queue antrian);
 /* Mengecek apakah List Game pada array global terdapat pada Queue global antrian */
 
-void deleteGame(TabKata* file, Queue antrianGame);
+void deleteGame(TabKata* file, Queue antrianGame, Stack *historyGame);
 /* Menghapus game yang tersedia pada array global*/
 /* I.S Array dan Queue terdefinisi. mungkin kosong */
 /* F.S game pada array global dihapus sesuai urutan yang dimasukkan oleh user */

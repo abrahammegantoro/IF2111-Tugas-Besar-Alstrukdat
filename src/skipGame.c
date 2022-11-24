@@ -47,6 +47,9 @@ void skipGame (Queue* queueGame, Word command, Stack* historyGame) {
         } else if (WordCompare(HEAD(*queueGame), toKata("SNAKE ON METEOR"))) {
             printLoading(HEAD(*queueGame));
             // game snake on meteor
+        } else if (WordCompare(HEAD(*queueGame), toKata("THE GLASS GAME"))) {
+            printLoading(HEAD(*queueGame));
+            playTheGlassGame();
         } else {
             printLoading(val);
             printf("Game Over! Skor akhir: %d\n\n", rand());

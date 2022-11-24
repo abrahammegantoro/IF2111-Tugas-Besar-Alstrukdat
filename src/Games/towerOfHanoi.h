@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../ADT/stack.h"
+#include "../ADT/mesinkata.h"
 #include "../boolean.h"
 
 int playTowerOfHanoi();
@@ -12,7 +13,7 @@ int playTowerOfHanoi();
 boolean moveDisk(Stack* Tout, Stack* Tin);
 /* Memindahkan Disk dari Tout ke Tin, jika berhasil mengembalikan nilai true */
 
-void printTower(Stack T1, Stack T2, Stack T3);
+void printTower(Stack T1, Stack T2, Stack T3, int nDisk);
 /* Menampilkan tower ke layar
    I.S. Sembarang
    F.S. Tower ditampilkan ke layar */
