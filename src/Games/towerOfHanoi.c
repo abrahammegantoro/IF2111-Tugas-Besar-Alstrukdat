@@ -3,10 +3,6 @@
 #include <unistd.h>
 #include "towerOfHanoi.h"
 
-int main() {
-    playTowerOfHanoi();
-}
-
 int power(int x, int y) {
     int result = 1;
     for (int i = 0; i< y; i++) {
