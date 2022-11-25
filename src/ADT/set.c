@@ -12,29 +12,29 @@ Deskripsi	: Implementasi union_map.h
 /* *** Konstruktor/Kreator *** */
 void CreateEmptySet(Set *S)
 /* I.S. Sembarang */
-/* F.S. Membuat sebuah Set S kosong berkapasitas MaxEl */
-/* Ciri Set kosong : count bernilai Nil */
+/* F.S. Membuat sebuah Set S kosong berkapasitas MaxElS */
+/* Ciri Set kosong : count bernilai NilS */
 {
-    S->Count = Nil;
+    S->Count = NilS;
 }
 
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
 boolean IsEmptySet(Set S)
 /* Mengirim true jika Set S kosong*/
-/* Ciri Set kosong : count bernilai Nil */
+/* Ciri Set kosong : count bernilai NilS */
 {
-    return S.Count == Nil;
+    return S.Count == NilS;
 }
 
 boolean IsFullSet(Set S)
 /* Mengirim true jika Set S penuh */
-/* Ciri Set penuh : count bernilai MaxEl */
+/* Ciri Set penuh : count bernilai MaxElS */
 {
-    return S.Count == MaxEl;
+    return S.Count == MaxElS;
 }
 
 /* ********** Operator Dasar Set ********* */
-void InsertSet(Set *S, infotype Elmt)
+int InsertSet(Set *S, infotype Elmt)
 /* Menambahkan Elmt sebagai elemen Set S. */
 /* I.S. S mungkin kosong, S tidak penuh
         S mungkin sudah beranggotakan Elmt */
@@ -42,10 +42,11 @@ void InsertSet(Set *S, infotype Elmt)
 {
     if (IsMemberSet(*S, Elmt))
     {
-        return;
-    }
+        return 0;
+    }else{
     S->Elements[S->Count] = Elmt;
     S->Count++;
+    return 1;}
 }
 
 void DeleteSet(Set *S, infotype Elmt)
@@ -55,7 +56,7 @@ void DeleteSet(Set *S, infotype Elmt)
 /* F.S. Elmt bukan anggota dari S */
 {
     boolean found = false;
-    address idx = 0, iterator;
+    addressSet idx = 0, iterator;
     if (!IsMemberSet(*S, Elmt))
     {
         return;
@@ -82,7 +83,7 @@ boolean IsMemberSet(Set S, infotype Elmt)
 /* Mengembalikan true jika Elmt adalah member dari S */
 {
     boolean found = false;
-    address idx = 0;
+    addressSet idx = 0;
     while (!found && idx < S.Count)
     {
         if (WordCompare(S.Elements[idx], Elmt))
