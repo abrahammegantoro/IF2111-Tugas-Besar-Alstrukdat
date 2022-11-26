@@ -10,6 +10,7 @@
 #define Fruit 111
 #define Meteor 222
 #define Obstacle 333
+#define ObstacleHit 444
 #define Empty -1
 
 
