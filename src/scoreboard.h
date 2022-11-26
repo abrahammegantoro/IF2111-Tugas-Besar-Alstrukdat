@@ -10,6 +10,6 @@ typedef struct {
 } ListScore;
 
 void CreateListScore(ListScore *scoreBoard);
-void printScoreboard(TabKata x, ListScore scoreBoard, int gameKe);
+void printScoreboard(TabKata listGame, ListScore *scoreBoard);
 void insertScore(Set *S, Map *M);
 #endif

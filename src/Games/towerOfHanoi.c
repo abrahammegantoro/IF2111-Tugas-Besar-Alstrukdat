@@ -72,13 +72,14 @@ int playTowerOfHanoi() {
     
     Word Tin, Tout;
     boolean takeTurn;
-    while (!(NbElmtStack(T3) == nDisk)) {
+    boolean isQuit = false;
+    while (!(NbElmtStack(T3) == nDisk) && !(isQuit)) {
         takeTurn = false;
         printTower(T1, T2, T3, nDisk);
         printf("\nTIANG ASAL   : ");
         STARTINPUT();
         
-        if ((currentWord.Length == 1) && (currentWord.TabWord[0] - 'A' >= 0) && (currentWord.TabWord[0] - 'A' < 3)) {
+        if (((currentWord.Length == 1) && (currentWord.TabWord[0] - 'A' >= 0) && (currentWord.TabWord[0] - 'A' < 3))) {
             Tout = currentWord;
             printf("TIANG TUJUAN : ");
             STARTINPUT();
@@ -99,7 +100,7 @@ int playTowerOfHanoi() {
                         } else {
                             takeTurn = moveDisk(&T2, &T3);
                         }
-                    } else {
+                    } else if (Tout.TabWord[0] == 'C') {
                         if (Tin.TabWord[0] == 'A') {
                             takeTurn = moveDisk(&T3, &T1);
                         } else {
@@ -114,20 +115,30 @@ int playTowerOfHanoi() {
                         turn++;
                     }
                 }
-            } else {
+            } else if ((currentWord.Length == 1) && (currentWord.TabWord[0] == 'Q')) {
+                printf("\nBerhasil keluar permainan.");
+                isQuit = true;
+            }
+            else {
                 printf("\nMasukan tiang tidak valid.");
             }
+        } else if ((currentWord.Length == 1) && (currentWord.TabWord[0] == 'Q')) {
+                printf("\nBerhasil keluar permainan.");
+                isQuit = true;
+                
         } else {
             printf("\nMasukan tiang tidak valid.");
         }
         sleep(2);
         system("cls");
     }
-    if (turn > 31) {
+    if (turn > idealMove) {
         score = score - (int) minus;
     }
+    if (isQuit) score = 0;
     printTower(T1, T2, T3, nDisk);
-    printf("\nKamu berhasil!\n\nSkor didapatkan: %d\n", score);
+    if (!isQuit) printf("\nKamu berhasil!\n\nSkor didapatkan: %d\n", score);
+    else printf("\nBooo! Kamu menyerah dalam bermain >:( !\nSkor didapatkan: %d\n", score);
     return score;
 }
 
