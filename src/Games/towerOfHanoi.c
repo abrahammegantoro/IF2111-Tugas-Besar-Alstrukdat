@@ -135,9 +135,10 @@ int playTowerOfHanoi() {
     if (turn > idealMove) {
         score = score - (int) minus;
     }
+    if (isQuit) score = 0;
     printTower(T1, T2, T3, nDisk);
     if (!isQuit) printf("\nKamu berhasil!\n\nSkor didapatkan: %d\n", score);
-    else printf("Booo! Kamu menyerah dalam bermain >:( ! Skor didapatkan: %d\n", score);
+    else printf("\nBooo! Kamu menyerah dalam bermain >:( !\nSkor didapatkan: %d\n", score);
     return score;
 }
 
