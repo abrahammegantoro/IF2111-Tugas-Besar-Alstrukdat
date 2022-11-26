@@ -442,7 +442,7 @@ int hangman(){
                     printf("\n");
                     Word gameName = currentWord;
                     ADVWORD();
-                    if (EndWord && gameName.Length != 0){
+                    if (EndWord && gameName.Length != 0 && !isNotUpperCase(gameName)){
                         int i = 0;
                         boolean found = false;
 
@@ -466,26 +466,31 @@ int hangman(){
                             sleep(1);
                         } else
                         {
-                            printf("  Gagal menambahkan Kata! Kata sudah terdapat di dalam list kata\n");
+                            printf("  Gagal menambahkan Kata! Kata sudah terdapat di dalam list kata!\n");
                             sleep(1);
                         }
                         system("cls");
                     } else {
-                        printf("  INPUT TIDAK VALID! MASUKKAN SATU KATA SAJA\n");
+                        printf("  INPUT TIDAK VALID! MASUKKAN SATU NAMA BUAH DALAM HURUF KAPITAL!\n");
                         sleep(1);
                         system("cls");
                     }
 
                 } else {
-                    printf("  INPUT TIDAK VALID! MASUKKAN ANGKA 1 ATAU 2\n");
+                    printf("  INPUT TIDAK VALID! MASUKKAN ANGKA 1 ATAU 2!\n");
                     sleep(1);
                     system("cls");
                 }
             } else {
-                printf("  INPUT TIDAK VALID! MASUKKAN ANGKA 1 ATAU 2\n");
+                printf("  INPUT TIDAK VALID! MASUKKAN ANGKA 1 ATAU 2!\n");
                 sleep(1);
                 system("cls");
             }
         }
     }
+}
+
+int main(){
+    hangman();
+    return 0;
 }
