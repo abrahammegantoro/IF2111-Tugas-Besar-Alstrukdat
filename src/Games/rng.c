@@ -28,7 +28,7 @@ boolean checkX(int x) {
         return false;
     }
 }
-void runRNG() {
+int runRNG() {
     printf(" .----------------.  .-----------------. .----------------. \n");
     printf("| .--------------. || .--------------. || .--------------. |\n");
     printf("| |  _______     | || | ____  _____  | || |    ______    | |\n");
@@ -52,7 +52,7 @@ void runRNG() {
     getX(&x);
     while (x != num && try > 1) {
         while (!checkX(x)) {
-            printf("!! Tebakan Anda tidak valid. Silahkan masukkan angka antara 1 dan 100. !!n");
+            printf("!! Tebakan Anda tidak valid. Silahkan masukkan angka antara 1 dan 100. !!\n");
             getX(&x);
         }        
         if (x > num) {
@@ -79,6 +79,7 @@ void runRNG() {
     printf("|___\\_\\   __/ |                                          /_/___|\n");
     printf("         |___/                                                 \n");
     printf("===============================================================\n");
-    printf("\t\t\tSKOR KAMU : %d\t\t\t\t\t\n", try * 1000);
+    printf("\t\t\tSKOR KAMU : %d\t\t\t\t\t\n", ((try - 1) * 1000));
     printf("===============================================================\n");
+    return ((try - 1) * 1000);
 }
