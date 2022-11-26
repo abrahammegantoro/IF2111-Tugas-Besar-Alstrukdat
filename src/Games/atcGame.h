@@ -14,7 +14,7 @@ typedef struct {
 
 extern boolean isOver;
 
-void playAtc();
+int playAtc();
 /* Menjalankan game Air Traffic Control 
    I.S. sembarang
    F.S. Game Air Traffic Control selesai dijalankan */

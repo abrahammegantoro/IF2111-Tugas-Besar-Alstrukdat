@@ -239,7 +239,7 @@ void printDescription(QueueDash q, boolean isValid, int isCook, int id)
         }
     }
 }
-void runDinerDash()
+int runDinerDash()
 {
     system("cls");
 
@@ -333,4 +333,5 @@ void runDinerDash()
     printf("===============================================================\n");
     printf("\t\t\tSKOR KAMU : %d\t\t\t\t\t\n", saldo);
     printf("===============================================================\n");
+    return saldo;
 }

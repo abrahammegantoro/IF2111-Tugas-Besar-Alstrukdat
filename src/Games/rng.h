@@ -10,12 +10,16 @@
 
 int getRandom();
 /* Mengembalikan angka random */
+
 void getX(int *x);
+/* Mengisi x dengan angka random
+    I.S. x terdefinisi
+    F.S. x terisi dengan angka random */
+
 boolean checkX(int x);
-void runRNG();
-/* 
-    I.S  :
-    F.S. :
-*/
+/* Mengembalikan true jika x adalah angka antara 1 dan 100 */
+
+int runRNG();
+/* Memainkan game RNG dan mengembalikan skor permainan */
 
 #endif
