@@ -59,8 +59,9 @@ void InsertMapSorted(Map *M, keytypeM k, valuetype v)
             (*M).Elements[0].Value = v;
         } else {
             int i = (*M).Count - 1;
-            while((*M).Elements[i].Value > v) {
-                (*M).Elements[i + 1] = (*M).Elements[i];
+            while(((*M).Elements[i].Value < v) && (i >= 0)) {
+                (*M).Elements[i + 1].Key = (*M).Elements[i].Key;
+                (*M).Elements[i + 1].Value = (*M).Elements[i].Value;
                 i--; 
             }
             (*M).Elements[i + 1].Key = k;

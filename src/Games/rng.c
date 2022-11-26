@@ -70,7 +70,7 @@ int runRNG() {
     } else {
         printf("Anda telah kehabisan kesempatan. X adalah %d.\n", num);
     }
-        printf(" ___ __                                                  __ ___ \n");
+    printf(" ___ __                                                  __ ___ \n");
     printf("|  _/ /                                                  \\ \\_  |\n");
     printf("| || |    __ _  __ _ _ __ ___   ___  _____   _____ _ __   | || |\n");
     printf("| / /    / _` |/ _` | '_ ` _ \\ / _ \\/ _ \\ \\ / / _ \\ '__|   \\ \\ |\n");

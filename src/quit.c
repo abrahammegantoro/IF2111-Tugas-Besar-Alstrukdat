@@ -2,7 +2,7 @@
 #include "ADT/array.h"
 #include "quit.h"
 
-void quit(TabKata Game, Queue* antrianGame, Stack historyGame)
+void quit(TabKata Game, Queue* antrianGame, Stack historyGame, ListScore *scoreboard)
 {
     printf("Apakah Anda ingin menyimpan file dan perubahannya pada sistem? (Y/N) : ");
     STARTINPUT();
@@ -25,7 +25,7 @@ void quit(TabKata Game, Queue* antrianGame, Stack historyGame)
     {
         printf("Masukkan nama file <filename.txt> : ");
         STARTINPUT();
-        save(Game, currentWord, historyGame);
+        save(Game, currentWord, historyGame, scoreboard);
     }
 
     ElType val;

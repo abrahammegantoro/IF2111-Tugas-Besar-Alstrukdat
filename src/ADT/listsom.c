@@ -31,8 +31,8 @@ void CreateEmptySnake(ListSnake *L) {
 /* F.S. Terbentuk list kosong */
 
 /****************** Manajemen Memori ******************/
-address AlokasiSnake(Point X) {
-    address P = (address) malloc (sizeof(ElmtSnake));
+somaddress AlokasiSnake(Point X) {
+    somaddress P = (somaddress) malloc (sizeof(ElmtSnake));
     if (P != NilSOM) {
         InfoPos(P) = X;
         NextPos(P) = NilSOM;
@@ -44,7 +44,7 @@ address AlokasiSnake(Point X) {
 /* menghasilkan P, maka Info(P)=X, Next(P)=NilSOM, Prev(P)=NilSOM */
 /* Jika alokasi gagal, mengirimkan NilSOM */
 
-void DealokasiSnake(address P) {
+void DealokasiSnake(somaddress P) {
     free(P);
 }
 /* I.S. P terdefinisi */
@@ -53,7 +53,7 @@ void DealokasiSnake(address P) {
 
 /****************** PENCARIAN SEBUAH ELEMEN LIST ******************/
 int LengthSnake(ListSnake L) {
-    address P = Head(L);
+    somaddress P = Head(L);
     int count = 0;
     while (P != NilSOM) {
         count++;
@@ -62,8 +62,8 @@ int LengthSnake(ListSnake L) {
     return count;
 }
 
-address SearchSnake(ListSnake L, Point X) {
-    address P = Head(L);
+somaddress SearchSnake(ListSnake L, Point X) {
+    somaddress P = Head(L);
     while (P != NilSOM) {
         if (IsEQPoint(InfoPos(P), X)) {
             return P;
@@ -74,7 +74,7 @@ address SearchSnake(ListSnake L, Point X) {
 }
 
 int SearchIdxSnake(ListSnake L, Point X) {
-    address P = Head(L);
+    somaddress P = Head(L);
     int i = 0;
     while (P != NilSOM) {
         if (IsEQPoint(InfoPos(P), X)) {
@@ -87,7 +87,7 @@ int SearchIdxSnake(ListSnake L, Point X) {
 }
 
 void InsVFirstSnake(ListSnake *L, Point X) {
-    address P = AlokasiSnake(X);
+    somaddress P = AlokasiSnake(X);
     if (P != NilSOM) {
         if (IsEmptySnake(*L)) {
             Head(*L) = P;
@@ -100,7 +100,7 @@ void InsVFirstSnake(ListSnake *L, Point X) {
 }
 
 void InsVLastSnake(ListSnake *L, Point X) {
-    address P = AlokasiSnake(X);
+    somaddress P = AlokasiSnake(X);
     if (P != NilSOM) {
         if (IsEmptySnake(*L)) {
             Head(*L) = P;
@@ -114,7 +114,7 @@ void InsVLastSnake(ListSnake *L, Point X) {
 
 void DelVFirstSnake(ListSnake *L, Point *X) {
     if (!IsEmptySnake(*L)) {
-        address P = Head(*L);
+        somaddress P = Head(*L);
         *X = InfoPos(P);
         if (Head(*L) == Tail(*L)) {
             Head(*L) = NilSOM;
@@ -128,13 +128,13 @@ void DelVFirstSnake(ListSnake *L, Point *X) {
 
 void DelVLastSnake(ListSnake *L, Point *X) {
     if (!IsEmptySnake(*L)) {
-        address P = Tail(*L);
+        somaddress P = Tail(*L);
         *X = InfoPos(P);
         if (Head(*L) == Tail(*L)) {
             Head(*L) = NilSOM;
             Tail(*L) = NilSOM;
         } else {
-            address Q = Head(*L);
+            somaddress Q = Head(*L);
             while (NextPos(Q) != Tail(*L)) {
                 Q = NextPos(Q);
             }
@@ -152,12 +152,12 @@ void DelPSnake(ListSnake *L, Point X) {
         } else if (IsEQPoint(InfoPos(Tail(*L)), X)) {
             DelVLastSnake(L, &X);
         } else {
-            address P = Head(*L);
+            somaddress P = Head(*L);
             while (NextPos(P) != NilSOM && !IsEQPoint(InfoPos(NextPos(P)), X)) {
                 P = NextPos(P);
             }
             if (NextPos(P) != NilSOM) {
-                address Q = NextPos(P);
+                somaddress Q = NextPos(P);
                 NextPos(P) = NextPos(Q);
                 DealokasiSnake(Q);
             }

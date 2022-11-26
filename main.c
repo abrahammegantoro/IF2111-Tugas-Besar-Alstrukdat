@@ -16,6 +16,8 @@
 # include "unistd.h"
 
 int main(){
+    int score;
+
     TabKata Game;
     MakeEmpty(&Game);
 
@@ -26,7 +28,9 @@ int main(){
     CreateQueue(&antrianGame);
     
     ListScore scoreBoard[100];
-    CreateListScore((&scoreBoard)[0]);
+    for (int i = 0; i < 100; i++) {
+        CreateListScore(&scoreBoard[i]);
+    }
     /*
     system("cls");
     for (int i = 0; i < 8; i++) {
@@ -51,7 +55,7 @@ int main(){
                 if (EndWord){
                     system("cls");
                     isStarted = true;
-                    start(&Game, &historyGame);
+                    start(&Game, &historyGame, &scoreBoard[0]);
                 }
             } else if (WordCompare(currentWord, toKata("LOAD"))){
                 ADVWORD();
@@ -60,7 +64,7 @@ int main(){
                 if (EndWord){
                     system("cls");
                     isStarted = true;
-                    load(fileName, &Game, &historyGame);
+                    load(fileName, &Game, &historyGame, &scoreBoard[0]);
                 }
             }
             if (!isStarted){
@@ -121,7 +125,7 @@ int main(){
                 Word fileName = currentWord;
                 ADVWORD();
                 if (EndWord){
-                    save(Game, fileName, historyGame);
+                    save(Game, fileName, historyGame, scoreBoard);
                 } else {
                     printf("Perintah tidak dikenali\n");
                 }
@@ -134,7 +138,7 @@ int main(){
                 Word fileName = currentWord;
                 ADVWORD();
                 if (EndWord){
-                    save(Game, fileName, historyGame);
+                    save(Game, fileName, historyGame, scoreBoard);
                 } else {
                     printf("Perintah tidak dikenali\n");
                 }
@@ -144,7 +148,28 @@ int main(){
             if (WordCompare(currentWord, toKata("GAME"))){
                 ADVWORD();
                 if (EndWord){
-                    playGame(&antrianGame, &historyGame);
+                    int idxGame;
+                    Word name;
+                    idxGame = selectGame(Game, antrianGame);
+                    score = playGame(&antrianGame, &historyGame);
+                    if (score != NIL) {
+                        printf("Masukkan username : ");
+                        STARTINPUT();
+                        name = currentWord;
+                        while (!EndWord) {
+                            ADVWORD();
+                        }
+                        while (IsMemberSet(scoreBoard[idxGame].Nama, name)) {
+                            printf("Nama sudah ada, masukkan nama lain : ");
+                            STARTINPUT();
+                            name = currentWord;
+                            while (!EndWord) {
+                                ADVWORD();
+                            }
+                        }
+                        InsertSet(&(scoreBoard[idxGame].Nama), name);
+                        InsertMapSorted(&(scoreBoard[idxGame].Score), ((scoreBoard[idxGame].Nama.Count) - 1), score);
+                    }
                 } else {
                     printf("Perintah tidak dikenali\n");
                 }
@@ -186,7 +211,7 @@ int main(){
         } else if(WordCompare(currentWord, toKata("LOAD"))){
             ADVWORD();
             if (EndWord){
-                load(currentWord, &Game, &historyGame);
+                load(currentWord, &Game, &historyGame, &scoreBoard[0]);
             } else {
                 printf("Perintah tidak dikenali\n");
             }
@@ -262,14 +287,9 @@ int main(){
                 } else {
                     printf("Perintah tidak dikenali\n");
                 }
-            } else {
-                printf("Perintah tidak dikenali.\n");
-            }
-        }
-         else {
+        } else {
             printf("Perintah tidak dikenali.\n");
         }
-
         while (!EndWord) {
             ADVWORD();
         }
@@ -278,6 +298,6 @@ int main(){
         STARTINPUT();
         system("cls");
     }
-    quit(Game, &antrianGame, historyGame);
+    quit(Game, &antrianGame, historyGame, scoreBoard);
     return 0;
 }

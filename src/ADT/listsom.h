@@ -13,15 +13,15 @@ typedef struct {
     int y;
 } Point;
 
-typedef struct tElmtList *address;
+typedef struct tElmtList *somaddress;
 typedef struct tElmtList {
     Point infoPos;
-    address nextPos;
+    somaddress nextPos;
 } ElmtSnake;
 
 typedef struct {
-    address Head;
-    address Tail;
+    somaddress Head;
+    somaddress Tail;
 } ListSnake;
 
 typedef struct {
@@ -56,13 +56,13 @@ void CreateEmptySnake(ListSnake *L);
 /* F.S. Terbentuk list kosong */
 
 /****************** Manajemen Memori ******************/
-address AlokasiSnake(Point X);
+somaddress AlokasiSnake(Point X);
 /* Mengirimkan address hasil alokasi sebuah elemen */
 /* Jika alokasi berhasil, maka address tidak nil, dan misalnya */
 /* menghasilkan P, maka Info(P)=X, Next(P)=Nil, Prev(P)=Nil */
 /* Jika alokasi gagal, mengirimkan Nil */
 
-void DealokasiSnake(address P);
+void DealokasiSnake(somaddress P);
 /* I.S. P terdefinisi */
 /* F.S. P dikembalikan ke sistem */
 /* Melakukan dealokasi/pengembalian address P */
@@ -70,7 +70,7 @@ void DealokasiSnake(address P);
 /****************** PENCARIAN SEBUAH ELEMEN LIST ******************/
 int LengthSnake (ListSnake L);
 
-address SearchSnake(ListSnake L, Point X);
+somaddress SearchSnake(ListSnake L, Point X);
 
 int SearchIdxSnake(ListSnake L, Point X);
 

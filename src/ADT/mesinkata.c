@@ -221,3 +221,17 @@ Word intToWord(int n) {
     }
     return num;
 }
+
+Word toLower(Word kata){
+    Word lower;
+    lower.Length = kata.Length;
+    for (int i = 0; i < kata.Length; i++)
+    {
+        if (kata.TabWord[i] >= 'A' && kata.TabWord[i] <= 'Z'){
+            lower.TabWord[i] = kata.TabWord[i] + 32;
+        } else {
+            lower.TabWord[i] = kata.TabWord[i];
+        }
+    }
+    return lower;
+}

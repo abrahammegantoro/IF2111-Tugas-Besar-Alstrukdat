@@ -1,4 +1,4 @@
-#include"scoreboard.h"
+#include "scoreboard.h"
 #include <stdio.h>
 
 void CreateListScore(ListScore *scoreBoard){
