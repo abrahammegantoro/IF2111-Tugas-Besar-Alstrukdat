@@ -8,19 +8,19 @@
 Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 */
 
-#define Nil 0
-#define MaxEl 100
+#define NilS 0
+#define MaxElS 100
 
 typedef Word infotype;
-typedef int address;
+typedef int addressSet;
 
 typedef struct
 {
-    infotype Elements[MaxEl];
-    address Count;
+    infotype Elements[MaxElS];
+    addressSet Count;
 } Set;
 
-/* Definisi Set S kosong : S.Count = Nil */
+/* Definisi Set S kosong : S.Count = NilS */
 /* S.Count = jumlah element Set */
 /* S.Elements = tempat penyimpanan element Set */
 
@@ -29,20 +29,20 @@ typedef struct
 /* *** Konstruktor/Kreator *** */
 void CreateEmptySet(Set *S);
 /* I.S. Sembarang */
-/* F.S. Membuat sebuah Set S kosong berkapasitas MaxEl */
-/* Ciri Set kosong : count bernilai Nil */
+/* F.S. Membuat sebuah Set S kosong berkapasitas MaxElS */
+/* Ciri Set kosong : count bernilai NilS */
 
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
 boolean IsEmptySet(Set S);
 /* Mengirim true jika Set S kosong*/
-/* Ciri Set kosong : count bernilai Nil */
+/* Ciri Set kosong : count bernilai NilS */
 
 boolean IsFullSet(Set S);
 /* Mengirim true jika Set S penuh */
-/* Ciri Set penuh : count bernilai MaxEl */
+/* Ciri Set penuh : count bernilai MaxElS */
 
 /* ********** Operator Dasar Set ********* */
-void InsertSet(Set *S, infotype Elmt);
+int InsertSet(Set *S, infotype Elmt);
 /* Menambahkan Elmt sebagai elemen Set S. */
 /* I.S. S mungkin kosong, S tidak penuh
         S mungkin sudah beranggotakan Elmt */

@@ -11,6 +11,8 @@
 # include "src/quit.h"
 # include "src/history.h"
 # include "src/resethistory.h"
+# include "src/scoreboard.h"
+# include "src/resetScoreboard.h"
 # include "unistd.h"
 
 int main(){
@@ -22,7 +24,10 @@ int main(){
 
     Queue antrianGame;
     CreateQueue(&antrianGame);
-
+    
+    ListScore scoreBoard[100];
+    CreateListScore((&scoreBoard)[0]);
+    /*
     system("cls");
     for (int i = 0; i < 8; i++) {
         if (i % 4 == 0) {system("cls"); printf("\n                                 __  _                                   \n                          _  _ _|  || |_ _  _                            \n ___ ___ ___ ___ ___ ___ / )/ |_   ||  _| \\( \\ ___ ___ ___ ___ ___ ___   \n(___|___|___|___|___|___| (( ( _|  || |_ ) )) |___|___|___|___|___|___)  \n                         \\_)\\_|_   ||  _|_/(_/   __________              \n                                |__||_|         /_________/|             \n                                                |         ||  /          \n _ _      ______  ______  ______   _____        |   ._.   || /       _ _ \n| | |    (____  \\|  ___ \\|  ___ \\ / ___ \\       |         |_/       | | |\n|_|_|     ____)  ) |   | | | _ | | |   | |     /|_________||        |_|_|\n _ _     |  __  (| |   | | || || | |   | |     ||         ||         _ _ \n| | |    | |__)  ) |   | | || || | |___| |     ||_________|/        | | |\n|_|_|    |______/|_|   |_|_||_||_|\\_____/        //    //           |_|_|\n                                                n/    n/                 \n         ___ ___   __           ______          \"  __ \" ___ ___          \n        |  _|_  | / _)__ ___ __(_____ \\ ___ ___ __(_ \\ |  _|_  |         \n ___ ___| |   | |/ /(___|___|___)____) |___|___|___)\\ \\| |   | |___ ___  \n(___|___) |   | ( (  ___ ___ ___/_____/ ___ ___ ___  ) ) |   | (___|___) \n        | |_ _| |\\ \\(___|___|___)______(___|___|___)/ /| |_ _| |         \n        |___|___| \\__)         (_______)          (__/ |___|___|         \n\n");}
@@ -32,8 +37,7 @@ int main(){
         sleep(1);
     }
 
-    
-
+    */
     printf("Welcome to BNMO!\n\n");
     while (Game.Neff == 0) {
         boolean isStarted = false;
@@ -89,7 +93,7 @@ int main(){
                 ADVWORD();
                 if (EndWord){
                     listGame(Game);
-                    deleteGame(&Game, antrianGame);
+                    deleteGame(&Game, antrianGame, &historyGame);
                 } else {
                     printf("Perintah tidak dikenali\n");
                 }
@@ -108,6 +112,19 @@ int main(){
                 }
             } else {
                 printf("Perintah tidak dikenali.\n");
+            }
+        } else if (WordCompare(currentWord, toKata("SAVE"))){
+            ADVWORD();
+            if (EndWord){
+                printf("Perintah tidak dikenali\n");
+            } else {
+                Word fileName = currentWord;
+                ADVWORD();
+                if (EndWord){
+                    save(Game, fileName, historyGame);
+                } else {
+                    printf("Perintah tidak dikenali\n");
+                }
             }
         } else if (WordCompare(currentWord, toKata("SAVE"))){
             ADVWORD();
@@ -203,7 +220,53 @@ int main(){
                     printf("Perintah tidak dikenali.\n");
                 }
             }
-        } else {
+            else if (WordCompare(currentWord, toKata("SCOREBOARD")))
+            {
+                ADVWORD();
+                if (EndWord){
+                    resetScoreboard(Game, &(scoreBoard[0]));
+                } else {
+                    printf("Perintah tidak dikenali.\n");
+                }
+            }
+        }
+        else if (WordCompare(currentWord, toKata("SCOREBOARD"))){
+            ADVWORD();
+            if (EndWord){
+                int o = 0;
+                int l, j;
+                for (j=0; j < Game.Neff; j++){
+                    for (o = 0; o < 4; o++){
+                        printf("nama ");
+                        STARTINPUT();
+                        printf("\n");
+                        while(InsertSet((&(scoreBoard[j].Nama)), currentWord) == 0){
+                            printf("nama ");
+                            STARTINPUT();
+                            printf("\n");
+                        }
+                        printf("skor ");
+                        STARTINPUT();
+                        printf("\n");
+                        l = WordToInt(currentWord);
+                        InsertMapSorted(&scoreBoard[j].Score, o, l);}
+                }
+                if (o != 0){
+                    printf("   _   _____     _____   ______   _________   _    \n  / / |_   _|   |_   _|.' ____ \\ |  _   _  | \\ \\   \n / /    | |       | |  | (___ \\_||_/ | | \\_|  \\ \\  \n< <     | |   _   | |   _.____`.     | |       > > \n \\ \\   _| |__/ | _| |_ | \\____) |   _| |_     / /  \n  \\_\\ |________||_____| \\______.'  |_____|   /_/   \n                                                   \n");
+                    printf(" ______  ______  ______  ______  ______  ______  ______  \n|______||______||______||______||______||______||______| \n                                                         \n");
+                        int i;
+                        for (i=0;i<Game.Neff;i++){
+                            printScoreboard(Game, scoreBoard[i], i );
+                        }
+                    printf(" ______  ______  ______  ______  ______  ______  ______  \n|______||______||______||______||______||______||______| \n                                                         \n");
+                } else {
+                    printf("Perintah tidak dikenali\n");
+                }
+            } else {
+                printf("Perintah tidak dikenali.\n");
+            }
+        }
+         else {
             printf("Perintah tidak dikenali.\n");
         }
 

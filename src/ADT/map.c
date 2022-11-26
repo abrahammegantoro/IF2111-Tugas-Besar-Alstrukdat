@@ -3,33 +3,37 @@
 /* *** Konstruktor/Kreator *** */
 void CreateEmptyMap(Map *M)
 /* I.S. Sembarang */
-/* F.S. Membuat sebuah Map M kosong berkapasitas MaxEl */
-/* Ciri Map kosong : count bernilai Nil */
+/* F.S. Membuat sebuah Map M kosong berkapasitas MaxElM */
+/* Ciri Map kosong : count bernilai NilM */
 {
-    M->Count = Nil;
+    M->Count = NilM;
+    int i;
+    for(i = 0; i < MaxElM; i++){
+        (*M).Elements[i].Value = 0;
+    } 
 }
 
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
 boolean IsEmptyMap(Map M)
 /* Mengirim true jika Map M kosong*/
-/* Ciri Map kosong : count bernilai Nil */
+/* Ciri Map kosong : count bernilai NilM */
 {
-    return M.Count == Nil;
+    return M.Count == NilM;
 }
 
 boolean IsFullMap(Map M)
 /* Mengirim true jika Map M penuh */
-/* Ciri Map penuh : count bernilai MaxEl */
+/* Ciri Map penuh : count bernilai MaxElM */
 {
-    return M.Count == MaxEl;
+    return M.Count == MaxElM;
 }
 
 /* ********** Operator Dasar Map ********* */
-valuetype Value(Map M, keytype k)
+valuetype Value(Map M, keytypeM k)
 /* Mengembalikan nilai value dengan key k dari M */
 {
     boolean found = false;
-    address idx = 0, iterator;
+    addressM idx = 0, iterator;
 
     while (!found && idx < M.Count) {
         if (M.Elements[idx].Key == k) {
@@ -43,29 +47,38 @@ valuetype Value(Map M, keytype k)
     return M.Elements[idx].Value;
 }
 
-void InsertMap(Map *M, keytype k, valuetype v)
+void InsertMapSorted(Map *M, keytypeM k, valuetype v)
 /* Menambahkan Elmt sebagai elemen Map M. */
 /* I.S. M mungkin kosong, M tidak penuh
         M mungkin sudah beranggotakan v dengan key k */
 /* F.S. v menjadi anggota dari M dengan key k. Jika k sudah ada, operasi tidak dilakukan */
 {
-    if (IsMemberMap(*M, k)) {
-        return;
+    if (!IsMemberMap(*M,k)) {
+        if (IsEmptyMap(*M)) {
+            (*M).Elements[0].Key = k;
+            (*M).Elements[0].Value = v;
+        } else {
+            int i = (*M).Count - 1;
+            while((*M).Elements[i].Value > v) {
+                (*M).Elements[i + 1] = (*M).Elements[i];
+                i--; 
+            }
+            (*M).Elements[i + 1].Key = k;
+            (*M).Elements[i + 1].Value = v;
+        }
+        (*M).Count++;
     }
-
-    M->Elements[M->Count].Key = k;
-    M->Elements[M->Count].Value = v;
-    M->Count++;
 }
+// 1 2 3 4  
 
-void DeleteMap(Map *M, keytype k)
+void DeleteMap(Map *M, keytypeM k)
 /* Menghapus Elmt dari Map M. */
 /* I.S. M tidak kosong
         element dengan key k mungkin anggota / bukan anggota dari M */
 /* F.S. element dengan key k bukan anggota dari M */
 {
     boolean found = false;
-    address idx = 0, iterator;
+    addressM idx = 0, iterator;
 
     if (!IsMemberMap(*M, k)) {
         return;
@@ -88,11 +101,11 @@ void DeleteMap(Map *M, keytype k)
     M->Count--;
 }
 
-boolean IsMemberMap(Map M, keytype k)
+boolean IsMemberMap(Map M, keytypeM k)
 /* Mengembalikan true jika k adalah member dari M */
 {
     boolean found = false;
-    address idx = 0, iterator;
+    addressM idx = 0, iterator;
 
     while (!found && idx < M.Count) {
         if (M.Elements[idx].Key == k) {
