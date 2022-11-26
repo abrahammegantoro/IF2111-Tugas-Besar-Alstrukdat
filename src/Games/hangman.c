@@ -220,6 +220,19 @@ void printHangman(int kesempatan){
     }
 }
 
+boolean isNotUpperCase(Word currentWord){
+    int i = 0;
+    boolean notUpperCase = false;
+    while (i < currentWord.Length && !notUpperCase) {
+        if (currentWord.TabWord[i] < 'A' || currentWord.TabWord[i] > 'Z') {
+            notUpperCase = true;
+        } else {
+            i++;
+        }
+    }
+    return notUpperCase;
+}
+
 int hangman(){
     TabKata listJawaban, guessedAlphabet, unguessedAlphabet, strip;
     MakeEmpty(&listJawaban);
@@ -257,8 +270,14 @@ int hangman(){
             if (WordCompare(currentWord,toKata("1"))){
                 ADVWORD();
                 if(EndWord){
+                    printf("\n  Start Playing.");
+                    sleep(1);
+                    printf(".");
+                    sleep(1);
+                    printf(".");
+                    sleep(1);
                     currentWord.Length = 0;
-                    while (kesempatan > 1){
+                    while (kesempatan > 0){
                         system("cls");
                         MakeEmpty(&guessedAlphabet);
                         MakeEmpty(&unguessedAlphabet);
@@ -271,6 +290,7 @@ int hangman(){
                         insertStrip(jawaban, &strip);
                         jumlahstrip = strip.Neff;
                         
+                        printf("\n");
                         printHangman(kesempatan);
                         printf("  Kata : ");
                         printArray(strip);
@@ -289,8 +309,8 @@ int hangman(){
                         STARTINPUT();
                         printf("\n");
                         
-                        while (!correctWord && kesempatan > 1){
-                            if (currentWord.Length == 1 && cekAlphabet(currentWord, unguessedAlphabet)){
+                        while (!correctWord && kesempatan > 0){
+                            if (currentWord.Length == 1 && cekAlphabet(currentWord, unguessedAlphabet) && !isNotUpperCase(currentWord)){
                                 system("cls");
                                 correctGuess = false;
                                 delElmtArray(&unguessedAlphabet, currentWord);
@@ -308,43 +328,47 @@ int hangman(){
                                 if (!correctGuess){
                                     kesempatan--;
                                 }
-                                
+
                                 if (jumlahstrip == 0){
                                     score += jawaban.Length;
                                     correctWord = true;
-                                    printf("\n   _____ ____  _____  _____  ______ _____ _______ \n");
-                                    printf("  / ____/ __ \\|  __ \\|  __ \\|  ____/ ____|__   __|\n");
-                                    printf(" | |   | |  | | |__) | |__) | |__ | |       | |   \n");
-                                    printf(" | |   | |  | |  _  /|  _  /|  __|| |       | |    \n");
-                                    printf(" | |___| |__| | | \\ \\| | \\ \\| |___| |____   | |    \n");
-                                    printf("  \\_____\\____/|_|  \\_\\_|  \\_\\______\\_____|  |_|    \n");
+                                    printf("\n     _____ ____  _____  _____  ______ _____ _______ \n");
+                                    printf("    / ____/ __ \\|  __ \\|  __ \\|  ____/ ____|__   __|\n");
+                                    printf("   | |   | |  | | |__) | |__) | |__ | |       | |   \n");
+                                    printf("   | |   | |  | |  _  /|  _  /|  __|| |       | |    \n");
+                                    printf("   | |___| |__| | | \\ \\| | \\ \\| |___| |____   | |    \n");
+                                    printf("    \\_____\\____/|_|  \\_\\_|  \\_\\______\\_____|  |_|    \n");
                                     sleep(1);
                                 } else{
-                                    printHangman(kesempatan);
-                                    printf("  Kata : ");
-                                    printArray(strip);
-                                    printf("\n");
-                                    
-                                    printf("  Kesempatan : %d\n", kesempatan);
+                                    if (kesempatan != 0){
+                                        printf("\n");
+                                        printHangman(kesempatan);
+                                        printf("  Kata : ");
+                                        printArray(strip);
+                                        printf("\n");
+                                        
+                                        printf("  Kesempatan : %d\n", kesempatan);
 
-                                    printf("  Unguessed Letters : ");
-                                    printArray(unguessedAlphabet);
-                                    printf("\n");
-                                    printf("  Guessed Letters : ");
-                                    printArray(guessedAlphabet);
-                                    printf("\n");
+                                        printf("  Unguessed Letters : ");
+                                        printArray(unguessedAlphabet);
+                                        printf("\n");
+                                        printf("  Guessed Letters : ");
+                                        printArray(guessedAlphabet);
+                                        printf("\n");
 
-                                    printf("  Masukkan tebakan : ");
-                            
-                                    STARTINPUT();
-                                    printf("\n");
-                                    j++;
+                                        printf("  Masukkan tebakan : ");
+                                
+                                        STARTINPUT();
+                                        printf("\n");
+                                        j++;
+                                    }
                                 }
-                            } else if (currentWord.Length != 1){
-                                printf("  MASUKKAN SATU HURUF!\n");
+                            } else if (currentWord.Length != 1 || isNotUpperCase(currentWord)){
+                                printf("  MASUKKAN SATU HURUF KAPITAL!\n");
                                 sleep(1);
                                 system("cls");
                                 
+                                printf("\n");
                                 printHangman(kesempatan);
                                 printf("  Kata : ");
                                 printArray(strip);
@@ -368,6 +392,7 @@ int hangman(){
                                 sleep(1);
                                 system("cls");
                                 
+                                printf("\n");
                                 printHangman(kesempatan);
                                 printf("  Kata : ");
                                 printArray(strip);
@@ -392,11 +417,11 @@ int hangman(){
                         correctWord = false;
                     }
                     system("cls");
-                    kesempatan--;
+                    // kesempatan--;
                     printHangman(kesempatan);
                     printf("\n  Last Answer : ");
                     PrintWord(jawaban);
-                    printf("\n  Score Anda : %d\n", score);
+                    printf("\n  Your Score : %d\n", score);
                     isStarted = true;
                     return score;
                 } else {

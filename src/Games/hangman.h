@@ -29,6 +29,8 @@ boolean cekAlphabet(Word alphabet, TabKata listHuruf);
 
 void printHangman(int kesempatan);
 
+boolean isUpper(Word currentWord);
+
 int hangman();
 
 # endif
