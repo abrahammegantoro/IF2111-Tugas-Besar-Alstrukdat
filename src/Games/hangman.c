@@ -269,9 +269,10 @@ int hangman(){
             printf("  Input Number : ");
             
             STARTINPUT();
-            if (WordCompare(currentWord,toKata("1"))){
-                ADVWORD();
-                if(EndWord){
+            Word input = currentWord;
+            ADVWORD();
+            if(EndWord && input.Length == 1){
+                if (WordCompare(input,toKata("1"))){
                     printf("\n  Start Playing.");
                     sleep(1);
                     printf(".");
@@ -296,152 +297,101 @@ int hangman(){
                         printHangman(kesempatan);
                         printf("  Kata : ");
                         printArray(strip);
-                        printf("\n");
-                        printf("  Kesempatan : %d\n", kesempatan);
+
+                        printf("\n  Kesempatan : %d\n", kesempatan);
 
                         printf("  Unguessed Letters : ");
                         printArray(unguessedAlphabet);
-                        printf("\n");
-                        printf("  Guessed Letters : ");
+                        printf("\n  Guessed Letters : ");
                         printArray(guessedAlphabet);
-                        printf("\n");
                         
                         
-                        printf("  Masukkan tebakan : ");
+                        printf("\n  Masukkan tebakan : ");
                         STARTINPUT();
-                        printf("\n");
                         
                         while (!correctWord && kesempatan > 0){
-                            if (currentWord.Length == 1 && cekAlphabet(currentWord, unguessedAlphabet) && !isNotUpperCase(currentWord)){
-                                clear();
-                                correctGuess = false;
-                                delElmtArray(&unguessedAlphabet, currentWord);
-                                SetEl(&guessedAlphabet, j, currentWord);
+                            ADVWORD();
+                            if (EndWord){
+                                if (cekAlphabet(currentWord, unguessedAlphabet) && !isNotUpperCase(currentWord) && currentWord.Length == 1){
+                                    clear();
+                                    correctGuess = false;
+                                    delElmtArray(&unguessedAlphabet, currentWord);
+                                    SetEl(&guessedAlphabet, j, currentWord);
 
-                                for (i = 0; i < jawaban.Length; i++) {
-                                    if(jawaban.TabWord[i] == currentWord.TabWord[0]){
-                                        SetEl(&strip, i, currentWord);
-                                        strip.Neff--;
-                                        jumlahstrip--;
-                                        correctGuess = true;
+                                    for (i = 0; i < jawaban.Length; i++) {
+                                        if(jawaban.TabWord[i] == currentWord.TabWord[0]){
+                                            SetEl(&strip, i, currentWord);
+                                            strip.Neff--;
+                                            jumlahstrip--;
+                                            correctGuess = true;
+                                        }
                                     }
-                                }
-                                
-                                if (!correctGuess){
-                                    kesempatan--;
-                                }
 
-                                currentWord.Length = 0;
+                                    if (!correctGuess){
+                                        kesempatan--;
+                                    }
 
-                                if (jumlahstrip == 0){
-                                    score += jawaban.Length;
-                                    correctWord = true;
-                                    printf("\n     _____ ____  _____  _____  ______ _____ _______ \n");
-                                    printf("    / ____/ __ \\|  __ \\|  __ \\|  ____/ ____|__   __|\n");
-                                    printf("   | |   | |  | | |__) | |__) | |__ | |       | |   \n");
-                                    printf("   | |   | |  | |  _  /|  _  /|  __|| |       | |    \n");
-                                    printf("   | |___| |__| | | \\ \\| | \\ \\| |___| |____   | |    \n");
-                                    printf("    \\_____\\____/|_|  \\_\\_|  \\_\\______\\_____|  |_|    \n");
+                                    j++;
+                                    currentWord.Length = 0;
+                                } else if (currentWord.Length != 1 || isNotUpperCase(currentWord)){
+                                    printf("\n  MASUKKAN SATU HURUF KAPITAL!\n");
                                     sleep(1);
-                                } else{
-                                    if (kesempatan != 0){
-                                        printf("\n");
-                                        printHangman(kesempatan);
-                                        printf("  Kata : ");
-                                        printArray(strip);
-                                        printf("\n");
-                                        
-                                        printf("  Kesempatan : %d\n", kesempatan);
-
-                                        printf("  Unguessed Letters : ");
-                                        printArray(unguessedAlphabet);
-                                        printf("\n");
-                                        printf("  Guessed Letters : ");
-                                        printArray(guessedAlphabet);
-                                        printf("\n");
-
-                                        printf("  Masukkan tebakan : ");
-                                
-                                        STARTINPUT();
-                                        printf("\n");
-                                        j++;
-                                    }
+                                    clear();
+                                } else if (currentWord.Length != 0){
+                                    printf("\n  HURUF SUDAH DITEBAK!\n");
+                                    sleep(1);
+                                    clear();
                                 }
-                            } else if (currentWord.Length != 1 || isNotUpperCase(currentWord)){
-                                printf("  MASUKKAN SATU HURUF KAPITAL!\n");
+                            } else{
+                                printf("\n  MASUKKAN SATU HURUF KAPITAL!\n");
                                 sleep(1);
                                 clear();
-                                
+                            }
+                            
+                            if (jumlahstrip == 0){
+                                score += jawaban.Length;
+                                correctWord = true;
+                                printf("\n     _____ ____  _____  _____  ______ _____ _______ \n");
+                                printf("    / ____/ __ \\|  __ \\|  __ \\|  ____/ ____|__   __|\n");
+                                printf("   | |   | |  | | |__) | |__) | |__ | |       | |   \n");
+                                printf("   | |   | |  | |  _  /|  _  /|  __|| |       | |    \n");
+                                printf("   | |___| |__| | | \\ \\| | \\ \\| |___| |____   | |    \n");
+                                printf("    \\_____\\____/|_|  \\_\\_|  \\_\\______\\_____|  |_|    \n");
+                                sleep(1);
+                            } else if(kesempatan != 0 && jumlahstrip != 0){
                                 printf("\n");
                                 printHangman(kesempatan);
                                 printf("  Kata : ");
                                 printArray(strip);
-                                printf("\n");
                                 
-                                printf("  Kesempatan : %d\n", kesempatan);
+                                printf("\n  Kesempatan : %d\n", kesempatan);
 
                                 printf("  Unguessed Letters : ");
                                 printArray(unguessedAlphabet);
-                                printf("\n");
-                                printf("  Guessed Letters : ");
+                                printf("\n  Guessed Letters : ");
                                 printArray(guessedAlphabet);
-                                printf("\n");
 
-                                printf("  Masukkan tebakan : ");
+                                printf("\n  Masukkan tebakan : ");
                         
                                 STARTINPUT();
-                                printf("\n");
-                            } else if (currentWord.Length != 0){
-                                printf("  HURUF SUDAH DITEBAK!\n");
-                                sleep(1);
-                                clear();
-                                
-                                printf("\n");
-                                printHangman(kesempatan);
-                                printf("  Kata : ");
-                                printArray(strip);
-                                printf("\n");
-                                
-                                printf("  Kesempatan : %d\n", kesempatan);
-
-                                printf("  Unguessed Letters : ");
-                                printArray(unguessedAlphabet);
-                                printf("\n");
-                                printf("  Guessed Letters : ");
-                                printArray(guessedAlphabet);
-                                printf("\n");
-
-                                printf("  Masukkan tebakan : ");
-                        
-                                STARTINPUT();
-                                printf("\n");
                             }
                         }
                         j = 0;
                         correctWord = false;
                     }
                     clear();
-                    // kesempatan--;
                     printHangman(kesempatan);
                     printf("\n  Last Answer : ");
                     PrintWord(jawaban);
                     printf("\n  Your Score : %d\n\n", score);
                     isStarted = true;
                     return score;
-                } else {
-                    printf("INPUT TIDAK VALID! MASUKKAN ANGKA 1 ATAU 2\n");
-                    sleep(1);
-                    clear();
-                }
-            } else if (WordCompare(currentWord,toKata("2"))){
-                ADVWORD();
-                if (EndWord){
+                } else if (WordCompare(input,toKata("2"))){
                     currentWord.Length = 0;
                     clear();
                     printHangman(999);
                     printf("\n  Input Nama Buah : ");
                     STARTINPUT();
-                    printf("\n");
                     Word gameName = currentWord;
                     ADVWORD();
                     if (EndWord && gameName.Length != 0 && !isNotUpperCase(gameName)){
@@ -463,28 +413,23 @@ int hangman(){
                         {
                             listJawaban.TI[listJawaban.Neff] = gameName;
                             listJawaban.Neff += 1;
-                            printf("  Kata berhasil ditambahkan\n");
+                            printf("\n  Kata berhasil ditambahkan\n");
                             writeHangmanGame("./data/hangman.txt", listJawaban);
                             sleep(1);
                         } else
                         {
-                            printf("  Gagal menambahkan Kata! Kata sudah terdapat di dalam dictionary!\n");
+                            printf("\n  Gagal menambahkan Kata! Kata sudah terdapat di dalam dictionary!\n");
                             sleep(1);
                         }
                         clear();
                     } else {
-                        printf("  INPUT TIDAK VALID! MASUKKAN SATU NAMA BUAH DALAM HURUF KAPITAL!\n");
+                        printf("\n  INPUT TIDAK VALID! MASUKKAN SATU NAMA BUAH DALAM HURUF KAPITAL!\n");
                         sleep(1);
                         clear();
                     }
-
-                } else {
-                    printf("  INPUT TIDAK VALID! MASUKKAN ANGKA 1 ATAU 2!\n");
-                    sleep(1);
-                    clear();
                 }
             } else {
-                printf("  INPUT TIDAK VALID! MASUKKAN ANGKA 1 ATAU 2!\n");
+                printf("\n  INPUT TIDAK VALID! MASUKKAN ANGKA 1 ATAU 2!\n");
                 sleep(1);
                 clear();
             }
