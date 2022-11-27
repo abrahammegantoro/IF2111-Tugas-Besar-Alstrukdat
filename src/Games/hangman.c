@@ -331,6 +331,8 @@ int hangman(){
                                     kesempatan--;
                                 }
 
+                                currentWord.Length = 0;
+
                                 if (jumlahstrip == 0){
                                     score += jawaban.Length;
                                     correctWord = true;
@@ -389,7 +391,7 @@ int hangman(){
                         
                                 STARTINPUT();
                                 printf("\n");
-                            } else {
+                            } else if (currentWord.Length != 0){
                                 printf("  HURUF SUDAH DITEBAK!\n");
                                 sleep(1);
                                 system("cls");
@@ -423,7 +425,7 @@ int hangman(){
                     printHangman(kesempatan);
                     printf("\n  Last Answer : ");
                     PrintWord(jawaban);
-                    printf("\n  Your Score : %d\n", score);
+                    printf("\n  Your Score : %d\n\n", score);
                     isStarted = true;
                     return score;
                 } else {
