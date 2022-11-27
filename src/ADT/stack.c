@@ -1,11 +1,3 @@
-/*
-Nama        : Rozan Ghosani
-NIM         : 18221121
-Tanggal     : 21 Oktober 2022
-Topik       : Stack
-Deskripsi   : Implementasi stack.h
-*/
-
 #include <stdio.h>
 #include "stack.h"
 

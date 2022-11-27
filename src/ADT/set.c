@@ -1,11 +1,3 @@
-/*
-Nama		: Rozan Ghosani
-NIM			: 18221121	
-Tanggal		: 31 Oktober 2022
-Topik		: Set, Map, dan Hash
-Deskripsi	: Implementasi union_map.h
-*/
-
 #include <stdio.h>
 #include "set.h"
 
