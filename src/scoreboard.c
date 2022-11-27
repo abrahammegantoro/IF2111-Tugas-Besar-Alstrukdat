@@ -1,10 +1,11 @@
-#include"scoreboard.h"
+#include "scoreboard.h"
 #include <stdio.h>
 
 void CreateListScore(ListScore *scoreBoard){
     CreateEmptyMap(&((*scoreBoard).Score));
     CreateEmptySet(&((*scoreBoard).Nama));}
 
+<<<<<<< Updated upstream
 void printScoreboard(TabKata listGame, ListScore *scoreBoard){
     for (int i = 0; i < listGame.Neff; i++) {
         printf("**** SCOREBOARD GAME ");
@@ -44,6 +45,24 @@ void printScoreboard(TabKata listGame, ListScore *scoreBoard){
             printf("\n");
         }
         printf("\n");
+=======
+void printScoreboard(TabKata x, ListScore *scoreBoard){
+    int i, j, k;
+    for (int i = 0; i < x.Neff; i++)
+    {    
+        printf("\t**** SCOREBOARD GAME ");
+        PrintWord(x.TI[i]);
+        printf(" ****\n");
+        printf("| NAMA\t\t\t| SKOR\t\t\t|\n");
+        printf("-------------------------------------------------\n");
+        for (j = 0; j < (*scoreBoard).Nama.Count ; j++){
+            printf("| ");
+            PrintWord((*scoreBoard).Nama.Elements[(*scoreBoard).Score.Elements[j].Key]);
+            printf("\t\t\t| %d\t\t\t|\n", (*scoreBoard).Score.Elements[j].Value);
+        }
+        printf("\n");
+        scoreBoard++;
+>>>>>>> Stashed changes
     }
 }
 

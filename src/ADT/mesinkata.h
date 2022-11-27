@@ -91,4 +91,6 @@ void concatWord(Word *kata1, Word kata2);
 Word intToWord(int n);
 /* Mengubah integer menjadi tipe data Word */
 
+Word toLower(Word kata);
+
 #endif
