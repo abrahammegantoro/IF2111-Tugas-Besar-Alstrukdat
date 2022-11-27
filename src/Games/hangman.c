@@ -243,7 +243,7 @@ int hangman(){
     TabKata listJawaban, guessedAlphabet, unguessedAlphabet, strip;
     MakeEmpty(&listJawaban);
 
-    if(readHangmanFile("../../data/hangman.txt", &listJawaban)){
+    if(readHangmanFile("./data/hangman.txt", &listJawaban)){
         int i, kesempatan = 10, score = 0, jumlahstrip, j = 0;
         boolean correctWord = false, correctGuess, isStarted = false;
         Word jawaban;
@@ -462,7 +462,7 @@ int hangman(){
                             listJawaban.TI[listJawaban.Neff] = gameName;
                             listJawaban.Neff += 1;
                             printf("  Kata berhasil ditambahkan\n");
-                            writeHangmanGame("../../data/hangman.txt", listJawaban);
+                            writeHangmanGame("./data/hangman.txt", listJawaban);
                             sleep(1);
                         } else
                         {
