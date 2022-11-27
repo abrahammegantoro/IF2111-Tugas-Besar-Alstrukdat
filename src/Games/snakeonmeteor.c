@@ -23,7 +23,7 @@ void reset()
 boolean IsGameOver(ListSnake S, ListObstacle obstacle)
 {
     Point P;
-    address Q;
+    somaddress Q;
     P = InfoPos(Head(S));
     Q = NextPos(Head(S));
     if (SearchObstacle(obstacle, P))
@@ -277,7 +277,7 @@ void HitMeteor(ListSnake *S, Point meteor, boolean *isGameOver)
 
 boolean IsHit(ListSnake *S, Point meteor)
 {
-    address P;
+    somaddress P;
     P = SearchSnake(*S, meteor);
     if (P != NilSOM)
     {
