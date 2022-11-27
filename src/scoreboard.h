@@ -13,12 +13,7 @@ typedef struct {
 } ListScore;
 
 void CreateListScore(ListScore *scoreBoard);
-<<<<<<< Updated upstream
-void printScoreboard(TabKata listGame, ListScore *scoreBoard);
-void insertScore(Set *S, Map *M);
-=======
 void printScoreboard(TabKata x, ListScore *scoreBoard);
 // void insertScore(Set *S, Map *M);
 
->>>>>>> Stashed changes
 #endif

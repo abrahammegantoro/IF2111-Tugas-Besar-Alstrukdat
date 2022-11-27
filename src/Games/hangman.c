@@ -466,7 +466,7 @@ int hangman(){
                             sleep(1);
                         } else
                         {
-                            printf("  Gagal menambahkan Kata! Kata sudah terdapat di dalam list kata!\n");
+                            printf("  Gagal menambahkan Kata! Kata sudah terdapat di dalam dictionary!\n");
                             sleep(1);
                         }
                         system("cls");
@@ -488,9 +488,4 @@ int hangman(){
             }
         }
     }
-}
-
-int main(){
-    hangman();
-    return 0;
 }

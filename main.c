@@ -258,37 +258,7 @@ int main(){
         else if (WordCompare(currentWord, toKata("SCOREBOARD"))){
             ADVWORD();
             if (EndWord){
-<<<<<<< Updated upstream
-                int o = 0;
-                int l, j;
-                for (j=0; j < Game.Neff; j++){
-                    for (o = 0; o < 4; o++){
-                        printf("nama ");
-                        STARTINPUT();
-                        printf("\n");
-                        while(InsertSet((&(scoreBoard[j].Nama)), currentWord) == 0){
-                            printf("nama ");
-                            STARTINPUT();
-                            printf("\n");
-                        }
-                        printf("skor ");
-                        STARTINPUT();
-                        printf("\n");
-                        l = WordToInt(currentWord);
-                        InsertMapSorted(&scoreBoard[j].Score, o, l);}
-                }
-                if (o != 0){
-                    printf("   _   _____     _____   ______   _________   _    \n  / / |_   _|   |_   _|.' ____ \\ |  _   _  | \\ \\   \n / /    | |       | |  | (___ \\_||_/ | | \\_|  \\ \\  \n< <     | |   _   | |   _.____`.     | |       > > \n \\ \\   _| |__/ | _| |_ | \\____) |   _| |_     / /  \n  \\_\\ |________||_____| \\______.'  |_____|   /_/   \n                                                   \n");
-                    printf(" ______  ______  ______  ______  ______  ______  ______  \n|______||______||______||______||______||______||______| \n                                                         \n");
-                        int i;
-                        for (i=0;i<Game.Neff;i++){
-                            printScoreboard(Game, scoreBoard);
-                        }
-                    printf(" ______  ______  ______  ______  ______  ______  ______  \n|______||______||______||______||______||______||______| \n                                                         \n");
-=======
-                    printScoreboard(Game, &(scoreBoard[0]));
-
->>>>>>> Stashed changes
+                    printScoreboard(Game, scoreBoard);
                 } else {
                     printf("Perintah tidak dikenali\n");
                 }
