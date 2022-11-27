@@ -9,8 +9,14 @@ void resethistory(Stack *historyGame)
     
     if (WordCompare(toKata("Y"), currentWord))
     {
-        CreateEmptyStack(historyGame);
-        printf("History berhasil di-reset\n");
+        if (!IsEmptyStack(*historyGame))
+        {
+            CreateEmptyStack(historyGame);
+            printf("History berhasil di-reset.\n");
+        } else
+        {
+            printf("Belum ada game yang pernah dimainkan. History gagal dihapus.\n");
+        }
     } else if (WordCompare(toKata("N"), currentWord))
     {
         printf("History tidak jadi di-reset. Berikut adalah daftar Game yang telah dimainkan :\n");
@@ -23,9 +29,11 @@ void resethistory(Stack *historyGame)
         {
             printf("  %d. ", count);
             PrintWord(InfoTop(*historyGame));
+
             Pop(historyGame, &dump);
             Push(&temp, dump);
-            count++;
+            count += 1;
+            
             printf("\n");
         }
 
