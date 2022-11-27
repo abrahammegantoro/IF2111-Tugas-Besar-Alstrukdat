@@ -79,16 +79,16 @@ int main()
     CreateEmptySet(&temp);
 
     temp = SetUnion(S1, S2);
-    printf("9.  Hasil Union Set 1 dan Set 2 \t: "); PrintSet(S1);
+    printf("9.  Hasil Union Set 1 dan Set 2 \t: "); PrintSet(temp);
 
     temp = SetIntersection(S1, S2);
-    printf("10. Hasil Intersection Set 1 dan Set 2 \t: "); PrintSet(S1);
+    printf("10. Hasil Intersection Set 1 dan Set 2 \t: "); PrintSet(temp);
 
     temp = SetSymmetricDifference(S1, S2);
-    printf("11. Hasil Difference Set 1 dan Set 2 \t: "); PrintSet(S1);
+    printf("11. Hasil Difference Set 1 dan Set 2 \t: "); PrintSet(temp);
 
     temp = SetSubtract(S1, S2);
-    printf("12. Hasil Subtract Set 1 dan Set 2 \t: "); PrintSet(S1);
+    printf("12. Hasil Subtract Set 1 dan Set 2 \t: "); PrintSet(temp);
 
     return 0;
 }
