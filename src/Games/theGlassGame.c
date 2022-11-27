@@ -10,7 +10,7 @@ int playTheGlassGame() {
     addrNode Jump;
 
     for (int i = 8; i > 0; i--) {
-        system("cls");
+        clear();
         printf("\n ___    ___           _______               __     __      _______                       \n/   \\  |   |   /\\    |     __|.-----.--.--.|__|.--|  |    |     __|.---.-.--------.-----.\n[   ]  |   |  /  \\   |__     ||  _  |  |  ||  ||  _  |    |    |  ||  _  |        |  -__|\n\\___/  |___| /____\\  |_______||__   |_____||__||_____|    |_______||___._|__|__|__|_____|\n                                 |__|\n\n================================== Petunjuk Permainan ==================================\n\n1. Kamu telah dijebak oleh para penjahat karena ditawari uang dengan jumlah yang sangat\n   besar dengan syarat bermain game! Namun, ternyata permainan yang diberikan sangatlah\n   mematikan.\n2. Kamu sedang berada dalam akhir-akhir permainan Squid Game. Tugasmu adalah melewati\n   lantai kaca. Lantai kaca ini terbagi menjadi dua dan salah satunya sangatlah rapuh.\n3. Lantai kaca yang kamu pilih berpotensi untuk pecah dan membuatmu terjatuh.\n4. Setiap kali kamu terjatuh, kamu akan dibawa kembali ke awal stage dan nyawamu akan\n   berkurang. Ingat, nyawamu terbatas!\n5. Kumpulkan poin sebanyak banyaknya dengan pergi hingga titik paling jauh.\n6. Permainan akan berakhir ketika semua nyawamu habis.\n\n========================================================================================\n\nPermainan akan dimulai dalam %d ...", i);
         sleep(1);
     } 
@@ -26,7 +26,7 @@ int playTheGlassGame() {
             addscore = 0;
             boolean isJumped = false;
             do {
-                system("cls");
+                clear();
                 if (lives < stage * 2 + 1 && !isJumped) printf("Kamu harus mengulang dari awal stage\n");
                 Word stepBefore = currentWord;
                 currentWord = toKata("LEFT");
@@ -37,7 +37,7 @@ int playTheGlassGame() {
                     if (!(WordCompare(currentWord, toKata("LEFT")) || WordCompare(currentWord, toKata("RIGHT")))) printf("\nMasukkan hanya bisa LEFT / RIGHT");
                     printf("\nLEFT/RIGHT > ");
                     STARTINPUT();
-                    system("cls");
+                    clear();
                 } while (!(WordCompare(currentWord, toKata("LEFT")) || WordCompare(currentWord, toKata("RIGHT"))));
                 isJumped = true;
                 if (WordCompare(currentWord, toKata("LEFT"))) {

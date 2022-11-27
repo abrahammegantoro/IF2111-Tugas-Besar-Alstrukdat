@@ -241,7 +241,7 @@ void printDescription(QueueDash q, boolean isValid, int isCook, int id)
 }
 int runDinerDash()
 {
-    system("cls");
+    clear();
 
     QueueDash qOrder, qCook;
     int isCook, id, customerCtr;
@@ -320,7 +320,7 @@ int runDinerDash()
             printDescription(qOrder, isValid, isCook, id);
         }
         sleep(2);
-        system("cls");
+        clear();
     }
     printf(" ___ __                                                  __ ___ \n");
     printf("|  _/ /                                                  \\ \\_  |\n");

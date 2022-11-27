@@ -248,7 +248,7 @@ int hangman(){
         boolean correctWord = false, correctGuess, isStarted = false;
         Word jawaban;
 
-        system("cls");
+        clear();
         while (!isStarted){
             printHangman(999);
             printf("      -------\n");
@@ -280,7 +280,7 @@ int hangman(){
                     sleep(1);
                     currentWord.Length = 0;
                     while (kesempatan > 0){
-                        system("cls");
+                        clear();
                         MakeEmpty(&guessedAlphabet);
                         MakeEmpty(&unguessedAlphabet);
                         MakeEmpty(&strip);
@@ -313,7 +313,7 @@ int hangman(){
                         
                         while (!correctWord && kesempatan > 0){
                             if (currentWord.Length == 1 && cekAlphabet(currentWord, unguessedAlphabet) && !isNotUpperCase(currentWord)){
-                                system("cls");
+                                clear();
                                 correctGuess = false;
                                 delElmtArray(&unguessedAlphabet, currentWord);
                                 SetEl(&guessedAlphabet, j, currentWord);
@@ -370,7 +370,7 @@ int hangman(){
                             } else if (currentWord.Length != 1 || isNotUpperCase(currentWord)){
                                 printf("  MASUKKAN SATU HURUF KAPITAL!\n");
                                 sleep(1);
-                                system("cls");
+                                clear();
                                 
                                 printf("\n");
                                 printHangman(kesempatan);
@@ -394,7 +394,7 @@ int hangman(){
                             } else if (currentWord.Length != 0){
                                 printf("  HURUF SUDAH DITEBAK!\n");
                                 sleep(1);
-                                system("cls");
+                                clear();
                                 
                                 printf("\n");
                                 printHangman(kesempatan);
@@ -420,7 +420,7 @@ int hangman(){
                         j = 0;
                         correctWord = false;
                     }
-                    system("cls");
+                    clear();
                     // kesempatan--;
                     printHangman(kesempatan);
                     printf("\n  Last Answer : ");
@@ -431,13 +431,13 @@ int hangman(){
                 } else {
                     printf("INPUT TIDAK VALID! MASUKKAN ANGKA 1 ATAU 2\n");
                     sleep(1);
-                    system("cls");
+                    clear();
                 }
             } else if (WordCompare(currentWord,toKata("2"))){
                 ADVWORD();
                 if (EndWord){
                     currentWord.Length = 0;
-                    system("cls");
+                    clear();
                     printHangman(999);
                     printf("\n  Input Nama Buah : ");
                     STARTINPUT();
@@ -471,22 +471,22 @@ int hangman(){
                             printf("  Gagal menambahkan Kata! Kata sudah terdapat di dalam dictionary!\n");
                             sleep(1);
                         }
-                        system("cls");
+                        clear();
                     } else {
                         printf("  INPUT TIDAK VALID! MASUKKAN SATU NAMA BUAH DALAM HURUF KAPITAL!\n");
                         sleep(1);
-                        system("cls");
+                        clear();
                     }
 
                 } else {
                     printf("  INPUT TIDAK VALID! MASUKKAN ANGKA 1 ATAU 2!\n");
                     sleep(1);
-                    system("cls");
+                    clear();
                 }
             } else {
                 printf("  INPUT TIDAK VALID! MASUKKAN ANGKA 1 ATAU 2!\n");
                 sleep(1);
-                system("cls");
+                clear();
             }
         }
     }

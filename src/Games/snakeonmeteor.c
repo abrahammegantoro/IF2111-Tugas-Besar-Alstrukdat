@@ -426,7 +426,7 @@ void DisplayMap(ListSnake S, Point fruit, Point meteor, ListObstacle obstacle)
 
 int RunSnakeOnMeteor()
 {
-    system("cls");
+    clear();
     ListSnake S;
     Point fruit;
     Point meteor;
@@ -469,7 +469,7 @@ int RunSnakeOnMeteor()
             reset();
             printf("=============================================================\n");
             sleep(2);
-            system("cls");
+            clear();
             printf("=============================================================\n");
             printf("   ________   _____  ___        __       __   ___    _______  \n");
             printf("  /'       )(\\'   \\|'  \\      /''\\     |/'| /  ')  /'     '| \n");
@@ -496,7 +496,7 @@ int RunSnakeOnMeteor()
         InitialMeteor(&meteor, fruit, obstacle);
         if (!isGameOver) {
             sleep(1);
-            system("cls");
+            clear();
         }
     }
     int score = (LengthSnake(S) - 1) * 2;

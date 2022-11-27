@@ -16,7 +16,7 @@ int playTowerOfHanoi() {
     int score = 10, turn = 0;
     float minus = 1;
 
-    system("cls");
+    clear();
     do {    
         currentWord = toKata("START");
         do {
@@ -27,13 +27,13 @@ int playTowerOfHanoi() {
             if (!(WordCompare(currentWord, toKata("CHANGE")) || WordCompare(currentWord, toKata("START")))) printf("Perintah tidak valid!\n");
             printf("> ");
             STARTINPUT();
-            system("cls");
+            clear();
         } while (!(WordCompare(currentWord, toKata("CHANGE")) || WordCompare(currentWord, toKata("START"))));
 
         if (WordCompare(currentWord, toKata("CHANGE"))) {
             int n = 1;
             do {
-                system("cls");
+                clear();
                 printf("Jumlah piringan: %d\n\n", nDisk);
                 if (n < 1) printf("Jumlah piringan tidak valid!\n");
                 printf("Masukkan jumlah piringan baru: ");
@@ -46,9 +46,9 @@ int playTowerOfHanoi() {
             } while (n < 1);
             nDisk = n;
         }
-        system("cls");
+        clear();
     } while (!WordCompare(currentWord, toKata("START")));
-    system("cls");
+    clear();
 
     printGuideToH();
 
@@ -130,7 +130,7 @@ int playTowerOfHanoi() {
             printf("\nMasukan tiang tidak valid.");
         }
         sleep(2);
-        system("cls");
+        clear();
     }
     if (turn > idealMove) {
         score = score - (int) minus;
@@ -239,6 +239,6 @@ void printGuideToH() {
     for (int i = 8; i > 0; i--) {
         printf(" _______                                        ___      _______                     __ \n|_     _|.-----.--.--.--.-----.----.    .-----.'  _|    |   |   |.---.-.-----.-----.|__|\n  |   |  |  _  |  |  |  |  -__|   _|    |  _  |   _|    |       ||  _  |     |  _  ||  |\n  |___|  |_____|________|_____|__|      |_____|__|      |___|___||___._|__|__|_____||__|\n\n================================== Petunjuk Permainan ==================================\n\n1. Permainan berakhir jika semua piringan berhasil dipindah ke tiang C.\n2. Hanya satu piringan yang dapat dipindahkan dalam satu putaran.\n3. Setiap putaran terdiri dari mengambil piringan bagian atas dari salah satu tumpukan\n   dan meletakkannya di atas tumpukan lainnya. Dengan kata lain, sebuah piringan hanya\n   dapat dipindahkan jika itu adalah piringan paling atas di tumpukan.\n4. Piringan yang lebih besar tidak boleh ditempatkan di atas piringan yang lebih kecil.\n\n========================================================================================\n\nPermainan akan dimulai dalam %d ...", i);
         sleep(1);
-        system("cls");
+        clear();
     }
 }

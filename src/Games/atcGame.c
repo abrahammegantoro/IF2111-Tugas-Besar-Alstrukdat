@@ -41,7 +41,7 @@ int playAtc() {
     insertPesawat(&L, Pesawat);
 
     while (!isOver) {
-        system("cls");
+        clear();
         printf("SCORE: %d\n\n", score);
         printStatus(BandaraM, BandaraB, L);
 
@@ -103,7 +103,7 @@ int playAtc() {
         }
     }
     sleep(5);
-    system("cls");
+    clear();
     return score;
 }
 
@@ -181,7 +181,7 @@ void printBandara(Queue B, char warna) {
 
 void printGuide() {
     for (int i = 8; i >= 1; i--) {
-        system("cls");
+        clear();
         printf("==================================================================\n");
         printf("                       Petunjuk Permainan\n");
         printf("==================================================================\n");
