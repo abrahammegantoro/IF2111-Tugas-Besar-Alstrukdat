@@ -23,18 +23,14 @@ void resetScoreboard(TabKata x, ListScore *scoreBoard){
         printf("\n");
         if (WordCompare(toKata("YA"), currentWord)){
             for (j = 0; j < x.Neff; j++){
-                for (y=0; y <= scoreBoard[j].Score.Count; y++){
-                    // scoreBoard[j].Score.Elements[y].Value = 0;
-                    DeleteSet(&(scoreBoard[j]).Nama, scoreBoard[j].Nama.Elements[y]);
-                    DeleteMap(&(scoreBoard[j]).Score, scoreBoard[j].Score.Elements[y].Key);
-                }
+              CreateListScore(&scoreBoard[j]);
+            }
         }
-    }
-    }else{
-        for (y=0; y <= scoreBoard[k-1].Score.Count; y++){
-            DeleteSet(&(scoreBoard[k-1]).Nama, scoreBoard[k-1].Nama.Elements[y]);
-            DeleteMap(&(scoreBoard[k-1]).Score, scoreBoard[k-1].Score.Elements[y].Key);
-        }
+        printf("Scoreboard berhasil di-reset.\n");
+    } else {
+        CreateEmptySet(&(scoreBoard[k-1]).Nama);
+        CreateEmptyMap(&(scoreBoard[k-1]).Score);
+        printf("Scoreboard berhasil di-reset.\n");
     }
 };
 

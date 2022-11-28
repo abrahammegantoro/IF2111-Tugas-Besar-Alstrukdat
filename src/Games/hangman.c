@@ -243,8 +243,11 @@ int hangman(){
     TabKata listJawaban, guessedAlphabet, unguessedAlphabet, strip;
     MakeEmpty(&listJawaban);
 
+    int score = 0;
+
     if(readHangmanFile("./data/hangman.txt", &listJawaban)){
-        int i, kesempatan = 10, score = 0, jumlahstrip, j = 0;
+        int i, kesempatan = 10, jumlahstrip, j = 0;
+        
         boolean correctWord = false, correctGuess, isStarted = false;
         Word jawaban;
 
@@ -385,7 +388,6 @@ int hangman(){
                     PrintWord(jawaban);
                     printf("\n  Your Score : %d\n\n", score);
                     isStarted = true;
-                    return score;
                 } else if (WordCompare(input,toKata("2"))){
                     currentWord.Length = 0;
                     clear();
@@ -435,4 +437,5 @@ int hangman(){
             }
         }
     }
+    return score;
 }
