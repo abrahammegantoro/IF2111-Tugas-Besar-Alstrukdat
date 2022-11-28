@@ -45,6 +45,7 @@ int playTowerOfHanoi() {
                 }
             } while (n < 1);
             nDisk = n;
+            score = 2 * nDisk;
         }
         clear();
     } while (!WordCompare(currentWord, toKata("START")));
@@ -107,7 +108,7 @@ int playTowerOfHanoi() {
                             takeTurn = moveDisk(&T3, &T2);
                         }
                     }
-                    if (turn > idealMove && minus < 9 && takeTurn) {
+                    if (turn > idealMove && minus < score - 1 && takeTurn) {
                         minus = minus * (float) (1 + (0.48 / nDisk));
                     }
                     if (takeTurn) {
