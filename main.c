@@ -229,6 +229,9 @@ int main(){
                     printf("Perintah tidak dikenali.\n");
                 }
             }
+            else{
+                printf("Perintah tidak dikenali.\n");
+            }
         }
         else if (WordCompare(currentWord, toKata("SCOREBOARD"))){
             ADVWORD();
