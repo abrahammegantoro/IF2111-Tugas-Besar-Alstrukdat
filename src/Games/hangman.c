@@ -257,7 +257,7 @@ int hangman(){
             printf("      -------\n");
             printf("      |     |\n");
             printf("      |     @\n");
-            printf("      |    /|\\\t Fruits Edition (in Bahasa) \n");
+            printf("      |    /|\\\t 40++ Fruits Edition (in Bahasa) \n");
             printf("      |     |\n");
             printf("      |    / \\\n");
             printf(" _____|_________\n");

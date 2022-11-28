@@ -15,7 +15,7 @@ boolean isExist(ElType Kata, Queue antrian){
     return found;
 }
 
-void deleteGame(TabKata* file, Queue antrianGame, Stack *historyGame){
+void deleteGame(TabKata* file, Queue antrianGame, Stack *historyGame, ListScore *scoreBoard){
     printf("Masukkan nomor game yang akan dihapus: ");
     STARTINPUT();
     int noGameInteger = WordToInt(currentWord);
@@ -41,6 +41,8 @@ void deleteGame(TabKata* file, Queue antrianGame, Stack *historyGame){
             Pop(&temp, &trf);
             Push(historyGame, trf);
         }
+        // Deleting scoreboard
+        CreateListScore(&(scoreBoard[noGameInteger - 1]));
 
     } else {
         printf("Game gagal dihapus\n");

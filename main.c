@@ -97,7 +97,7 @@ int main(){
                 ADVWORD();
                 if (EndWord){
                     listGame(Game);
-                    deleteGame(&Game, antrianGame, &historyGame);
+                    deleteGame(&Game, antrianGame, &historyGame, scoreBoard);
                 } else {
                     printf("Perintah tidak dikenali\n");
                 }
