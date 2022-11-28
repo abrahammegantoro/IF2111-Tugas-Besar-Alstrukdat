@@ -33,6 +33,7 @@ void STARTWORD(FILE *input) {
 
 void STARTINPUT()
 {
+    currentWord = toKata("");
     STARTWORD(stdin);
 }
 /* I.S. : currentChar sembarang
