@@ -10,7 +10,7 @@
 # include "./Games/dinerdash.h"
 # include "./Games/atcGame.h"
 
-void skipGame (Queue* queueGame, Word command, Stack* historyGame);
+int skipGame (Queue* queueGame, Word command, Stack* historyGame);
 /* Melewatkan permainan sebanyak n
 I.S. queueGame terdefinisi, mungkin kosong
 F.S. Memainkan game pada Top queueGame sekarang

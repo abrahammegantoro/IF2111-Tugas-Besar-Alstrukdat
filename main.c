@@ -200,9 +200,33 @@ int main(){
                     printf("Perintah tidak dikenali. Masukkan jumlah skip <SKIP GAME n>\n");
                 } else {
                     Word n = currentWord;
+                    Word val;
                     ADVWORD();
                     if (EndWord){
-                        skipGame(&antrianGame, n, &historyGame);
+                        score = skipGame(&antrianGame, n, &historyGame);
+                        if (score != NIL) {
+                            int idxGame;
+                            Word name;
+                            idxGame = selectGame(Game, antrianGame);
+                            printf("Masukkan username : ");
+                            STARTINPUT();
+                            name = currentWord;
+                            while (!EndWord) {
+                                ADVWORD();
+                            }
+                            while (IsMemberSet(scoreBoard[idxGame].Nama, name)) {
+                                printf("Nama sudah ada, masukkan nama lain : ");
+                                STARTINPUT();
+                                name = currentWord;
+                                while (!EndWord) {
+                                    ADVWORD();
+                                }
+                            }
+                            InsertSet(&(scoreBoard[idxGame].Nama), name);
+                            InsertMapSorted(&(scoreBoard[idxGame].Score), ((scoreBoard[idxGame].Nama.Count) - 1), score);
+                        }
+                        dequeue(&antrianGame, &val);
+                        Push(&historyGame, val);
                     } else {
                         printf("Perintah tidak dikenali\n");
                     }

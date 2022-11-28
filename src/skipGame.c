@@ -4,8 +4,9 @@
 #include <unistd.h>
 #include "skipGame.h"
 
-void skipGame (Queue* queueGame, Word command, Stack* historyGame) {
+int skipGame (Queue* queueGame, Word command, Stack* historyGame) {
     int n = 0, j = 0, i;
+    int score = NIL;
     ElType val;
     srand(time(NULL));
 
@@ -31,31 +32,31 @@ void skipGame (Queue* queueGame, Word command, Stack* historyGame) {
         val = HEAD(*queueGame);
         if (WordCompare(HEAD(*queueGame), toKata("RNG"))) {
             printLoading(val);
-            runRNG();
+            score = runRNG();
         } else if (WordCompare(HEAD(*queueGame), toKata("Diner DASH"))) {
             printLoading(val);
-            runDinerDash();
+            score = runDinerDash();
         } else if (WordCompare(HEAD(*queueGame), toKata("ATC GAME"))) {
             printLoading(val);
-            playAtc();
+            score = playAtc();
         } else if (WordCompare(HEAD(*queueGame), toKata("HANGMAN"))) {
             printLoading(HEAD(*queueGame));
-            // game hangman
+            score = hangman();
         } else if (WordCompare(HEAD(*queueGame), toKata("TOWER OF HANOI"))) {
             printLoading(HEAD(*queueGame));
-            playTowerOfHanoi();
+            score = playTowerOfHanoi();
         } else if (WordCompare(HEAD(*queueGame), toKata("SNAKE ON METEOR"))) {
             printLoading(HEAD(*queueGame));
-            // game snake on meteor
+            score = RunSnakeOnMeteor();
         } else if (WordCompare(HEAD(*queueGame), toKata("THE GLASS GAME"))) {
             printLoading(HEAD(*queueGame));
-            playTheGlassGame();
+            score = playTheGlassGame();
         } else {
             printLoading(val);
-            printf("Game Over! Skor akhir: %d\n\n", rand());
+            score = rand();
+            printf("Game Over! Skor akhir: %d\n", score);
         }
         sleep(3);
     }
-    dequeue(queueGame, &val);
-    Push(historyGame, val);
+    return score;
 }
