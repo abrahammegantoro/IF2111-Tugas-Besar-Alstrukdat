@@ -36,7 +36,7 @@ void reduceTime(QueueDash *q);
    I.S. q terdefinsi
    F.S. Makanan yang ada pada q berkurang waktu memasak dan ketahanannya */
 
-void runDinerDash();
+int runDinerDash();
 /* Menjalankan game Diner Dash 
    I.S. sembarang
    F.S. Diner Dash selesain dijalankan */

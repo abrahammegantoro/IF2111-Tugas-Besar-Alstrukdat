@@ -16,7 +16,7 @@ int playTowerOfHanoi() {
     int score = 10, turn = 0;
     float minus = 1;
 
-    system("cls");
+    clear();
     do {    
         currentWord = toKata("START");
         do {
@@ -27,13 +27,13 @@ int playTowerOfHanoi() {
             if (!(WordCompare(currentWord, toKata("CHANGE")) || WordCompare(currentWord, toKata("START")))) printf("Perintah tidak valid!\n");
             printf("> ");
             STARTINPUT();
-            system("cls");
+            clear();
         } while (!(WordCompare(currentWord, toKata("CHANGE")) || WordCompare(currentWord, toKata("START"))));
 
         if (WordCompare(currentWord, toKata("CHANGE"))) {
             int n = 1;
             do {
-                system("cls");
+                clear();
                 printf("Jumlah piringan: %d\n\n", nDisk);
                 if (n < 1) printf("Jumlah piringan tidak valid!\n");
                 printf("Masukkan jumlah piringan baru: ");
@@ -45,10 +45,11 @@ int playTowerOfHanoi() {
                 }
             } while (n < 1);
             nDisk = n;
+            score = 2 * nDisk;
         }
-        system("cls");
+        clear();
     } while (!WordCompare(currentWord, toKata("START")));
-    system("cls");
+    clear();
 
     printGuideToH();
 
@@ -72,13 +73,14 @@ int playTowerOfHanoi() {
     
     Word Tin, Tout;
     boolean takeTurn;
-    while (!(NbElmtStack(T3) == nDisk)) {
+    boolean isQuit = false;
+    while (!(NbElmtStack(T3) == nDisk) && !(isQuit)) {
         takeTurn = false;
         printTower(T1, T2, T3, nDisk);
         printf("\nTIANG ASAL   : ");
         STARTINPUT();
         
-        if ((currentWord.Length == 1) && (currentWord.TabWord[0] - 'A' >= 0) && (currentWord.TabWord[0] - 'A' < 3)) {
+        if (((currentWord.Length == 1) && (currentWord.TabWord[0] - 'A' >= 0) && (currentWord.TabWord[0] - 'A' < 3))) {
             Tout = currentWord;
             printf("TIANG TUJUAN : ");
             STARTINPUT();
@@ -99,14 +101,14 @@ int playTowerOfHanoi() {
                         } else {
                             takeTurn = moveDisk(&T2, &T3);
                         }
-                    } else {
+                    } else if (Tout.TabWord[0] == 'C') {
                         if (Tin.TabWord[0] == 'A') {
                             takeTurn = moveDisk(&T3, &T1);
                         } else {
                             takeTurn = moveDisk(&T3, &T2);
                         }
                     }
-                    if (turn > idealMove && minus < 9 && takeTurn) {
+                    if (turn > idealMove && minus < score - 1 && takeTurn) {
                         minus = minus * (float) (1 + (0.48 / nDisk));
                     }
                     if (takeTurn) {
@@ -114,20 +116,30 @@ int playTowerOfHanoi() {
                         turn++;
                     }
                 }
-            } else {
+            } else if ((currentWord.Length == 1) && (currentWord.TabWord[0] == 'Q')) {
+                printf("\nBerhasil keluar permainan.");
+                isQuit = true;
+            }
+            else {
                 printf("\nMasukan tiang tidak valid.");
             }
+        } else if ((currentWord.Length == 1) && (currentWord.TabWord[0] == 'Q')) {
+                printf("\nBerhasil keluar permainan.");
+                isQuit = true;
+                
         } else {
             printf("\nMasukan tiang tidak valid.");
         }
         sleep(2);
-        system("cls");
+        clear();
     }
-    if (turn > 31) {
+    if (turn > idealMove) {
         score = score - (int) minus;
     }
+    if (isQuit) score = 0;
     printTower(T1, T2, T3, nDisk);
-    printf("\nKamu berhasil!\n\nSkor didapatkan: %d\n", score);
+    if (!isQuit) printf("\nKamu berhasil!\n\nSkor didapatkan: %d\n", score);
+    else printf("\nBooo! Kamu menyerah dalam bermain >:( !\nSkor didapatkan: %d\n", score);
     return score;
 }
 
@@ -228,6 +240,6 @@ void printGuideToH() {
     for (int i = 8; i > 0; i--) {
         printf(" _______                                        ___      _______                     __ \n|_     _|.-----.--.--.--.-----.----.    .-----.'  _|    |   |   |.---.-.-----.-----.|__|\n  |   |  |  _  |  |  |  |  -__|   _|    |  _  |   _|    |       ||  _  |     |  _  ||  |\n  |___|  |_____|________|_____|__|      |_____|__|      |___|___||___._|__|__|_____||__|\n\n================================== Petunjuk Permainan ==================================\n\n1. Permainan berakhir jika semua piringan berhasil dipindah ke tiang C.\n2. Hanya satu piringan yang dapat dipindahkan dalam satu putaran.\n3. Setiap putaran terdiri dari mengambil piringan bagian atas dari salah satu tumpukan\n   dan meletakkannya di atas tumpukan lainnya. Dengan kata lain, sebuah piringan hanya\n   dapat dipindahkan jika itu adalah piringan paling atas di tumpukan.\n4. Piringan yang lebih besar tidak boleh ditempatkan di atas piringan yang lebih kecil.\n\n========================================================================================\n\nPermainan akan dimulai dalam %d ...", i);
         sleep(1);
-        system("cls");
+        clear();
     }
 }

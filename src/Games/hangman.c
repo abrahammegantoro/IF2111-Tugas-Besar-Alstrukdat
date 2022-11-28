@@ -242,10 +242,12 @@ boolean isNotUpperCase(Word currentWord){
 int hangman(){
     TabKata listJawaban, guessedAlphabet, unguessedAlphabet, strip;
     MakeEmpty(&listJawaban);
+
     int score = 0;
 
     if(readHangmanFile("./data/hangman.txt", &listJawaban)){
         int i, kesempatan = 10, jumlahstrip, j = 0;
+        
         boolean correctWord = false, correctGuess, isStarted = false;
         Word jawaban;
 

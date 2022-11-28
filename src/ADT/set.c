@@ -1,11 +1,3 @@
-/*
-Nama		: Rozan Ghosani
-NIM			: 18221121	
-Tanggal		: 31 Oktober 2022
-Topik		: Set, Map, dan Hash
-Deskripsi	: Implementasi union_map.h
-*/
-
 #include <stdio.h>
 #include "set.h"
 
@@ -43,10 +35,12 @@ int InsertSet(Set *S, infotype Elmt)
     if (IsMemberSet(*S, Elmt))
     {
         return 0;
-    }else{
-    S->Elements[S->Count] = Elmt;
-    S->Count++;
-    return 1;}
+    }
+    else {
+        S->Elements[S->Count] = Elmt;
+        S->Count++;
+        return 1;
+    }
 }
 
 void DeleteSet(Set *S, infotype Elmt)
@@ -86,7 +80,7 @@ boolean IsMemberSet(Set S, infotype Elmt)
     addressSet idx = 0;
     while (!found && idx < S.Count)
     {
-        if (WordCompare(S.Elements[idx], Elmt))
+        if (WordCompare(toLower(S.Elements[idx]), toLower(Elmt)))
         {
             found = true;
         }

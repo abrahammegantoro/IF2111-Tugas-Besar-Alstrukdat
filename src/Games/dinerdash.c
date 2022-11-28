@@ -239,9 +239,9 @@ void printDescription(QueueDash q, boolean isValid, int isCook, int id)
         }
     }
 }
-void runDinerDash()
+int runDinerDash()
 {
-    system("cls");
+    clear();
 
     QueueDash qOrder, qCook;
     int isCook, id, customerCtr;
@@ -320,7 +320,7 @@ void runDinerDash()
             printDescription(qOrder, isValid, isCook, id);
         }
         sleep(2);
-        system("cls");
+        clear();
     }
     printf(" ___ __                                                  __ ___ \n");
     printf("|  _/ /                                                  \\ \\_  |\n");
@@ -333,4 +333,5 @@ void runDinerDash()
     printf("===============================================================\n");
     printf("\t\t\tSKOR KAMU : %d\t\t\t\t\t\n", saldo);
     printf("===============================================================\n");
+    return saldo;
 }
