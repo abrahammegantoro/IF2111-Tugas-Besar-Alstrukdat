@@ -34,11 +34,12 @@ int playTheGlassGame() {
                     printf("[ Stage: %d\tNyawa: %d ]\n", stage, lives);
                     if (!isJumped) printCharacter(toKata("NONE"), false);
                     else printCharacter(stepBefore, false);
-                    if (!(WordCompare(currentWord, toKata("LEFT")) || WordCompare(currentWord, toKata("RIGHT")))) printf("\nMasukkan hanya bisa LEFT / RIGHT");
+                    if (!(WordCompare(currentWord, toKata("LEFT")) || WordCompare(currentWord, toKata("RIGHT"))) || !EndWord) printf("\nMasukkan hanya bisa LEFT / RIGHT");
                     printf("\nLEFT/RIGHT > ");
                     STARTINPUT();
+                    ADVWORD();
                     clear();
-                } while (!(WordCompare(currentWord, toKata("LEFT")) || WordCompare(currentWord, toKata("RIGHT"))));
+                } while (!(WordCompare(currentWord, toKata("LEFT")) || WordCompare(currentWord, toKata("RIGHT"))) || !EndWord);
                 isJumped = true;
                 if (WordCompare(currentWord, toKata("LEFT"))) {
                     Jump = Left(Jump);
