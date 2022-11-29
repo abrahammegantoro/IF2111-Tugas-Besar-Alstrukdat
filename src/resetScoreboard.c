@@ -8,8 +8,8 @@ void resetScoreboard(TabKata x, ListScore *scoreBoard){
         printf("  %d. ", k+1);
         k++;
         for(int j = 0; j < x.TI[i].Length; j++) {
-        printf("%c", x.TI[i].TabWord[j]);
-    }
+            printf("%c", x.TI[i].TabWord[j]);
+        }
     printf("\n");
     }
     printf("SCOREBOARD YANG INGIN DIHAPUS: ");
@@ -20,21 +20,29 @@ void resetScoreboard(TabKata x, ListScore *scoreBoard){
     if (k == 0){
         printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD ALL (YA/TIDAK)? ");
         STARTINPUT();
+        Word input = currentWord;
         printf("\n");
-        if (WordCompare(toKata("YA"), currentWord)){
-            for (j = 0; j < x.Neff; j++){
-                for (y=0; y <= scoreBoard[j].Score.Count; y++){
-                    // scoreBoard[j].Score.Elements[y].Value = 0;
-                    DeleteSet(&(scoreBoard[j]).Nama, scoreBoard[j].Nama.Elements[y]);
-                    DeleteMap(&(scoreBoard[j]).Score, scoreBoard[j].Score.Elements[y].Key);
+        ADVWORD();
+        if (EndWord){
+            if (WordCompare(toKata("YA"), input)){
+                for (j = 0; j < x.Neff; j++){
+                    CreateListScore(&scoreBoard[j]);
                 }
+                printf("Scoreboard berhasil di-reset.\n");
+            } else if (WordCompare(toKata("TIDAK"), input)){
+                printf("Scoreboard tidak jadi di-reset.\n");
+            } else {
+                printf("Input tidak valid.\n");
+            }
+        } else {
+            printf("Input tidak valid.\n");
         }
-    }
-    }else{
-        for (y=0; y <= scoreBoard[k-1].Score.Count; y++){
-            DeleteSet(&(scoreBoard[k-1]).Nama, scoreBoard[k-1].Nama.Elements[y]);
-            DeleteMap(&(scoreBoard[k-1]).Score, scoreBoard[k-1].Score.Elements[y].Key);
-        }
+    } else if (k >= 1 && k <= x.Neff) {
+        CreateEmptySet(&(scoreBoard[k-1]).Nama);
+        CreateEmptyMap(&(scoreBoard[k-1]).Score);
+        printf("Scoreboard berhasil di-reset.\n");
+    } else {
+        printf("Input tidak valid.\n");
     }
 };
 
