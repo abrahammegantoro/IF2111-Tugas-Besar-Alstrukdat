@@ -97,7 +97,8 @@ void insertStrip(Word huruf, TabKata* strip){
 void printSet(Set S){
     int i;
     for (i = 0; i < S.Count; i++) {
-        printf("%c ", S.Elements[i]);
+        PrintWord(S.Elements[i]);
+        printf(" ");
     }
 }
 
