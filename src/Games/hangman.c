@@ -94,17 +94,11 @@ void insertStrip(Word huruf, TabKata* strip){
     }
 }
 
-boolean cekAlphabet(Word alphabet, TabKata listHuruf){
-    int i = 0;
-    boolean found = false;
-    while (i < listHuruf.Neff && !found) {
-        if (WordCompare(listHuruf.TI[i], alphabet)) {
-            found = true;
-        } else {
-            i++;
-        }
+void printSet(Set S){
+    int i;
+    for (i = 0; i < S.Count; i++) {
+        printf("%c ", S.Elements[i]);
     }
-    return found;
 }
 
 void printHangman(int kesempatan){
@@ -240,7 +234,8 @@ boolean isNotUpperCase(Word currentWord){
 }
 
 int hangman(){
-    TabKata listJawaban, guessedAlphabet, unguessedAlphabet, strip;
+    TabKata listJawaban, unguessedAlphabet, strip;
+    Set guessedAlphabet;
     MakeEmpty(&listJawaban);
 
     int score = 0;
@@ -282,12 +277,10 @@ int hangman(){
                     sleep(1);
                     printf(".");
                     sleep(1);
-                    currentWord.Length = 0;
                     while (kesempatan > 0){
                         clear();
-                        MakeEmpty(&guessedAlphabet);
-                        MakeEmpty(&unguessedAlphabet);
-                        MakeEmpty(&strip);
+                        CreateEmptySet(&guessedAlphabet);
+                        MakeEmpty(&unguessedAlphabet), MakeEmpty(&strip);
 
                         insertAlphabet(&unguessedAlphabet);
                         int random = getRandomWord(listJawaban);
@@ -306,7 +299,7 @@ int hangman(){
                         printf("  Unguessed Letters : ");
                         printArray(unguessedAlphabet);
                         printf("\n  Guessed Letters : ");
-                        printArray(guessedAlphabet);
+                        printSet(guessedAlphabet);
                         
                         
                         printf("\n  Masukkan tebakan : ");
@@ -315,11 +308,11 @@ int hangman(){
                         while (!correctWord && kesempatan > 0){
                             ADVWORD();
                             if (EndWord){
-                                if (cekAlphabet(currentWord, unguessedAlphabet) && !isNotUpperCase(currentWord) && currentWord.Length == 1){
+                                if (!IsMemberSet(guessedAlphabet, currentWord) && !isNotUpperCase(currentWord) && currentWord.Length == 1){
                                     clear();
                                     correctGuess = false;
                                     delElmtArray(&unguessedAlphabet, currentWord);
-                                    SetEl(&guessedAlphabet, j, currentWord);
+                                    InsertSet(&guessedAlphabet, currentWord);
 
                                     for (i = 0; i < jawaban.Length; i++) {
                                         if(jawaban.TabWord[i] == currentWord.TabWord[0]){
@@ -335,7 +328,6 @@ int hangman(){
                                     }
 
                                     j++;
-                                    currentWord.Length = 0;
                                 } else if (currentWord.Length != 1 || isNotUpperCase(currentWord)){
                                     printf("\n  MASUKKAN SATU HURUF KAPITAL!\n");
                                     sleep(1);
@@ -372,7 +364,7 @@ int hangman(){
                                 printf("  Unguessed Letters : ");
                                 printArray(unguessedAlphabet);
                                 printf("\n  Guessed Letters : ");
-                                printArray(guessedAlphabet);
+                                printSet(guessedAlphabet);
 
                                 printf("\n  Masukkan tebakan : ");
                         
@@ -389,7 +381,6 @@ int hangman(){
                     printf("\n  Your Score : %d\n\n", score);
                     isStarted = true;
                 } else if (WordCompare(input,toKata("2"))){
-                    currentWord.Length = 0;
                     clear();
                     printHangman(999);
                     printf("\n  Input Nama Buah : ");
