@@ -150,6 +150,7 @@ int main(){
                 if (EndWord){
                     int idxGame;
                     Word name;
+                    boolean isValid = false;
                     idxGame = selectGame(Game, antrianGame);
                     score = playGame(&antrianGame, &historyGame);
                     if (score != NIL) {
@@ -168,12 +169,25 @@ int main(){
                             }
                             STARTINPUT();
                             name = currentWord;
-                            while (!EndWord) {
-                                ADVWORD();
+                            if (name.Length != 0){
+                                while (!EndWord) {
+                                    ADVWORD();
+                                }
+                                while (IsMemberSet(scoreBoard[idxGame].Nama, name)) {
+                                    printf("Nama sudah ada, masukkan nama lain : ");
+                                    STARTINPUT();
+                                    name = currentWord;
+                                    while (!EndWord) {
+                                        ADVWORD();
+                                    }
+                                }
+                                InsertSet(&(scoreBoard[idxGame].Nama), name);
+                                InsertMapSorted(&(scoreBoard[idxGame].Score), ((scoreBoard[idxGame].Nama.Count) - 1), score);
+                                isValid = true;
+                            } else {
+                                printf("Nama tidak boleh kosong\n");
                             }
                         }
-                        InsertSet(&(scoreBoard[idxGame].Nama), name);
-                        InsertMapSorted(&(scoreBoard[idxGame].Score), ((scoreBoard[idxGame].Nama.Count) - 1), score);
                     }
                 } else {
                     printf("Perintah tidak dikenali\n");
@@ -212,23 +226,33 @@ int main(){
                         if (score != NIL) {
                             int idxGame;
                             Word name;
+                            boolean IsInputValid = false;
+
                             idxGame = selectGame(Game, antrianGame);
-                            printf("Masukkan username : ");
-                            STARTINPUT();
-                            name = currentWord;
-                            while (!EndWord) {
-                                ADVWORD();
-                            }
-                            while (IsMemberSet(scoreBoard[idxGame].Nama, name)) {
-                                printf("Nama sudah ada, masukkan nama lain : ");
+                            while (!IsInputValid){
+                                printf("Masukkan username : ");
                                 STARTINPUT();
+                            
                                 name = currentWord;
-                                while (!EndWord) {
-                                    ADVWORD();
+                                if (name.Length != 0){
+                                    while (!EndWord) {
+                                        ADVWORD();
+                                    }
+                                    while (IsMemberSet(scoreBoard[idxGame].Nama, name)) {
+                                        printf("Nama sudah ada, masukkan nama lain : ");
+                                        STARTINPUT();
+                                        name = currentWord;
+                                        while (!EndWord) {
+                                            ADVWORD();
+                                        }
+                                    }
+                                    InsertSet(&(scoreBoard[idxGame].Nama), name);
+                                    InsertMapSorted(&(scoreBoard[idxGame].Score), ((scoreBoard[idxGame].Nama.Count) - 1), score);
+                                    IsInputValid = true;
+                                } else {
+                                    printf("Nama tidak boleh kosong\n");
                                 }
                             }
-                            InsertSet(&(scoreBoard[idxGame].Nama), name);
-                            InsertMapSorted(&(scoreBoard[idxGame].Score), ((scoreBoard[idxGame].Nama.Count) - 1), score);
                         }
                         dequeue(&antrianGame, &val);
                         Push(&historyGame, val);

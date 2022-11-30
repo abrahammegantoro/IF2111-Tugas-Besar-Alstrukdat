@@ -20,7 +20,7 @@ void deleteGame(TabKata* file, Queue antrianGame, Stack *historyGame, ListScore 
     STARTINPUT();
     int noGameInteger = WordToInt(currentWord);
     Word deletedGame = (*file).TI[noGameInteger - 1];
-    if(noGameInteger > 7 && noGameInteger <= (*file).Neff && !isExist((*file).TI[noGameInteger], antrianGame)){
+    if(noGameInteger > 7 && noGameInteger <= (*file).Neff && !isExist(deletedGame, antrianGame)){
         int j;
         for (j = noGameInteger - 1 ; j < (*file).Neff ; j++){
             (*file).TI[j] = (*file).TI[j+1];
@@ -44,7 +44,11 @@ void deleteGame(TabKata* file, Queue antrianGame, Stack *historyGame, ListScore 
         // Deleting scoreboard
         CreateListScore(&(scoreBoard[noGameInteger - 1]));
 
-    } else {
-        printf("Game gagal dihapus\n");
+    } else if (noGameInteger >= 1 && noGameInteger <= 7){
+        printf("Game default tidak dapat dihapus!\n");
+    } else if (isExist(deletedGame, antrianGame)){
+        printf("Game masih dalam antrian, Game gagal dihapus!\n");
+    } else if (noGameInteger < 1 || noGameInteger > (*file).Neff){
+        printf("Game tidak ditemukan, Game gagal dihapus!\n");
     }
 }
