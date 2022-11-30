@@ -153,14 +153,19 @@ int main(){
                     idxGame = selectGame(Game, antrianGame);
                     score = playGame(&antrianGame, &historyGame);
                     if (score != NIL) {
+                        printf("<< Hanya kata pertama yang dijadikan username >>\n");
                         printf("Masukkan username : ");
                         STARTINPUT();
                         name = currentWord;
                         while (!EndWord) {
                             ADVWORD();
                         }
-                        while (IsMemberSet(scoreBoard[idxGame].Nama, name)) {
-                            printf("Nama sudah ada, masukkan nama lain : ");
+                        while (IsMemberSet(scoreBoard[idxGame].Nama, name) || name.Length == 0) {
+                            if (IsMemberSet(scoreBoard[idxGame].Nama, name)) {
+                                printf("Nama sudah ada, masukkan nama lain : ");
+                            } else {
+                                printf("Nama tidak valid, masukkan nama lain : ");
+                            }
                             STARTINPUT();
                             name = currentWord;
                             while (!EndWord) {
