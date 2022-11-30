@@ -412,18 +412,18 @@ int hangman(){
                         } else
                         {
                             printf("\n  Gagal menambahkan Kata! Kata sudah terdapat di dalam dictionary!\n");
-                            sleep(1);
+                            sleep(2);
                         }
                         clear();
                     } else {
-                        printf("\n  INPUT TIDAK VALID! MASUKKAN SATU NAMA BUAH DALAM HURUF KAPITAL!\n");
-                        sleep(1);
+                        printf("\n  INPUT TIDAK VALID! MASUKKAN NAMA BUAH YANG TERDIRI DARI SATU KATA DALAM HURUF KAPITAL!\n");
+                        sleep(3);
                         clear();
                     }
                 }
             } else {
                 printf("\n  INPUT TIDAK VALID! MASUKKAN ANGKA 1 ATAU 2!\n");
-                sleep(1);
+                sleep(2);
                 clear();
             }
         }

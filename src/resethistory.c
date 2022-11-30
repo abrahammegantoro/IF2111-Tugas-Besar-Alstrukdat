@@ -4,7 +4,7 @@
 
 void resethistory(Stack *historyGame)
 {
-    printf("Apakah kamu yakin infin melakukan reset history? (Y/N) : ");
+    printf("Apakah kamu yakin ingin melakukan reset history? (Y/N) : ");
     STARTINPUT();
     
     if (WordCompare(toKata("Y"), currentWord))
