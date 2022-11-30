@@ -4,10 +4,10 @@
 
 void resethistory(Stack *historyGame)
 {
-    printf("Apakah kamu yakin ingin melakukan reset history? (Y/N) : ");
+    printf("Apakah kamu yakin ingin melakukan reset history? (YA/TIDAK) : ");
     STARTINPUT();
     
-    if (WordCompare(toKata("Y"), currentWord))
+    if (WordCompare(toKata("YA"), currentWord))
     {
         if (!IsEmptyStack(*historyGame))
         {
@@ -17,7 +17,7 @@ void resethistory(Stack *historyGame)
         {
             printf("Belum ada game yang pernah dimainkan. History gagal dihapus.\n");
         }
-    } else if (WordCompare(toKata("N"), currentWord))
+    } else if (WordCompare(toKata("TIDAK"), currentWord))
     {
         printf("History tidak jadi di-reset. Berikut adalah daftar Game yang telah dimainkan :\n");
 
