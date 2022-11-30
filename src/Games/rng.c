@@ -49,7 +49,6 @@ int runRNG() {
     printf("++++++++++++++++++++++\n");
     printf("Sisa kesempatan : %d\n", try);
     printf("++++++++++++++++++++++\n");
-    printf("%d\n", num);
     getX(&x);
     while (!checkX(x)) {
         printf("!! Tebakan Anda tidak valid. Silahkan masukkan angka antara 1 dan 100. !!\n");
