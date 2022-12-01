@@ -8,17 +8,37 @@ int getRandom() {
     return num;    
 }
 void getX(int *x) {
+    int num = 0;
     printf(" ==> Tebak X : ");
     STARTINPUT();
-    if (currentWord.Length == 1) {
-        *x = currentWord.TabWord[0] - '0';
-    } else if (currentWord.Length == 2) {
-        *x = (currentWord.TabWord[0] - '0') * 10 + (currentWord.TabWord[1] - '0');
-    } else if (currentWord.Length == 3) {
-        *x = (currentWord.TabWord[0] - '0') * 100 + (currentWord.TabWord[1] - '0') * 10 + (currentWord.TabWord[2] - '0');
+    Word input = currentWord;
+    ADVWORD();
+    if (EndWord && input.Length != 0) {
+        int i = 0;
+        boolean found = false;
+        while (i < input.Length && !found) {
+            if (input.TabWord[i] < '0' || input.TabWord[i] > '9') {
+                found = true;
+            }
+            i++;
+        }
+        if (found) {
+            printf("Input tidak valid\n");
+            getX(x);
+        } else {
+            for (int i = 0; i < input.Length; i++) {
+                num = num * 10 + (input.TabWord[i] - '0');
+            }
+            *x = num;
+        }
     } else {
-        *x = 9999;
+        printf("Input tidak valid\n");
+        getX(x);
     }
+    while (!EndWord) {
+        ADVWORD();
+    }
+    currentWord.Length = 0;
 }
 
 boolean checkX(int x) {
@@ -51,7 +71,7 @@ int runRNG() {
     printf("++++++++++++++++++++++\n");
     getX(&x);
     while (!checkX(x)) {
-        printf("!! Tebakan Anda tidak valid. Silahkan masukkan angka antara 1 dan 100. !!\n");
+        printf("Input tidak valid, masukkan antara 1 sampai 100\n");
         getX(&x);
     }
     while (x != num && try > 1) {
@@ -66,7 +86,7 @@ int runRNG() {
         printf("++++++++++++++++++++++\n");
         getX(&x);
         while (!checkX(x)) {
-            printf("!! Tebakan Anda tidak valid. Silahkan masukkan angka antara 1 dan 100. !!\n");
+            printf("Input tidak valid, masukkan antara 1 sampai 100\n");
             getX(&x);
         }        
     }

@@ -172,3 +172,18 @@ boolean SearchObstacle(ListObstacle L, Point P) {
         return false;
     }
 }
+
+void PrintInfoSnake(ListSnake L) {
+    somaddress P = Head(L);
+    if (IsEmptySnake(L)) {
+        printf("List kosong");
+    } else {
+        int i = 1;
+        while (P != NilSOM) {
+            printf("Index ke-%d : (%d,%d) ",i ,InfoPos(P).x, InfoPos(P).y);
+            P = NextPos(P);
+            i++;
+        }
+    }
+    printf("\n");
+}
