@@ -424,6 +424,10 @@ int hangman(){
                         sleep(3);
                         clear();
                     }
+                } else {
+                    printf("\n  INPUT TIDAK VALID! MASUKKAN ANGKA 1 ATAU 2!\n");
+                    sleep(2);
+                    clear();
                 }
             } else {
                 printf("\n  INPUT TIDAK VALID! MASUKKAN ANGKA 1 ATAU 2!\n");
