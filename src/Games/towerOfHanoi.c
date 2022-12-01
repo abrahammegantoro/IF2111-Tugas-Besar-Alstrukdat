@@ -27,23 +27,36 @@ int playTowerOfHanoi() {
             if (!(WordCompare(currentWord, toKata("CHANGE")) || WordCompare(currentWord, toKata("START")))) printf("Perintah tidak valid!\n");
             printf("> ");
             STARTINPUT();
+            ADVWORD();
             clear();
-        } while (!(WordCompare(currentWord, toKata("CHANGE")) || WordCompare(currentWord, toKata("START"))));
+        } while (!(WordCompare(currentWord, toKata("CHANGE")) || WordCompare(currentWord, toKata("START"))) || !EndWord);
 
         if (WordCompare(currentWord, toKata("CHANGE"))) {
             int n = 1;
+            boolean isNumber = true;
             do {
                 clear();
                 printf("Jumlah piringan: %d\n\n", nDisk);
                 if (n < 1) printf("Jumlah piringan tidak valid!\n");
+                if (!isNumber) printf("Masukan harus berupa angka!\n");
                 printf("Masukkan jumlah piringan baru: ");
                 STARTINPUT();
-                n = 0;
-                for (int i = 0; i < currentWord.Length; i ++) {
-                    n *= 10;
-                    n += currentWord.TabWord[i] - '0';
+                isNumber = true;
+                for (int i = 0; i < currentWord.Length; i++) {
+                    if (!(currentWord.TabWord[i] - '0' >= 0 && currentWord.TabWord[i] - '0' <= 9)) {
+                        isNumber = false;
+                        n = 5;
+                    }
                 }
-            } while (n < 1);
+                if (isNumber) {    
+                    n = 0;
+                    for (int i = 0; i < currentWord.Length; i ++) {
+                        n *= 10;
+                        n += currentWord.TabWord[i] - '0';
+                    }
+                }
+                ADVWORD();
+            } while (n < 1 || !isNumber || !EndWord);
             nDisk = n;
             score = 2 * nDisk;
         }
@@ -79,15 +92,18 @@ int playTowerOfHanoi() {
         printTower(T1, T2, T3, nDisk);
         printf("\nTIANG ASAL   : ");
         STARTINPUT();
+        ADVWORD();
         
-        if (((currentWord.Length == 1) && (currentWord.TabWord[0] - 'A' >= 0) && (currentWord.TabWord[0] - 'A' < 3))) {
+        if (((currentWord.Length == 1) && (currentWord.TabWord[0] - 'A' >= 0) && (currentWord.TabWord[0] - 'A' < 3)) && EndWord) {
             Tout = currentWord;
             printf("TIANG TUJUAN : ");
             STARTINPUT();
-            if ((currentWord.Length == 1) && (currentWord.TabWord[0] - 'A' >= 0) && (currentWord.TabWord[0] - 'A' < 3)) {
+            ADVWORD();
+            if ((currentWord.Length == 1) && (currentWord.TabWord[0] - 'A' >= 0) && (currentWord.TabWord[0] - 'A' < 3) && EndWord) {
                 Tin = currentWord;
                 if (WordCompare(Tin, Tout)) {
                     printf("\nTiang yang dipilih tidak boleh sama.");
+                    fflush(stdout);
                 } else {
                     if (Tout.TabWord[0] == 'A') {
                         if (Tin.TabWord[0] == 'B') {
@@ -124,6 +140,7 @@ int playTowerOfHanoi() {
             }
             else {
                 printf("\nMasukan tiang tidak valid.");
+                fflush(stdout);
             }
         } else if ((currentWord.Length == 1) && (currentWord.TabWord[0] == 'Q')) {
                 printf("\nBerhasil keluar permainan.");
@@ -132,6 +149,7 @@ int playTowerOfHanoi() {
                 
         } else {
             printf("\nMasukan tiang tidak valid.");
+            fflush(stdout);
         }
         sleep(2);
         clear();
