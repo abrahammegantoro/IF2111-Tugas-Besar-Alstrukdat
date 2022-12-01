@@ -19,6 +19,7 @@ int main()
     }
 
     printf("\nMesin karakter sudah mencapai EOP sehingga tidak lagi dioperasikan\n");
-
+    CLOSE();
+    
     return 0;
 }

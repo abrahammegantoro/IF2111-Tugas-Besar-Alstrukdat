@@ -14,10 +14,9 @@ int main()
     PrintWord(kata2);
 
     concatWord(&kata1, kata2);
-    printf("\nHasil concat kata : ");
-    PrintWord(kata1);
+    printf("\nHasil concat kata : "); PrintWord(kata1);
 
-    printf("\nMasukkan kata : ");
+    printf("\n\nMasukkan kata : ");
 
     STARTINPUT();
     Word input = GetWord();
@@ -29,9 +28,9 @@ int main()
         ADVWORD();
     }
 
-    PrintWord(input);
+    printf("Kata saat ini : "); PrintWord(input);
 
-    printf("\nBerhasil mengubah input user menjadi tipe data Word.\n");
+    printf("\nBerhasil mengubah input user menjadi tipe data Word.");
 
     if (WordCompare(kata1, input))
     {
@@ -40,6 +39,10 @@ int main()
     {
         printf("\nInput user BUKAN 'HMIF ITB'.\n");
     }
+
+    printf("\nApabila input user terdiri dari huruf kapital, maka akan diubah menjadi huruf kecil semua\n");
+    printf("Kata saat ini : "); PrintWord(toLower(input));
+    printf("\n");
 
     return 0;
 }
@@ -50,12 +53,17 @@ int main()
 Misalkan input user = 'SUDO', maka program akan mengirim output :
 -------------------------------------------------------
 Akan membandingkan kata 'HMIF ITB' dengan input user
+Kata pertama : HMIF
+Kata kedua : ITB
+Hasil concat kata : HMIF ITB
+
 Masukkan kata : SUDO
 Kata saat ini : SUDO
-Panjang kata (termasuk spasi): 4
-
 Berhasil mengubah input user menjadi tipe data Word.
 Input user BUKAN 'HMIF ITB'.
+
+Apabila input user terdiri dari huruf kapital, maka akan diubah menjadi huruf kecil semua
+Kata saat ini : sudo
 -------------------------------------------------------
 *Note : fungsi stringLength sudah dipanggil di fungsi toKata,
         sehingga tidak dipanggil lagi di driver mesin kata.
