@@ -260,12 +260,23 @@ int main(){
             }
         } else if (WordCompare(currentWord, toKata("HISTORY"))) {
             ADVWORD();
-            Word num = currentWord;
-            ADVWORD();
             if (EndWord){
-                history(historyGame, num);
+                printf("Perintah tidak dikenali. Gunakan command \"HISTORY <n>\".\n\n");
             } else {
-                printf("Perintah tidak dikenali.\n");
+                ADVWORD();
+                if (EndWord) {
+                    boolean isNumber = true;
+                    for (int i = 0; i < currentWord.Length; i++) {
+                        if (!(currentWord.TabWord[i] - '0' > 0 && currentWord.TabWord[i] - '0' <= 9)) isNumber = false;
+                    }
+                    if (isNumber) {
+                        history(historyGame, currentWord);
+                    } else {
+                        printf("Masukkan <n> harus berupa angka!\n\n");
+                    }
+                } else {
+                    printf("Perintah tidak dikenali. Gunakan command \"HISTORY <n>\".\n\n");
+                }
             }
         } else if (WordCompare(currentWord, toKata("RESET"))) {
             ADVWORD();
