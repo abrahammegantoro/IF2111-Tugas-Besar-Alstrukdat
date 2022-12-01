@@ -92,5 +92,6 @@ Word intToWord(int n);
 /* Mengubah integer menjadi tipe data Word */
 
 Word toLower(Word kata);
+/* Mengubah kata yang merupakan huruf kapital menjadi huruf kecil */
 
 #endif
