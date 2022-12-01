@@ -57,6 +57,7 @@ int playTheGlassGame() {
                 printf("\nKamu terjatuh!");
                 printf("\nLEFT/RIGHT > ");
                 PrintWord(currentWord);
+                fflush(stdout);
                 sleep(2);
             }
             if (max < addscore) max = addscore;
