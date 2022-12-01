@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "resetHistory.h"
 #include "history.h"
+#include <unistd.h>
 
 void resetHistory(Stack *historyGame)
 {
@@ -12,14 +13,25 @@ void resetHistory(Stack *historyGame)
         if (!IsEmptyStack(*historyGame))
         {
             CreateEmptyStack(historyGame);
+            printf("\nMenghapus History.");
+            fflush(stdout);
+            sleep(1);
+            printf(".");
+            fflush(stdout);
+            sleep(1);
+            printf(".");
+            fflush(stdout);
+            sleep(1);
+
+            clear();
             printf("History berhasil di-reset.\n");
         } else
         {
-            printf("Belum ada game yang pernah dimainkan. History gagal dihapus.\n");
+            printf("\nBelum ada game yang pernah dimainkan. History gagal dihapus.\n");
         }
     } else if (WordCompare(toKata("TIDAK"), currentWord))
     {
-        printf("History tidak jadi di-reset. Berikut adalah daftar Game yang telah dimainkan :\n");
+        printf("\nHistory tidak jadi di-reset. Berikut adalah daftar Game yang telah dimainkan :\n");
 
         int count = 1;
         infotype dump;
@@ -44,6 +56,6 @@ void resetHistory(Stack *historyGame)
         }
     } else
     {
-        printf("History gagal dihapus. Tolong masukkan command yang valid!\n");
+        printf("\nHistory gagal dihapus. Tolong masukkan command yang valid!\n");
     }
 }

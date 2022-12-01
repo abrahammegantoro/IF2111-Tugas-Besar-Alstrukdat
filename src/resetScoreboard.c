@@ -1,4 +1,5 @@
-#include"resetScoreboard.h"
+# include"resetScoreboard.h"
+# include <unistd.h>
 
 void resetScoreboard(TabKata x, ListScore *scoreBoard){    
     int k = 0;
@@ -28,6 +29,17 @@ void resetScoreboard(TabKata x, ListScore *scoreBoard){
                 for (j = 0; j < x.Neff; j++){
                     CreateListScore(&scoreBoard[j]);
                 }
+                printf("Menghapus Scoreboard.");
+                fflush(stdout);
+                sleep(1);
+                printf(".");
+                fflush(stdout);
+                sleep(1);
+                printf(".");
+                fflush(stdout);
+                sleep(1);
+
+                clear();
                 printf("Scoreboard berhasil di-reset.\n");
             } else if (WordCompare(toKata("TIDAK"), input)){
                 printf("Scoreboard tidak jadi di-reset.\n");
@@ -40,6 +52,18 @@ void resetScoreboard(TabKata x, ListScore *scoreBoard){
     } else if (k >= 1 && k <= x.Neff) {
         CreateEmptySet(&(scoreBoard[k-1]).Nama);
         CreateEmptyMap(&(scoreBoard[k-1]).Score);
+
+        printf("Menghapus Scoreboard.");
+        fflush(stdout);
+        sleep(1);
+        printf(".");
+        fflush(stdout);
+        sleep(1);
+        printf(".");
+        fflush(stdout);
+        sleep(1);
+
+        clear();
         printf("Scoreboard berhasil di-reset.\n");
     } else {
         printf("Input tidak valid.\n");
