@@ -187,6 +187,7 @@ void printGuide() {
         printf("==================================================================\n");
         printf("1. Permainan ini merupakan simulasi dari Air Traffic Control.\n2. Tugasmu adalah menjaga agar pesawat tidak bertubrukan saat ingin mendarat.\n3. Setiap satu putaran, setiap pesawat akan semakin dekat ke Bandara masing-masing\n4. Gunakan command <ID Pesawat> untuk mempercepat pesawat mendarat\n5. Gunakan command SKIP untuk melewati satu putaran\n6. Pastikan agar pesawat dengan warna sama tidak mendarat bersamaan.\n7. Selamat bermain!\n\n");
         printf("Game akan dimulai dalam %d ...", i);
+        fflush(stdout);
         sleep(1);
     }
 }
