@@ -17,10 +17,13 @@ boolean readTxt(char* filesrc, TabKata* listGame, Stack* historyGame, ListScore*
         STARTWORD(input);
         linesgame = WordToInt(currentWord);
         for (int i = 0; i < linesgame; i++) {
+            if (currentChar == '\r'){
+                ADV();
+            }
             ADV();
             ADVWORD();
             Word currentGame = currentWord;
-            while (currentChar != '\n') {
+            while (currentChar != '\n' && currentChar != '\r') {
                 ADVWORD();
                 currentGame.TabWord[currentGame.Length] = ' ';
                 currentGame.Length++;
@@ -31,15 +34,21 @@ boolean readTxt(char* filesrc, TabKata* listGame, Stack* historyGame, ListScore*
             }
             SetEl(listGame, i, currentGame);
         }
+        if (currentChar == '\r'){
+            ADV();
+        }
         ADV();
         if (currentChar != ' ') {
             ADVWORD();
             lineshistory = WordToInt(currentWord);
             for (int i = 0; i < lineshistory; i++) {
+                if (currentChar == '\r'){
+                    ADV();
+                }
                 ADV();
                 ADVWORD();
                 Word currentGame = currentWord;
-                while (currentChar != '\n') {
+                while (currentChar != '\n' && currentChar != '\r') {
                     ADVWORD();
                     currentGame.TabWord[currentGame.Length] = ' ';
                     currentGame.Length++;
@@ -58,10 +67,16 @@ boolean readTxt(char* filesrc, TabKata* listGame, Stack* historyGame, ListScore*
         }
         
         for (int i = 0; i < linesgame; i++) {
+            if (currentChar == '\r'){
+                ADV();
+            }
             ADV();
             ADVWORD();
             linesscore = WordToInt(currentWord);
             for (int j = 0; j < linesscore; j++) {
+                if (currentChar == '\r'){
+                    ADV();
+                }
                 ADV();
                 ADVWORD();
                 InsertSet(&((*scoreboard).Nama), currentWord);

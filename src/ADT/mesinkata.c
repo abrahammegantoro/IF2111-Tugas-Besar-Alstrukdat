@@ -44,7 +44,7 @@ void STARTINPUT()
 void ADVWORD()
 {
     IgnoreBlanks();
-    if (currentChar == MARK)
+    if (currentChar == MARK || currentChar == '\r')
     {
         EndWord = true;
     }
@@ -64,7 +64,7 @@ void ADVWORD()
 void CopyWord()
 {
     int i = 0;
-    while (currentChar != MARK && currentChar != BLANK && i < NMax)
+    while ((currentChar != MARK && currentChar != 13) && currentChar != BLANK && i < NMax)
     {
         currentWord.TabWord[i] = currentChar;
         ADV();

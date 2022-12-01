@@ -17,7 +17,7 @@ void START(FILE *input){
 
 void ADV(){
     retval = fscanf(pita, "%c", &currentChar);
-    EOP = (currentChar == MARK);
+    EOP = (currentChar == MARK || currentChar == '\r');
 }
 
 void CLOSE(){

@@ -4,6 +4,7 @@
         "math.h": "c",
         "set.h": "c",
         "array.h": "c",
-        "mesinkata.h": "c"
+        "mesinkata.h": "c",
+        "boolean.h": "c"
     }
 }

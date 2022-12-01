@@ -11,10 +11,13 @@ boolean readHangmanFile(char* filesrc, TabKata* listGame){
         STARTWORD(input);
         lines = WordToInt(currentWord);
         for (int i = 0; i < lines; i++) {
+            if (currentChar == '\r'){
+                ADV();
+            }
             ADV();
             ADVWORD();
             Word currentGame = currentWord;
-            while (currentChar != '\n') {
+            while (currentChar != '\n' && currentChar != '\r') {
                 ADVWORD();
                 currentGame.TabWord[currentGame.Length] = ' ';
                 currentGame.Length++;
