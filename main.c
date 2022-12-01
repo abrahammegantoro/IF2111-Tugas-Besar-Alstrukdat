@@ -267,7 +267,7 @@ int main(){
                 if (EndWord) {
                     boolean isNumber = true;
                     for (int i = 0; i < currentWord.Length; i++) {
-                        if (!(currentWord.TabWord[i] - '0' > 0 && currentWord.TabWord[i] - '0' <= 9)) isNumber = false;
+                        if (!(currentWord.TabWord[i] - '0' >= 0 && currentWord.TabWord[i] - '0' <= 9)) isNumber = false;
                     }
                     if (isNumber) {
                         history(historyGame, currentWord);
