@@ -69,23 +69,44 @@ void DealokasiSnake(somaddress P);
 
 /****************** PENCARIAN SEBUAH ELEMEN LIST ******************/
 int LengthSnake (ListSnake L);
+/* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
 
 somaddress SearchSnake(ListSnake L, Point X);
+/* Mengirimkan address dari list yang memiliki point X, Nil jika tidak ada*/
 
 int SearchIdxSnake(ListSnake L, Point X);
+/* Mengirimkan index dari list yang memiliki point X, NilIdx jika tidak ada*/
 
 void InsVFirstSnake(ListSnake *L, Point X);
+/* Menambahkan elemen pertama list */
+/* I.S. L mungkin kosong */
+/* F.S. X ditambahkan sebagai elemen pertama L */
 
 void InsVLastSnake(ListSnake *L, Point X);
+/* Menambahkan elemen terakhir list */
+/* I.S. L mungkin kosong */
+/* F.S. X ditambahkan sebagai elemen terakhir L */
 
 void DelVFirstSnake(ListSnake *L, Point *X);
+/* Menghapus elemen pertama list */
+/* I.S. list tidak kosong */
+/* F.S. X adalah nilai elemen pertama list sebelum penghapusan */
 
 void DelVLastSnake(ListSnake *L, Point *X);
+/* Menghapus elemen terakhir list */
+/* I.S. list tidak kosong */
+/* F.S. X adalah nilai elemen terakhir list sebelum penghapusan */
 
 void DelPSnake(ListSnake *L, Point X);
+/* Menghapus elemen list yang memiliki point X */
+/* I.S. list tidak kosong */
+/* F.S. list tidak berisi X */
 
 boolean SearchObstacle(ListObstacle L, Point P);
+/* Mengirimkan true jika P ada di salah satu obstacle */
 
-
+void PrintInfoSnake(ListSnake L);
+/* I.S. L terdefinisi */
+/* F.S. Semua infoPos yang ada pada list dicetak ke layar */
 
 #endif
