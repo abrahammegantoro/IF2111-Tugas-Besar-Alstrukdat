@@ -276,10 +276,13 @@ int hangman(){
             if(EndWord && input.Length == 1){
                 if (WordCompare(input,toKata("1"))){
                     printf("\n  Start Playing.");
+                    fflush(stdout);
                     sleep(1);
                     printf(".");
+                    fflush(stdout);
                     sleep(1);
                     printf(".");
+                    fflush(stdout);
                     sleep(1);
                     while (kesempatan > 0){
                         clear();
