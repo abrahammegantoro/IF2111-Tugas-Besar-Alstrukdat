@@ -84,7 +84,7 @@ int playAtc() {
         }
 
         if (L.NEff < 30) diff = diff * 1.2;
-        else diff = diff * 1.05;
+        else if (L.NEff < 50) diff = diff * 1.05;
     }
     printf("\n\n============================================================");
     printf("\nGame over! Skor akhir %d\n", score);
@@ -102,6 +102,7 @@ int playAtc() {
             printf(" ");
         }
     }
+    fflush(stdout);
     sleep(5);
     clear();
     return score;
