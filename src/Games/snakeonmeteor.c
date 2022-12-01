@@ -437,11 +437,6 @@ int RunSnakeOnMeteor()
     InitialSnake(&S);
     InitialObstacle(S, &obstacle);
     InitialFood(S, &fruit, obstacle);
-    InitialMeteor(&meteor, fruit, obstacle);
-    while (IsEQPoint(meteor, InfoPos(Head(S))))
-    {
-        InitialMeteor(&meteor, fruit, obstacle);
-    }
     while (!isGameOver)
     {
         printf("=============================================================\n");
