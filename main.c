@@ -10,7 +10,7 @@
 # include "src/help.h"
 # include "src/quit.h"
 # include "src/history.h"
-# include "src/resethistory.h"
+# include "src/resetHistory.h"
 # include "src/scoreboard.h"
 # include "src/resetScoreboard.h"
 # include "unistd.h"
@@ -273,7 +273,7 @@ int main(){
             {
                 ADVWORD();
                 if (EndWord){
-                    resethistory(&historyGame);
+                    resetHistory(&historyGame);
                 } else {
                     printf("Perintah tidak dikenali.\n");
                 }

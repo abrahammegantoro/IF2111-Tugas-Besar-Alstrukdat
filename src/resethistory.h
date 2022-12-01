@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include "./ADT/stack.h"
 
-void resethistory(Stack *historyGame);
+void resetHistory(Stack *historyGame);
 /* Menghapus semua history permainan yang dimainkan
    I.S. historyGame terdefinisi
    F.S. historyGame dihapus atau tidak jadi dihapus */

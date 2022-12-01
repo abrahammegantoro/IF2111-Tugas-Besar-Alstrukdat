@@ -1,8 +1,8 @@
 #include <stdio.h>
-#include "resethistory.h"
+#include "resetHistory.h"
 #include "history.h"
 
-void resethistory(Stack *historyGame)
+void resetHistory(Stack *historyGame)
 {
     printf("Apakah kamu yakin ingin melakukan reset history? (YA/TIDAK) : ");
     STARTINPUT();
@@ -44,6 +44,6 @@ void resethistory(Stack *historyGame)
         }
     } else
     {
-        printf("Tolong masukkan command yang valid!\n");
+        printf("History gagal dihapus. Tolong masukkan command yang valid!\n");
     }
 }
