@@ -13,16 +13,18 @@ int main () {
 
     printf("\nMenambahkan 9 elemen list\n");
     for (int i = 2; i < 11; i++) {
-        KonsB(L1, i);
+        L1 = Konso(i, L1);
     }
     PrintList(L1);
 
     ListRek L2;
+    L2 = AlokasiLr(-1);
     printf("\nMembuat 10 elemen list negatif\n");
-    for (int i = 1; i < 11; i++) {
-        L2 = Konso(-i, L2);
+    for (int i = 2; i < 11; i++) {
+        KonsB(L2, -i);
     }
     PrintList(L2);
+    printf("Banyak elemen list: %d\n", NbElmtList(L2));
 
     printf("\nMenyalin list pertama dan kedua\n");
     ListRek L1_copy = Copy(L1);
