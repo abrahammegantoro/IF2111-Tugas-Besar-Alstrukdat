@@ -236,3 +236,17 @@ Word toLower(Word kata){
     }
     return lower;
 }
+
+Word toUpper(Word kata){
+    Word upper;
+    upper.Length = kata.Length;
+    for (int i = 0; i < kata.Length; i++)
+    {
+        if (kata.TabWord[i] >= 'a' && kata.TabWord[i] <= 'z'){
+            upper.TabWord[i] = kata.TabWord[i] - 32;
+        } else {
+            upper.TabWord[i] = kata.TabWord[i];
+        }
+    }
+    return upper;
+}

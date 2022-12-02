@@ -46,10 +46,16 @@ I.S. TabKata terdefinisi kosong
 F.S. TabKata terisi dengan "_" sebanyak panjang dari kata
 */
 
+void printSet(Set S);
+/* Menulis isi dari Set secara traversal 
+I.S. Set terdefinisi mungkin kosong 
+F.S. Menampilkan isi dari Set secara Traversal
+*/
+
 void printHangman(int kesempatan);
 /* Menampilkan gambar hangman sesuai dengan kesempatan yang dimiliki user */
 
-boolean isUpper(Word currentWord);
+boolean isAlphabet(Word currentWord);
 /* Mengecek apakah kata yang dimasukkan user berupa huruf kapital */
 
 int hangman();

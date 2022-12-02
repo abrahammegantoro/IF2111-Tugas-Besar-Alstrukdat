@@ -42,7 +42,9 @@ int main()
 
     printf("\nApabila input user terdiri dari huruf kapital, maka akan diubah menjadi huruf kecil semua\n");
     printf("Kata saat ini : "); PrintWord(toLower(input));
-    printf("\n");
+
+    printf("\nMengembalikan kata menjadi huruf kapital\n");
+    printf("Kata saat ini : "); PrintWord(toUpper(input));
 
     return 0;
 }
@@ -64,6 +66,9 @@ Input user BUKAN 'HMIF ITB'.
 
 Apabila input user terdiri dari huruf kapital, maka akan diubah menjadi huruf kecil semua
 Kata saat ini : sudo
+
+Mengembalikan kata menjadi huruf kapital
+Kata saat ini : SUDO
 -------------------------------------------------------
 *Note : fungsi stringLength sudah dipanggil di fungsi toKata,
         sehingga tidak dipanggil lagi di driver mesin kata.

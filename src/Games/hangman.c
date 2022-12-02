@@ -224,17 +224,14 @@ void printHangman(int kesempatan){
     }
 }
 
-boolean isNotUpperCase(Word currentWord){
-    int i = 0;
-    boolean notUpperCase = false;
-    while (i < currentWord.Length && !notUpperCase) {
-        if (currentWord.TabWord[i] < 'A' || currentWord.TabWord[i] > 'Z') {
-            notUpperCase = true;
-        } else {
-            i++;
+boolean isAlphabet(Word currentWord){
+    int i;
+    for(i = 0; i < currentWord.Length; i++){
+        if((currentWord.TabWord[i] < 'a' || currentWord.TabWord[i] > 'z') && (currentWord.TabWord[i] < 'A' || currentWord.TabWord[i] > 'Z')){
+            return false;
         }
     }
-    return notUpperCase;
+    return true;
 }
 
 int hangman(){
@@ -315,15 +312,16 @@ int hangman(){
                         while (!correctWord && kesempatan > 0){
                             ADVWORD();
                             if (EndWord){
-                                if (!IsMemberSet(guessedAlphabet, currentWord) && !isNotUpperCase(currentWord) && currentWord.Length == 1){
+                                if (!IsMemberSet(guessedAlphabet, currentWord) && isAlphabet(currentWord) && currentWord.Length == 1){
                                     clear();
+                                    Word upper = toUpper(currentWord);
                                     correctGuess = false;
-                                    delElmtArray(&unguessedAlphabet, currentWord);
-                                    InsertSet(&guessedAlphabet, currentWord);
+                                    delElmtArray(&unguessedAlphabet, upper);
+                                    InsertSet(&guessedAlphabet, upper);
 
                                     for (i = 0; i < jawaban.Length; i++) {
-                                        if(jawaban.TabWord[i] == currentWord.TabWord[0]){
-                                            SetEl(&strip, i, currentWord);
+                                        if(jawaban.TabWord[i] == upper.TabWord[0]){
+                                            SetEl(&strip, i, upper);
                                             strip.Neff--;
                                             jumlahstrip--;
                                             correctGuess = true;
@@ -335,8 +333,8 @@ int hangman(){
                                     }
 
                                     j++;
-                                } else if (currentWord.Length != 1 || isNotUpperCase(currentWord)){
-                                    printf("\n  MASUKKAN SATU HURUF KAPITAL!\n");
+                                } else if (currentWord.Length != 1 || !isAlphabet(currentWord)){
+                                    printf("\n  MASUKKAN SATU HURUF!\n");
                                     sleep(1);
                                     clear();
                                 } else if (currentWord.Length != 0){
@@ -345,7 +343,7 @@ int hangman(){
                                     clear();
                                 }
                             } else{
-                                printf("\n  MASUKKAN SATU HURUF KAPITAL!\n");
+                                printf("\n  MASUKKAN SATU HURUF!\n");
                                 sleep(1);
                                 clear();
                             }
@@ -392,14 +390,14 @@ int hangman(){
                     printHangman(999);
                     printf("\n  Input Nama Buah : ");
                     STARTINPUT();
-                    Word gameName = currentWord;
+                    Word namaBuah = toUpper(currentWord);
                     ADVWORD();
-                    if (EndWord && gameName.Length != 0 && !isNotUpperCase(gameName)){
+                    if (EndWord && namaBuah.Length != 0 && isAlphabet(namaBuah)){
                         int i = 0;
                         boolean found = false;
 
                         while (i != listJawaban.Neff && !found){
-                            if (WordCompare(listJawaban.TI[i], gameName))
+                            if (WordCompare(listJawaban.TI[i], namaBuah))
                             {
                                 found = true;
                             }
@@ -411,7 +409,7 @@ int hangman(){
 
                         if (!found)
                         {
-                            listJawaban.TI[listJawaban.Neff] = gameName;
+                            listJawaban.TI[listJawaban.Neff] = namaBuah;
                             listJawaban.Neff += 1;
                             printf("\n  Kata berhasil ditambahkan\n");
                             writeHangmanGame("./data/hangman.txt", listJawaban);
@@ -423,7 +421,7 @@ int hangman(){
                         }
                         clear();
                     } else {
-                        printf("\n  INPUT TIDAK VALID! MASUKKAN NAMA BUAH YANG TERDIRI DARI SATU KATA DALAM HURUF KAPITAL!\n");
+                        printf("\n  INPUT TIDAK VALID! MASUKKAN NAMA BUAH YANG TERDIRI DARI SATU KATA!\n");
                         sleep(3);
                         clear();
                     }

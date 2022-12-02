@@ -94,4 +94,7 @@ Word intToWord(int n);
 Word toLower(Word kata);
 /* Mengubah kata yang merupakan huruf kapital menjadi huruf kecil */
 
+Word toUpper(Word kata);
+/* Mengubah kata yang merupakan huruf kecil menjadi huruf kapital */
+
 #endif
