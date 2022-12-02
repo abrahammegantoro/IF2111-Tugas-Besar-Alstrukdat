@@ -14,7 +14,7 @@
 #define Empty -1
 
 
-boolean IsGameOver(ListSnake S, ListObstacle obstacle);
+boolean IsGameOver(ListSnake S, ListObstacle obstacle, int *score);
 /* Mengembalikan true jika snake mati */
 
 void InitialSnake(ListSnake *S);
@@ -37,7 +37,7 @@ void InitialObstacle(ListSnake S, ListObstacle *obstacle);
     I.S. S dan obstacle terdefinisi
     F.S. obstacle terisi dengan posisi random */
 
-void ReadInput(ListSnake *S, Point meteor, ListObstacle obstacle);
+void ReadInput(ListSnake *S, Point meteor, ListObstacle obstacle, int *score);
 /* Membaca input dari user
     I.S. S terdefinisi
     F.S. S terisi dengan posisi baru */
@@ -45,7 +45,7 @@ void ReadInput(ListSnake *S, Point meteor, ListObstacle obstacle);
 boolean IsInputValid(Word input);
 /* Mengembalikan true jika input valid */
 
-void MoveSnake(ListSnake *S, Point meteor, ListObstacle obstacle, Word Input);
+void MoveSnake(ListSnake *S, Point meteor, ListObstacle obstacle, Word Input, int *score);
 /* Menggerakkan snake
     I.S. S terdefinisi
     F.S. S terisi dengan posisi baru */
@@ -63,7 +63,7 @@ void GrowSnake(ListSnake *S, Point Tail);
 boolean IsHit(ListSnake *S, Point meteor);
 /* Mengembalikan true jika snake terkena meteor */
 
-void HitMeteor(ListSnake *S, Point meteor, boolean *isGameOver);
+void HitMeteor(ListSnake *S, Point meteor, boolean *isGameOver, int *score);
 /* Menggerakkan snake jika terkena meteor
     I.S. S dan meteor terdefinisi
     F.S. S tergerak jika terkena meteor */
