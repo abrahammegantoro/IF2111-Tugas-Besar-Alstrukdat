@@ -332,12 +332,12 @@ int Level(BinTree P, infotypeLr X)
         else
         return 1 + Level(Right(P), X);
     }
-    }
+}
 
-    int Tinggi(BinTree P)
-    /* Pohon Biner mungkin kosong. Tinggi pohon kosong = 0.
-    Mengirim "height" yaitu tinggi dari pohon */
-    {
+int Tinggi(BinTree P)
+/* Pohon Biner mungkin kosong. Tinggi pohon kosong = 0.
+Mengirim "height" yaitu tinggi dari pohon */
+{
     if (IsTreeEmpty(P))
         return 0;
     else
