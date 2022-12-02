@@ -66,6 +66,7 @@ int playTheGlassGame() {
         if (lives > 0) {
             stage++;
             printf("Selamat! kamu berhasil melewati babak ini.\nSkor kamu sementara adalah %d\n\nSiap-siap untuk menuju babak berikutnya...", score);
+            fflush(stdout);
             sleep(3);
         }
     } while (lives > 0);
