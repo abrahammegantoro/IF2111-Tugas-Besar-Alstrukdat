@@ -29,6 +29,11 @@ void ADV();
           currentChar mungkin = MARK
           Jika  currentChar = MARK maka EOP akan menyala (true) */
 
+void CLOSE();
+/* Menutup pita yang dibaca
+I.S. : sembarang
+F.S. : pita ditutup */
+
 char GetCC();
 /* Mengirimkan currentChar */
 

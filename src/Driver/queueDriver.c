@@ -5,18 +5,18 @@ int main(){
     Queue q;
     CreateQueue(&q);
     if (isEmpty(q)){
-        printf("kosong\n"); //bukti is empty menunjukkan queue kosong
+        printf("Queue kosong\n"); //bukti is empty menunjukkan queue kosong
     }
-    printf("Masukan kata:");
+    printf("Masukkan kata : ");
     STARTINPUT();
     while(!WordCompare(currentWord, toKata("Keluar"))){
-        enqueue(&q, currentWord); //memasukan kata ke dalam queue
+        enqueue(&q, currentWord); //memasukkan kata ke dalam queue
         printf("Berhasil melakukan queue\n");
-        printf("Masukan kata lagi:");
+        printf("Masukkan kata lagi (Ketik \"Keluar\" untuk mengakhiri masukkan) : ");
         STARTINPUT();
     }
     while(!isEmpty(q)){
-        printf("Banyak antrian: %d\n", length(q)); 
+        printf("Banyak antrian : %d\n", length(q)); 
         dequeue(&q, &currentWord); //mengeluarkan kata dari dalam queue dengan sistem FIFO
         PrintWord(currentWord);
         printf("\n");

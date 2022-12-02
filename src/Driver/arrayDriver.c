@@ -14,7 +14,7 @@ int main() {
     TulisIsi(Arr);
 
     printf("ID minimum: %d\nID maksimum: %d", IdxMinTab(Arr), IdxMaxTab(Arr));
-    printf("Cek elemen ke-19\n");
+    printf("\nCek elemen ke-19\n");
     PrintWord(Arr.TI[19]);
     printf("\n");
 

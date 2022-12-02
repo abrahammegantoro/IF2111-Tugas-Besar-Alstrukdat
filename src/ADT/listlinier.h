@@ -7,8 +7,8 @@
 #define listlinier_H
 
 #include "../boolean.h"
-#include "stdio.h"
-#include "stdlib.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include "mesinkata.h"
 
 #define Nil NULL

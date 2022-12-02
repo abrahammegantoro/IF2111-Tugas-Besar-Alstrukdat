@@ -18,7 +18,7 @@ int main() {
     printf("4. Cari elemen (3,3) di list: ");
     printf("Index ke - %d\n", SearchSnake(L, MakePoint(3, 3)));
     printf("5. Cari alamat elemen (3,3) di list: ");
-    printf("%p\n", SearchAddressSnake(L, MakePoint(3, 3)));
+    printf("%p\n", SearchSnake(L, MakePoint(3, 3)));
     printf("6. Hapus elemen pertama: ");
     DelVFirstSnake(&L, &P);
     PrintInfoSnake(L);

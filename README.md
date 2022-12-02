@@ -18,10 +18,10 @@ Kini, Indra dan Doni ingin supaya BNMO ditambah beberapa fitur tambahan, seperti
 cd bin
 ```
 
-2. Ketik make pada terminal
+2. Ketik `make main` pada terminal
 
 ```
-make
+make main
 ```
 
 3. Keluar dari folder terminal
@@ -35,6 +35,7 @@ cd ..
 ```
 ./BNMO atau BNMO
 ```
+
 ## Fitur BNMO
 
 - `START`            : Command ini digunakan untuk menjalankan program BNMO
@@ -53,9 +54,33 @@ cd ..
 - `QUIT`             : Command ini digunakan untuk keluar dari program.
 - `HELP`             : Command ini digunakan untuk memberikan bantuan penjelasan atas command-command yang dapat dijalasakan dalam BNMO.
 
+## Cara Menjalankan Driver Abstract Data Type
 
+1. Masuk ke folder bin melalui terminal
 
-## Kelompok 6
+```
+cd bin
+```
+
+2. Ketik `make <ADT>`  pada terminal
+
+```
+make set
+```
+
+3. Keluar dari folder terminal
+
+```
+cd ..
+```
+
+4. Jalankan driver di terminal dengan format `<ADT>Driver`
+
+```
+./setDriver atau setDriver
+```
+
+## Anggota Kelompok 6
 
 | No. | NIM | Nama |
 |-----|-----|------|
