@@ -60,7 +60,6 @@ int main() {
     
     printf("\nMemodifikasi Tree\n");
     AddDaunTerkiri(&P3, 99);
-    AddDaun(&P3, 99, 5, true);
     AddDaun(&P3, 99, 21, false);
     PrintTree(P3, 2); printf("\n");
     infotypeLr temp;
