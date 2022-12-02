@@ -20,26 +20,61 @@ void reset()
     printf("\033[0m");
 }
 
-boolean IsGameOver(ListSnake S, ListObstacle obstacle)
+boolean IsGameOver(ListSnake S, ListObstacle obstacle, int *score)
 {
     Point P;
     somaddress Q;
     P = InfoPos(Head(S));
+    
     Q = NextPos(Head(S));
     if (SearchObstacle(obstacle, P))
     {
+        (*score) = LengthSnake(S) * 2;
+        printf("          !!! Anda kalah karena menabrak obstacle !!!        \n");
         return true;
     }
     else
     {
-        while (Q != NilSOM)
-        {
-            if (PosX(P) == PosX(InfoPos(Q)) && PosY(P) == PosY(InfoPos(Q)))
-            {
-                return true;
-            }
-            Q = NextPos(Q);
+        Point U, L, R, D;
+        U = P; L = P; R = P; D = P;
+        if (U.y == 0) {
+            U.y = 4;
+        } else {
+            U.y--;
         }
+        if (L.x == 0) {
+            L.x = 4;
+        } else {
+            L.x--;
+        }
+        if (R.x == 4) {
+            R.x = 0;
+        } else {
+            R.x++;
+        }
+        if (D.y == 4) {
+            D.y = 0;
+        } else {
+            D.y++;
+        }
+        if (SearchSnake(S, U) != NilSOM && SearchSnake(S, L) != NilSOM && SearchSnake(S, R) != NilSOM && SearchSnake(S, D) != NilSOM)
+        {
+            (*score) = LengthSnake(S) * 2;
+            printf("!!! Anda kalah karena tidak ada jalan lagi untuk bergerak !!!\n");
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        // while (Q != NilSOM)
+        // {
+        //     if (PosX(P) == PosX(InfoPos(Q)) && PosY(P) == PosY(InfoPos(Q)))
+        //     {
+        //         return true;
+        //     }
+        //     Q = NextPos(Q);
+        // }
     }
     return false;
 }
@@ -150,7 +185,7 @@ void InitialObstacle(ListSnake S, ListObstacle *obstacle)
     (*obstacle).obsC = MakePoint(x, y);
 }
 
-void ReadInput(ListSnake *S, Point meteor, ListObstacle obstacle)
+void ReadInput(ListSnake *S, Point meteor, ListObstacle obstacle, int *score)
 {
     printf("Masukkan input: ");
     STARTINPUT();
@@ -158,7 +193,7 @@ void ReadInput(ListSnake *S, Point meteor, ListObstacle obstacle)
     ADVWORD();
     if (IsInputValid(input) && EndWord)
     {
-        MoveSnake(S, meteor, obstacle, input);
+        MoveSnake(S, meteor, obstacle, input, score);
     }
     else
     {
@@ -167,7 +202,7 @@ void ReadInput(ListSnake *S, Point meteor, ListObstacle obstacle)
         {
             ADVWORD();
         }
-        ReadInput(S, meteor, obstacle);
+        ReadInput(S, meteor, obstacle, score);
     }
 }
 
@@ -190,7 +225,7 @@ boolean IsInputValid(Word input)
     }
 }
 
-void MoveSnake(ListSnake *S, Point meteor, ListObstacle obstacle, Word Input)
+void MoveSnake(ListSnake *S, Point meteor, ListObstacle obstacle, Word Input, int *score)
 {
     Point P;
     P = InfoPos(Head(*S));
@@ -225,21 +260,21 @@ void MoveSnake(ListSnake *S, Point meteor, ListObstacle obstacle, Word Input)
         PosX(P) = (PosX(P) + 1) % 5;
     }
 
-    if (IsEQPoint(P, InfoPos(NextPos(Head(*S)))))
+    if (SearchSnake(*S, P) != NilSOM && SearchSnake(*S, P) != Tail(*S))
     {
         printf("Anda tidak dapat bergerak ke tubuh ular!\n");
-        ReadInput(S, meteor, obstacle);
+        ReadInput(S, meteor, obstacle, score);
     }
     else if (IsEQPoint(P, meteor))
     {
         printf("Anda tidak dapat bergerak ke meteor!\n");
-        ReadInput(S, meteor, obstacle);
+        ReadInput(S, meteor, obstacle, score);
     }
     else
     {
         InsVFirstSnake(S, P);
         DelVLastSnake(S, &P);
-        if (!IsGameOver(*S, obstacle))
+        if (!IsGameOver(*S, obstacle, score))
         {
             printf("Anda berhasil bergerak!\n");
         }
@@ -263,11 +298,12 @@ void GrowSnake(ListSnake *S, Point Tail)
     InsVLastSnake(S, P);
 }
 
-void HitMeteor(ListSnake *S, Point meteor, boolean *isGameOver)
+void HitMeteor(ListSnake *S, Point meteor, boolean *isGameOver, int *score)
 {
     if (IsEQPoint(InfoPos(Head(*S)), meteor))
     {
         *isGameOver = true;
+        (*score) = (LengthSnake(*S) - 1) * 2;
     }
     else
     {
@@ -433,6 +469,7 @@ int RunSnakeOnMeteor()
     ListObstacle obstacle;
     Point temp;
     boolean isGameOver = false;
+    int score;
     srand(time(NULL));
     InitialSnake(&S);
     InitialObstacle(S, &obstacle);
@@ -453,7 +490,7 @@ int RunSnakeOnMeteor()
         DisplayMap(S, fruit, meteor, obstacle);
         if (IsHit(&S, meteor))
         {
-            HitMeteor(&S, meteor, &isGameOver);
+            HitMeteor(&S, meteor, &isGameOver, &score);
             printf("=============================================================\n");
             red();
             printf(".___  ___.  _______ .___________. _______   ______   .______      \n");
@@ -479,15 +516,18 @@ int RunSnakeOnMeteor()
             printf("         H = Head, O = Fruit, M = Meteor, X = Obstacle       \n");
             printf("=============================================================\n");
             DisplayMap(S, fruit, meteor, obstacle);
+            if (isGameOver) {
+                printf("        !!! Anda kalah karena kepala terkena meteor !!!      \n");
+            }
         }
         if (!isGameOver)
         {
-            isGameOver = IsGameOver(S, obstacle);
+            isGameOver = IsGameOver(S, obstacle, &score);
         }
         temp = InfoPos(Tail(S));
         if (!isGameOver)
         {
-            ReadInput(&S, meteor, obstacle);
+            ReadInput(&S, meteor, obstacle, &score);
             EatFruit(&S, &fruit, temp, obstacle);
             currentWord.Length = 0;
             currentWord.TabWord[0] = '\0';
@@ -498,7 +538,6 @@ int RunSnakeOnMeteor()
             clear();
         }
     }
-    int score = (LengthSnake(S) - 1) * 2;
     printf(" ___ __                                                __ ___ \n");
     printf("|  _/ /                                                \\ \\_  |\n");
     printf("| || |   __ _  __ _ _ __ ___   ___  _____   _____ _ __  | || |\n");
