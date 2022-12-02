@@ -16,7 +16,7 @@ int main() {
     printf("3. List setelah diisi 5 elemen: ");
     PrintInfoSnake(L);
     printf("4. Cari elemen (3,3) di list: ");
-    printf("Index ke - %d\n", SearchSnake(L, MakePoint(3, 3)));
+    printf("Index ke - %d\n", SearchIdxSnake(L, MakePoint(3, 3)));
     printf("5. Cari alamat elemen (3,3) di list: ");
     printf("%p\n", SearchSnake(L, MakePoint(3, 3)));
     printf("6. Hapus elemen pertama: ");
